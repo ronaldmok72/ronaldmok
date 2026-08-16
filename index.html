@@ -8,16 +8,20 @@
 <meta property="og:title" content="Ronald Mok 莫荣烽 — 音乐监制 · 制作统筹">
 <meta property="og:description" content="有人有想法，我把它变成能交出去的东西。">
 <meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎧</text></svg>">
 <style>
   :root{
-    --bg:#0B0B0D;
-    --bg-2:#121216;
-    --line:#26262D;
-    --text:#EDEDEF;
-    --muted:#93939E;
-    --dim:#6E6E79;
-    --accent:#D4A24C;
-    --accent-soft:rgba(212,162,76,.12);
+    --bg:#08080A;
+    --bg-2:#101014;
+    --glass:rgba(255,255,255,.035);
+    --line:rgba(255,255,255,.09);
+    --line-soft:rgba(255,255,255,.05);
+    --text:#F2F2F4;
+    --muted:#9A9AA6;
+    --dim:#6C6C78;
+    --accent:#E0AE55;
+    --accent-2:#8B6FD8;
+    --accent-soft:rgba(224,174,85,.12);
     --max:1080px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -25,168 +29,215 @@
   body{
     background:var(--bg);color:var(--text);
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","Noto Sans SC","PingFang SC","Helvetica Neue",Arial,sans-serif;
-    font-size:17px;line-height:1.75;
+    font-size:17px;line-height:1.78;
     -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
+    overflow-x:hidden;position:relative;
   }
-  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
-  section{padding:88px 0;border-top:1px solid var(--line)}
-  section:first-of-type{border-top:none}
+  /* ambient background */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+    background:
+      radial-gradient(900px 600px at 78% -8%, rgba(139,111,216,.16), transparent 60%),
+      radial-gradient(800px 560px at 8% 12%, rgba(224,174,85,.10), transparent 62%),
+      radial-gradient(700px 700px at 60% 105%, rgba(139,111,216,.09), transparent 60%);
+  }
+  body::after{
+    content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;
+    background-image:radial-gradient(rgba(255,255,255,.045) 1px, transparent 1px);
+    background-size:44px 44px;
+    mask-image:linear-gradient(180deg,#000,transparent 70%);
+    -webkit-mask-image:linear-gradient(180deg,#000,transparent 70%);
+  }
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px;position:relative}
+  section{padding:96px 0;border-top:1px solid var(--line-soft)}
   a{color:inherit}
-  .eyebrow{
-    font-size:12px;letter-spacing:.18em;text-transform:uppercase;
-    color:var(--accent);font-weight:600;margin-bottom:18px;
-  }
-  h1{font-size:clamp(32px,5.6vw,58px);line-height:1.18;font-weight:700;letter-spacing:-.02em}
-  h2{font-size:clamp(24px,3.4vw,34px);line-height:1.3;font-weight:700;letter-spacing:-.015em;margin-bottom:14px}
-  h3{font-size:19px;font-weight:650;margin-bottom:8px}
+
+  .eyebrow{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:18px}
+  h1{font-size:clamp(33px,5.8vw,60px);line-height:1.16;font-weight:700;letter-spacing:-.025em}
+  h2{font-size:clamp(25px,3.5vw,36px);line-height:1.28;font-weight:700;letter-spacing:-.02em;margin-bottom:14px}
+  h3{font-size:19px;font-weight:650;margin-bottom:8px;line-height:1.45}
   p{color:var(--muted)}
   .lead{font-size:clamp(17px,2vw,20px);color:var(--muted);max-width:62ch}
-  .sec-intro{max-width:64ch;margin-bottom:44px}
+  .sec-intro{max-width:64ch;margin-bottom:46px}
+
+  /* reveal */
+  .rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+  .rv.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
 
   /* HERO */
-  header.hero{padding:96px 0 72px;position:relative;overflow:hidden}
-  header.hero::before{
-    content:"";position:absolute;top:-30%;right:-10%;width:60vw;height:60vw;max-width:700px;max-height:700px;
-    background:radial-gradient(circle,rgba(212,162,76,.09),transparent 62%);pointer-events:none;
+  header.hero{padding:110px 0 84px;position:relative;overflow:hidden}
+  .notes{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+  .notes span{
+    position:absolute;color:var(--accent);opacity:.13;font-size:26px;
+    animation:drift linear infinite;
   }
-  .hero-inner{position:relative}
-  .hero h1{max-width:16ch;margin-bottom:22px}
-  .hero .lead{margin-bottom:34px}
+  @keyframes drift{
+    0%{transform:translateY(20px) rotate(0deg);opacity:0}
+    12%{opacity:.16}
+    88%{opacity:.10}
+    100%{transform:translateY(-180px) rotate(22deg);opacity:0}
+  }
+  @media(prefers-reduced-motion:reduce){.notes{display:none}}
+  .hero h1{max-width:16ch;margin-bottom:24px}
+  .hero .lead{margin-bottom:36px}
   .cta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
   .btn{
     display:inline-flex;align-items:center;gap:9px;
-    background:var(--accent);color:#15100A;
-    padding:14px 26px;border-radius:100px;
-    font-weight:650;font-size:16px;text-decoration:none;
-    transition:transform .15s ease,box-shadow .15s ease;
-    box-shadow:0 6px 24px rgba(212,162,76,.18);
+    background:linear-gradient(135deg,#EFC169,var(--accent));color:#1A1206;
+    padding:15px 28px;border-radius:100px;
+    font-weight:700;font-size:16px;text-decoration:none;
+    transition:transform .18s ease,box-shadow .18s ease;
+    box-shadow:0 8px 30px rgba(224,174,85,.24);
   }
-  .btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(212,162,76,.26)}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 14px 38px rgba(224,174,85,.34)}
   .btn-ghost{
     display:inline-flex;align-items:center;gap:8px;
-    border:1px solid var(--line);color:var(--text);
-    padding:13px 24px;border-radius:100px;text-decoration:none;font-size:16px;
-    transition:border-color .15s ease,background .15s ease;
+    border:1px solid var(--line);color:var(--text);background:var(--glass);
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    padding:14px 26px;border-radius:100px;text-decoration:none;font-size:16px;
+    transition:border-color .18s ease,background .18s ease;
   }
   .btn-ghost:hover{border-color:var(--accent);background:var(--accent-soft)}
-  .trust{
-    margin-top:46px;padding-top:26px;border-top:1px solid var(--line);
-  }
-  .trust-label{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:14px}
+  .trust{margin-top:52px;padding-top:26px;border-top:1px solid var(--line-soft)}
+  .trust-label{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-bottom:14px}
   .trust-list{display:flex;flex-wrap:wrap;gap:10px 26px;color:var(--muted);font-size:15px;font-weight:550}
 
   /* STATS */
-  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
-  .stat{background:var(--bg-2);padding:26px 20px;text-align:center}
-  .stat b{display:block;font-size:clamp(26px,3.6vw,34px);font-weight:700;letter-spacing:-.02em;color:var(--text)}
-  .stat span{font-size:13px;color:var(--dim);letter-spacing:.04em}
+  .stats{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:1px;background:var(--line-soft);border:1px solid var(--line);border-radius:18px;overflow:hidden;
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  }
+  .stat{background:var(--glass);padding:30px 20px;text-align:center}
+  .stat b{display:block;font-size:clamp(28px,3.8vw,38px);font-weight:700;letter-spacing:-.03em;
+    background:linear-gradient(135deg,#fff,#C9C9D6);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .stat span{font-size:13px;color:var(--dim);letter-spacing:.05em}
 
   /* CARDS */
-  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px}
   .card{
-    background:var(--bg-2);border:1px solid var(--line);border-radius:16px;padding:28px 26px;
+    background:var(--glass);border:1px solid var(--line);border-radius:18px;padding:30px 28px;
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
     display:flex;flex-direction:column;
+    transition:border-color .25s ease,transform .25s ease;
   }
-  .card .tag{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;font-weight:600}
+  .card:hover{border-color:rgba(224,174,85,.35);transform:translateY(-3px)}
+  .card .tag{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;font-weight:600}
   .card p{font-size:15.5px}
-  .card .fit{
-    margin-top:18px;padding-top:16px;border-top:1px solid var(--line);
-    font-size:14.5px;color:var(--dim);
-  }
+  .card .fit{margin-top:18px;padding-top:16px;border-top:1px solid var(--line-soft);font-size:14.5px;color:var(--dim)}
   .card .fit b{color:var(--muted);font-weight:600}
 
-  /* HOW */
-  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:26px}
-  .step{padding-left:18px;border-left:2px solid var(--accent-soft)}
-  .step .n{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:700;margin-bottom:8px}
+  /* STEPS */
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:28px}
+  .step{padding-left:20px;border-left:2px solid rgba(224,174,85,.28)}
+  .step .n{font-size:12px;letter-spacing:.16em;color:var(--accent);font-weight:700;margin-bottom:8px}
   .step p{font-size:15px}
 
-  /* WORK */
-  .work-group{margin-bottom:38px}
-  .work-group h3{
-    font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);
-    padding-bottom:12px;border-bottom:1px solid var(--line);margin-bottom:6px;font-weight:600;
+  /* WORK LISTS */
+  .work-group{margin-bottom:40px}
+  .work-group > h3{
+    font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);
+    padding-bottom:12px;border-bottom:1px solid var(--line);margin-bottom:4px;font-weight:600;
   }
   .work-item{
-    display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;
-    padding:13px 4px;border-bottom:1px solid rgba(38,38,45,.55);
-    text-decoration:none;transition:background .15s ease,padding-left .15s ease;
+    display:flex;flex-wrap:wrap;align-items:baseline;gap:5px 14px;
+    padding:14px 6px;border-bottom:1px solid var(--line-soft);
+    text-decoration:none;transition:background .2s ease,padding-left .2s ease;
   }
-  .work-item:hover{background:rgba(212,162,76,.05);padding-left:10px}
+  .work-item:hover{background:rgba(224,174,85,.055);padding-left:14px}
   .work-item .t{font-weight:600;font-size:16px}
   .work-item .m{color:var(--dim);font-size:14.5px}
-  .work-item .go{margin-left:auto;color:var(--accent);font-size:13px;opacity:0;transition:opacity .15s ease;white-space:nowrap}
+  .work-item .go{margin-left:auto;color:var(--accent);font-size:13px;opacity:0;transition:opacity .2s ease;white-space:nowrap}
   .work-item:hover .go{opacity:1}
+  .work-item.static{cursor:default}
+  .work-item.static:hover{background:none;padding-left:6px}
 
   /* QUOTES */
   .quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
-  .quote{background:var(--bg-2);border:1px solid var(--line);border-radius:16px;padding:28px 26px}
-  .quote q{display:block;font-size:17px;line-height:1.6;color:var(--text);quotes:none}
+  .quote{
+    background:var(--glass);border:1px solid var(--line);border-radius:18px;padding:30px 28px;
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  }
+  .quote q{display:block;font-size:17.5px;line-height:1.62;color:var(--text);quotes:none}
   .quote q::before,.quote q::after{content:""}
   .quote .who{margin-top:16px;font-size:14px;color:var(--dim)}
   .quote .who b{color:var(--muted);font-weight:600}
-  .quote .fact{
-    margin-top:16px;padding-top:14px;border-top:1px solid var(--line);
-    font-size:14.5px;color:var(--muted);display:flex;gap:9px;align-items:flex-start;
-  }
+  .quote .fact{margin-top:16px;padding-top:14px;border-top:1px solid var(--line-soft);
+    font-size:14.5px;color:var(--muted);display:flex;gap:9px;align-items:flex-start}
   .quote .fact::before{content:"→";color:var(--accent);flex-shrink:0}
-  .quote.fact-only q{font-size:19px;font-weight:600;color:var(--text)}
+  .quote.fact-only q{font-size:19px;font-weight:650}
 
   /* FAQ */
-  details{border-bottom:1px solid var(--line);padding:20px 0}
-  summary{
-    cursor:pointer;list-style:none;font-weight:600;font-size:17px;
-    display:flex;justify-content:space-between;align-items:center;gap:16px;
-  }
+  details{border-bottom:1px solid var(--line-soft);padding:22px 0}
+  summary{cursor:pointer;list-style:none;font-weight:650;font-size:17px;
+    display:flex;justify-content:space-between;align-items:center;gap:16px;transition:color .2s ease}
+  summary:hover{color:var(--accent)}
   summary::-webkit-details-marker{display:none}
-  summary::after{content:"+";color:var(--accent);font-size:22px;font-weight:400;line-height:1;flex-shrink:0}
+  summary::after{content:"+";color:var(--accent);font-size:24px;font-weight:300;line-height:1;flex-shrink:0}
   details[open] summary::after{content:"−"}
-  details p{margin-top:12px;font-size:15.5px;max-width:66ch}
+  details .a{margin-top:14px;font-size:15.5px;max-width:66ch;color:var(--muted)}
+  details .a p{margin-bottom:12px}
+  details .a p:last-child{margin-bottom:0}
+  details .a ol{margin:0 0 12px 20px}
+  details .a li{margin-bottom:6px;color:var(--muted)}
 
   /* CLOSE */
   .close{
-    background:linear-gradient(180deg,var(--bg-2),var(--bg));
-    border:1px solid var(--line);border-radius:20px;padding:52px 34px;text-align:center;
+    background:linear-gradient(160deg,rgba(139,111,216,.14),rgba(224,174,85,.08));
+    border:1px solid var(--line);border-radius:24px;padding:58px 34px;text-align:center;
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
   }
   .close h2{margin-bottom:12px}
-  .close p{max-width:48ch;margin:0 auto 28px}
+  .close p{max-width:50ch;margin:0 auto 30px}
 
-  footer{padding:44px 0 60px;border-top:1px solid var(--line);color:var(--dim);font-size:14px}
-  .foot-row{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;justify-content:space-between}
+  footer{padding:46px 0 64px;border-top:1px solid var(--line-soft);color:var(--dim);font-size:14px}
+  .foot-row{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;justify-content:space-between}
   .foot-links{display:flex;flex-wrap:wrap;gap:18px}
   .foot-links a{text-decoration:none;color:var(--muted)}
   .foot-links a:hover{color:var(--accent)}
 
   @media(max-width:640px){
-    section{padding:64px 0}
-    header.hero{padding:64px 0 52px}
-    .close{padding:38px 22px}
+    section{padding:68px 0}
+    header.hero{padding:74px 0 56px}
+    .close{padding:40px 22px}
   }
 </style>
 </head>
 <body>
 
 <header class="hero">
-  <div class="wrap hero-inner">
-    <div class="eyebrow">音乐监制 · 制作统筹　Music Producer</div>
-    <h1>有人有想法，<br>我把它变成能交出去的东西。</h1>
-    <p class="lead">
-      20 年，500+ 首制作、10 部电影配乐、3 部剧集 OST。
-      从一句旋律到一场演出——编曲、录音、混音、母带、乐手、制谱，
-      我负责把它整合起来，让你只需要对一个人负责。
-    </p>
-    <div class="cta-row">
-      <a class="btn" href="https://wa.me/60149212571" data-wa>聊聊你的项目 →</a>
-      <a class="btn-ghost" href="#work">先看作品</a>
-    </div>
+  <div class="notes" aria-hidden="true">
+    <span style="left:6%;top:70%;animation-duration:17s;animation-delay:0s">♪</span>
+    <span style="left:22%;top:88%;animation-duration:22s;animation-delay:3s;font-size:20px">♫</span>
+    <span style="left:47%;top:80%;animation-duration:19s;animation-delay:6s">♩</span>
+    <span style="left:68%;top:92%;animation-duration:25s;animation-delay:1.5s;font-size:30px">♬</span>
+    <span style="left:84%;top:74%;animation-duration:20s;animation-delay:8s">♪</span>
+    <span style="left:93%;top:86%;animation-duration:23s;animation-delay:4.5s;font-size:18px">♫</span>
+  </div>
 
-    <div class="trust">
-      <div class="trust-label">合作过</div>
-      <div class="trust-list">
-        <span>Astro Shaw</span><span>GSC</span><span>mm2</span>
-        <span>MILO®</span><span>Nestlé</span><span>Great Eastern</span>
-        <span>趙傳</span><span>Apextar Academy</span>
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">音乐监制 · 制作统筹　Music Producer</div>
+      <h1>有人有想法，<br>我把它变成能交出去的东西。</h1>
+      <p class="lead">
+        20 年，500+ 首曲目制作、10 部电影配乐、3 部剧集 OST，
+        以及数十场大型演出与赛事的统筹。
+        编曲、录音、混音、母带、乐手、制谱、舞台——我负责把它们整合起来，
+        让你只需要对一个人负责。
+      </p>
+      <div class="cta-row">
+        <a class="btn" href="https://wa.me/60149212571">聊聊你的项目 →</a>
+        <a class="btn-ghost" href="#work">先看作品</a>
+      </div>
+
+      <div class="trust">
+        <div class="trust-label">合作过</div>
+        <div class="trust-list">
+          <span>Astro Shaw</span><span>GSC</span><span>mm2</span>
+          <span>MILO®</span><span>Nestlé</span><span>Great Eastern</span>
+          <span>趙傳</span><span>Apextar Academy</span>
+        </div>
       </div>
     </div>
   </div>
@@ -194,29 +245,29 @@
 
 <section>
   <div class="wrap">
-    <div class="stats">
-      <div class="stat"><b>20+</b><span>年制作经验</span></div>
-      <div class="stat"><b>500+</b><span>首曲目制作</span></div>
-      <div class="stat"><b>10</b><span>部电影配乐</span></div>
-      <div class="stat"><b>3</b><span>部剧集 OST</span></div>
-      <div class="stat"><b>200+</b><span>培育学员</span></div>
+    <div class="stats rv">
+      <div class="stat"><b data-count="20" data-suffix="+">0</b><span>年制作经验</span></div>
+      <div class="stat"><b data-count="500" data-suffix="+">0</b><span>首曲目制作</span></div>
+      <div class="stat"><b data-count="10" data-suffix="">0</b><span>部电影配乐</span></div>
+      <div class="stat"><b data-count="30" data-suffix="+">0</b><span>场大型演出统筹</span></div>
+      <div class="stat"><b data-count="200" data-suffix="+">0</b><span>培育学员</span></div>
     </div>
   </div>
 </section>
 
 <section id="who">
   <div class="wrap">
-    <div class="sec-intro">
+    <div class="sec-intro rv">
       <div class="eyebrow">我解决什么</div>
       <h2>三种人来找我，痛点完全不一样</h2>
       <p class="lead">所以我不给统一报价。先弄清楚你在哪一格，方案和规模才有意义。</p>
     </div>
 
-    <div class="cards">
+    <div class="cards rv">
       <div class="card">
         <div class="tag">创作者 · 歌手</div>
         <h3>你有词有曲，缺的是让人听进去的制作</h3>
-        <p>Demo 在手机里躺了半年，自己听觉得还行，放给别人听总觉得差一口气。差的通常不是旋律，是编曲的层次、人声的处理和最后那一版母带。</p>
+        <p>Demo 在手机里躺了半年，自己听觉得还行，放给别人听总觉得差一口气。差的通常不是旋律，是编曲的层次、人声的处理，还有最后那一版母带。</p>
         <div class="fit"><b>适合你，如果</b>——第一次正式录制，想要一个能上架、能拿得出手的完整版本。</div>
       </div>
 
@@ -228,9 +279,9 @@
       </div>
 
       <div class="card">
-        <div class="tag">品牌 · 影视</div>
+        <div class="tag">品牌 · 影视 · 活动</div>
         <h3>音乐要成为作品的一部分，不是背景</h3>
-        <p>广告、电影、剧集、企业定制单曲。音乐要服务画面与叙事，也要经得起播出规格与版权流程——包括后续在电视与串流平台的长期使用。</p>
+        <p>广告、电影、剧集、企业定制单曲，或是一整场演出的音乐结构。要服务画面与叙事，也要经得起播出规格与版权流程。</p>
         <div class="fit"><b>适合你，如果</b>——你需要的是可交付、可授权、可长期使用的音乐资产。</div>
       </div>
     </div>
@@ -239,13 +290,13 @@
 
 <section id="how">
   <div class="wrap">
-    <div class="sec-intro">
+    <div class="sec-intro rv">
       <div class="eyebrow">怎么合作</div>
-      <h2>我不亲手做每一件事。我确保每一件事被对的人做对。</h2>
+      <h2>我不亲手做每一件事。<br>我确保每一件事被对的人做对。</h2>
       <p class="lead">这是「找一个编曲」和「找一个监制」的差别。你不用同时管五个人，也不用自己判断谁擅长什么。</p>
     </div>
 
-    <div class="steps">
+    <div class="steps rv">
       <div class="step">
         <div class="n">01</div>
         <h3>先弄清楚要什么</h3>
@@ -272,13 +323,13 @@
 
 <section id="work">
   <div class="wrap">
-    <div class="sec-intro">
+    <div class="sec-intro rv">
       <div class="eyebrow">作品</div>
       <h2>部分参与过的项目</h2>
-      <p class="lead">全部可点开听。完整目录见 <a href="https://zaap.bio/ronaldmok" style="color:var(--accent);text-decoration:none">zaap.bio/ronaldmok</a>。</p>
+      <p class="lead">全部可点开听。完整目录见 <a href="https://zaap.bio/ronaldmok" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none">zaap.bio/ronaldmok</a>。</p>
     </div>
 
-    <div class="work-group">
+    <div class="work-group rv">
       <h3>电影配乐</h3>
       <a class="work-item" href="https://www.youtube.com/watch?v=_PxJHbGQ9dM" target="_blank" rel="noopener"><span class="t">《GEMENCHEH BOYS》</span><span class="m">体育励志片 · Astro Shaw</span><span class="go">听 ↗</span></a>
       <a class="work-item" href="https://www.youtube.com/watch?v=JQPEx019B-w" target="_blank" rel="noopener"><span class="t">《海墘新路》You Mean The World To Me</span><span class="m">剧情片 · GSC</span><span class="go">听 ↗</span></a>
@@ -289,14 +340,14 @@
       <a class="work-item" href="https://www.youtube.com/watch?v=4gYK2FkKD4M" target="_blank" rel="noopener"><span class="t">《看见西廖》SILIAU</span><span class="m">公益微电影</span><span class="go">听 ↗</span></a>
     </div>
 
-    <div class="work-group">
+    <div class="work-group rv">
       <h3>剧集 OST</h3>
       <a class="work-item" href="https://www.youtube.com/playlist?list=PLcHRE_huWMAx3S6mMn1TibNZmKyPdpcnE" target="_blank" rel="noopener"><span class="t">《偶然闯入的世界》</span><span class="m">偶像剧 · 12 集</span><span class="go">听 ↗</span></a>
       <a class="work-item" href="https://www.youtube.com/watch?v=YGQgS53nIB0" target="_blank" rel="noopener"><span class="t">《刺客列传 2 之龙血玄黄》</span><span class="m">网剧 · 30 集</span><span class="go">听 ↗</span></a>
       <a class="work-item" href="https://www.youtube.com/playlist?list=PLkGgRIFLBge1bjW3LimpfZFPF0PST_QcH" target="_blank" rel="noopener"><span class="t">《爱的约定》A Promise To Love</span><span class="m">电视剧 · 10 集</span><span class="go">听 ↗</span></a>
     </div>
 
-    <div class="work-group">
+    <div class="work-group rv">
       <h3>品牌 · 广告</h3>
       <a class="work-item" href="https://youtu.be/MuUq9CT3WDo" target="_blank" rel="noopener"><span class="t">Great Eastern《The Great Journey》</span><span class="m">企业定制单曲 · 已上架 Apple Music</span><span class="go">听 ↗</span></a>
       <a class="work-item" href="https://www.youtube.com/watch?v=7yjxyoi1R8o" target="_blank" rel="noopener"><span class="t">MILO® CANS × Farah Ann</span><span class="m">奥运体操选手</span><span class="go">听 ↗</span></a>
@@ -304,7 +355,7 @@
       <a class="work-item" href="https://youtu.be/rl4_0yZvEL8" target="_blank" rel="noopener"><span class="t">Nestlé Lively™</span><span class="m">品牌广告配乐</span><span class="go">听 ↗</span></a>
     </div>
 
-    <div class="work-group">
+    <div class="work-group rv">
       <h3>歌曲制作</h3>
       <a class="work-item" href="https://www.youtube.com/watch?v=-ckIQsDDRfk" target="_blank" rel="noopener"><span class="t">《感謝妳》</span><span class="m">趙傳 · 联合编曲</span><span class="go">听 ↗</span></a>
       <a class="work-item" href="https://www.youtube.com/watch?v=fn9pA-Wnx_Q" target="_blank" rel="noopener"><span class="t">《亲爱的，怎么了》</span><span class="m">Crystal 王雪晶</span><span class="go">听 ↗</span></a>
@@ -313,40 +364,66 @@
       <a class="work-item" href="https://www.youtube.com/watch?v=0gNzgr_Uyj8" target="_blank" rel="noopener"><span class="t">吉隆坡康乐华小 校歌</span><span class="m">学校委托</span><span class="go">听 ↗</span></a>
       <a class="work-item" href="https://www.facebook.com/visitationycm/videos/716000990185557/" target="_blank" rel="noopener"><span class="t">基青 40 周年主题曲《心满意足》</span><span class="m">团体周年曲</span><span class="go">听 ↗</span></a>
     </div>
+  </div>
+</section>
 
-    <div class="work-group">
-      <h3>演绎 · 舞台</h3>
+<section id="stage">
+  <div class="wrap">
+    <div class="sec-intro rv">
+      <div class="eyebrow">统筹 · 舞台</div>
+      <h2>不只是把歌做出来，<br>还要让它在台上成立</h2>
+      <p class="lead">
+        大型演出、周年音乐会、全国赛事、跨团联演——从节目结构、曲目编排、
+        演绎训练到现场流程，我做的是整场怎么走，不只是其中一首歌怎么响。
+      </p>
+    </div>
+
+    <div class="work-group rv">
+      <h3>演出统筹 · 节目结构</h3>
+      <a class="work-item static"><span class="t">真理电台 50 周年音乐会（吉隆坡场）</span><span class="m">KLPAC · 节目组</span></a>
+      <a class="work-item static"><span class="t">台北大巨蛋 · 佛光山世界理事会联合演出</span><span class="m">东禅合唱团 × 蒲公英合唱团 · 演绎组</span></a>
       <a class="work-item" href="https://www.instagram.com/p/C-k5gsJPtnZ/" target="_blank" rel="noopener"><span class="t">《你好，蒲公英》演唱会</span><span class="m">蒲公英合唱团</span><span class="go">看 ↗</span></a>
       <a class="work-item" href="https://youtu.be/vX1u3wVNmDU?t=5202" target="_blank" rel="noopener"><span class="t">《大马好 · 爱与和平》演唱会</span><span class="m">Love &amp; Peace</span><span class="go">看 ↗</span></a>
+      <a class="work-item static"><span class="t">堂区革新体验营</span><span class="m">全营音乐时段规划 · 敬拜赞美</span></a>
+      <a class="work-item" href="https://youtu.be/GzCfaVbIBWw" target="_blank" rel="noopener"><span class="t">第九届《微光也能照亮》世界之光游艺晚会</span><span class="m">大型晚会</span><span class="go">看 ↗</span></a>
+      <a class="work-item" href="https://youtu.be/sV1HUV7LZCw?t=12593" target="_blank" rel="noopener"><span class="t">平安灯花艺展 春晚</span><span class="m">节庆演出</span><span class="go">看 ↗</span></a>
+      <a class="work-item" href="https://www.blisswisdom.org/events/d/1547-40466" target="_blank" rel="noopener"><span class="t">舞台劇《熊娃娃的夢》</span><span class="m">剧场音乐</span><span class="go">看 ↗</span></a>
+    </div>
+
+    <div class="work-group rv">
+      <h3>赛事 · 评审 · 决赛制作</h3>
       <a class="work-item" href="https://youtu.be/gxEBZpCDNgc?t=4486" target="_blank" rel="noopener"><span class="t">人間音緣全球徵曲比賽 總決賽</span><span class="m">国际赛事</span><span class="go">看 ↗</span></a>
-      <a class="work-item" href="https://www.instagram.com/p/CyLsjyhytyF/" target="_blank" rel="noopener"><span class="t">《Siapa Kami》</span><span class="m">Astro Shaw《Gemencheh Boys》主题曲</span><span class="go">看 ↗</span></a>
+      <a class="work-item static"><span class="t">第 11 届 国际声乐公开赛 总决赛</span><span class="m">国际赛事</span></a>
+      <a class="work-item" href="https://www.facebook.com/watch/?v=197651852368420" target="_blank" rel="noopener"><span class="t">【YES WE CAN 我们可以】歌唱大赛 总决赛</span><span class="m">全国赛事</span><span class="go">看 ↗</span></a>
+      <a class="work-item" href="https://www.facebook.com/apextaracademy/videos/314114703882516/" target="_blank" rel="noopener"><span class="t">虎虎生威 新春歌曲创意大赛</span><span class="m">创作赛事</span><span class="go">看 ↗</span></a>
+      <a class="work-item" href="https://www.instagram.com/p/CyGnQxDp1LL/" target="_blank" rel="noopener"><span class="t">MY BIG SHOW《A.I.23》</span><span class="m">大型舞台企划</span><span class="go">看 ↗</span></a>
     </div>
   </div>
 </section>
 
 <section id="beyond">
   <div class="wrap">
-    <div class="sec-intro">
+    <div class="sec-intro rv">
       <div class="eyebrow">不只是音乐</div>
       <h2>同一套能力，换一个载体</h2>
       <p class="lead">「把散的资源组织成一个成品」这件事，我在音乐以外也一直在做。找我谈的如果是团队、流程或活动，一样可以聊。</p>
     </div>
 
-    <div class="cards">
+    <div class="cards rv">
       <div class="card">
         <div class="tag">企业营运</div>
-        <h3>Prominds Academy</h3>
-        <p>负责整体营运，并将营运方法整理成可传授的流程，训练他人接手同一套系统。</p>
-      </div>
-      <div class="card">
-        <div class="tag">大型活动统筹</div>
-        <h3>真理电台 50 周年音乐会（吉隆坡场）</h3>
-        <p>担任节目组，负责节目结构、流程与演出协调，2026 年 8 月于 KLPAC 完成演出。</p>
+        <h3>教育机构整体营运</h3>
+        <p>负责日常营运与流程设计，并把方法整理成可传授的系统，训练他人接手同一套做法。</p>
       </div>
       <div class="card">
         <div class="tag">教学 · 训练</div>
         <h3>资深音乐导师</h3>
         <p>声乐、器乐、编曲软件与艺人训练。累计培育学员 200+，长期为本地华语乐坛新血提供专业指导。</p>
+      </div>
+      <div class="card">
+        <div class="tag">版权 · 资产</div>
+        <h3>MACP 会员</h3>
+        <p>作品在电视与串流平台长期播放并持续产生版税。懂得怎么把一次性的委托，做成能一直用下去的资产。</p>
       </div>
     </div>
   </div>
@@ -354,13 +431,13 @@
 
 <section id="voices">
   <div class="wrap">
-    <div class="sec-intro">
+    <div class="sec-intro rv">
       <div class="eyebrow">合作过的人怎么说</div>
       <h2>最好的证明不是好评，是他们又回来了</h2>
       <p class="lead">应合作方要求，以下不具名。</p>
     </div>
 
-    <div class="quotes">
+    <div class="quotes rv">
       <div class="quote">
         <q>不需要解释太多，就知道大家要什么。</q>
         <div class="who"><b>音乐公司</b>　·　委托方</div>
@@ -390,49 +467,85 @@
 
 <section id="faq">
   <div class="wrap">
-    <div class="sec-intro">
+    <div class="sec-intro rv">
       <div class="eyebrow">常见问题</div>
       <h2>开始之前，你可能想知道</h2>
     </div>
 
-    <details>
-      <summary>费用怎么算？</summary>
-      <p>按项目，不按小时。价格取决于三件事：用途（自用 / 公开发行 / 商业播出）、编制规模（几轨、要不要真人乐手、要不要制谱）、以及交付物有多少（成品、分轨、伴奏版、谱）。同一首歌，做给个人收藏和做给电视播出，成本结构完全不同。<br><br>所以我不在这里挂价目表——先聊 15 分钟，我给你一个实际的区间，你再决定要不要往下走。</p>
-    </details>
+    <div class="rv">
+      <details>
+        <summary>费用怎么算？</summary>
+        <div class="a">
+          <p>我不挂价目表，主要是因为同一首歌，做给自己收藏和做给电视播出，成本完全是两回事。</p>
+          <p>价钱看三样：</p>
+          <ol>
+            <li><b>用途</b>——自用？公开发行？还是商业播出？</li>
+            <li><b>编制</b>——几轨、要不要真人乐手、要不要制谱</li>
+            <li><b>交给你多少东西</b>——成品、分轨、伴奏版、谱</li>
+          </ol>
+          <p>先聊 15 分钟，我给你一个实际的区间，你再决定要不要往下走。这样比较不浪费大家时间~</p>
+        </div>
+      </details>
 
-    <details>
-      <summary>可以只做其中一段吗？例如只要编曲。</summary>
-      <p>可以。有些客户已经有录音室和发行渠道，只缺编曲，那就只做编曲。有些客户什么都没有，那就整条线我来配。两种我都做，价格自然不一样。</p>
-    </details>
+      <details>
+        <summary>可以只做其中一段吗？例如只要编曲。</summary>
+        <div class="a">
+          <p>可以。</p>
+          <p>有些客户已经有录音室和发行渠道，只缺编曲，那就只做编曲。<br>有些是什么都还没有，那整条线我来配。</p>
+          <p>两种我都做，价钱自然不一样。你告诉我手上已经有什么，我们从那里接下去就好。</p>
+        </div>
+      </details>
 
-    <details>
-      <summary>大概需要多久？</summary>
-      <p>单曲编曲通常 2–4 周，含一到两轮修改。完整制作（编曲 + 录音 + 混音 + 母带）通常 4–8 周。影视配乐视集数与片长另议。<br><br>如果你有硬性 deadline，请一开始就告诉我——排得进去我才接，不做「先接了再说」这种事。</p>
-    </details>
+      <details>
+        <summary>大概需要多久？</summary>
+        <div class="a">
+          <p>单曲编曲通常 <b>2–4 个星期</b>，含一到两轮修改。<br>
+          完整制作（编曲 + 录音 + 混音 + 母带）大概 <b>4–8 个星期</b>。<br>
+          影视配乐看集数和片长，另外算。</p>
+          <p>如果你有硬 deadline，一开始就告诉我。排得进去我才接——我不做那种「先接了再说」的事。</p>
+        </div>
+      </details>
 
-    <details>
-      <summary>我要准备什么？</summary>
-      <p>最少：一段能听出旋律的录音（手机唱的也可以）＋ 歌词（如果有）＋ 你想要的感觉（给我两三首参考歌最快）＋ 用途和时间。<br><br>什么都还没有也可以聊——那属于从词曲开始的项目，流程不一样。</p>
-    </details>
+      <details>
+        <summary>我要准备什么？</summary>
+        <div class="a">
+          <p>最少这几样就可以开始：</p>
+          <ol>
+            <li>一段听得出旋律的录音（手机唱的也可以）</li>
+            <li>歌词，如果有的话</li>
+            <li>两三首参考歌——这个最快，比讲一百句「要有感觉」都清楚</li>
+            <li>用途和时间</li>
+          </ol>
+          <p>什么都还没有也可以聊，那属于从词曲开始的项目，流程不一样这样子。</p>
+        </div>
+      </details>
 
-    <details>
-      <summary>版权归谁？</summary>
-      <p>预设是：词曲版权归创作者，制作交付物的使用权归你。若涉及商业播出、广告或需要长期授权，我们会在报价前先把范围写清楚，避免日后争议。</p>
-    </details>
+      <details>
+        <summary>版权归谁？</summary>
+        <div class="a">
+          <p>预设是这样：词曲版权归创作者，制作交给你的东西你可以用。</p>
+          <p>如果涉及广告、商业播出，或者需要长期授权，我们在报价之前就先把范围写清楚。</p>
+          <p>这块我一向讲在前面——免得日后大家不好意思开口。</p>
+        </div>
+      </details>
 
-    <details>
-      <summary>不在吉隆坡可以合作吗？</summary>
-      <p>可以。多数项目全程线上进行——参考、Demo、修改、交付都可以远程完成。需要真人录音时才需要约棚。</p>
-    </details>
+      <details>
+        <summary>不在吉隆坡可以合作吗？</summary>
+        <div class="a">
+          <p>可以。大部分项目全程线上就搞定——参考、Demo、修改、交付都可以远程。</p>
+          <p>只有需要真人进棚录音那一段，才要约时间见面。</p>
+        </div>
+      </details>
+    </div>
   </div>
 </section>
 
 <section>
   <div class="wrap">
-    <div class="close">
+    <div class="close rv">
       <h2>先聊聊，再决定</h2>
       <p>不用先准备好完整企划。告诉我你想做什么、什么时候要，我给你一个实际的方向和区间。</p>
-      <a class="btn" href="https://wa.me/60149212571" data-wa>WhatsApp 找我 →</a>
+      <a class="btn" href="https://wa.me/60149212571">WhatsApp 找我 →</a>
     </div>
   </div>
 </section>
@@ -450,6 +563,52 @@
     </div>
   </div>
 </footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // scroll reveal
+  var els = document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window) || reduce){
+    els.forEach(function(e){ e.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(e){ io.observe(e); });
+  }
+
+  // count up
+  var nums = document.querySelectorAll('[data-count]');
+  function run(el){
+    var target = parseInt(el.getAttribute('data-count'),10);
+    var suffix = el.getAttribute('data-suffix') || '';
+    if(reduce){ el.textContent = target + suffix; return; }
+    var start = null, dur = 1200;
+    function tick(ts){
+      if(!start) start = ts;
+      var p = Math.min((ts-start)/dur, 1);
+      var eased = 1 - Math.pow(1-p, 3);
+      el.textContent = Math.round(target*eased) + suffix;
+      if(p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  if(!('IntersectionObserver' in window)){
+    nums.forEach(run);
+  } else {
+    var io2 = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ run(en.target); io2.unobserve(en.target); }
+      });
+    }, {threshold:.5});
+    nums.forEach(function(e){ io2.observe(e); });
+  }
+})();
+</script>
 
 </body>
 </html>
