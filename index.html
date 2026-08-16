@@ -236,6 +236,7 @@ header.hero{padding:126px 0 92px;position:relative;overflow:hidden}
 .quote .fact::before{content:"→";color:var(--pink);flex-shrink:0}
 
 /* FAQ */
+#faq .rv{max-width:780px;margin:0 auto}
 details{border-bottom:1px solid var(--line-2);padding:24px 0}
 summary{cursor:pointer;list-style:none;font-weight:500;font-size:19.5px;
   display:flex;justify-content:space-between;align-items:center;gap:18px;transition:color .3s ease}
@@ -451,7 +452,8 @@ header.hero .wrap{text-align:center}
 .cue{position:absolute;width:100%;max-width:900px;text-align:center;
   opacity:0;transform:translateY(28px) scale(.985);transition:opacity .55s ease,transform .7s cubic-bezier(.2,.7,.25,1);
   pointer-events:none}
-.cue.on{opacity:1;transform:none}
+.cue.on{opacity:1;transform:none;pointer-events:auto}
+.cue .btn{margin-top:38px;pointer-events:auto}
 .cue p{font-family:var(--serif);font-weight:700;color:var(--ink);
   font-size:clamp(28px,4.6vw,52px);line-height:1.5;letter-spacing:-.005em}
 .cue p+p{margin-top:20px;font-family:var(--sans);font-weight:400;color:var(--muted);
@@ -573,7 +575,8 @@ footer:hover .egg{color:var(--dim)}
     <div class="cue"><p>我做的事，<br>就是把这六步<span class="grad">串起来</span>。</p>
       <p>判断你需要哪几步、找谁做，然后对结果负责。<br>你只需要跟一个人对话。</p></div>
 
-    <div class="cue"><p>继续往下滑，<br>你会<span class="grad">听到</span>我做过什么。</p></div>
+    <div class="cue"><p>继续往下滑，<br>你会<span class="grad">听到</span>我做过什么。</p>
+      <a class="btn" href="#work" id="storyGo" data-magnet>开始 ▸</a></div>
 
     <div class="dots" aria-hidden="true"></div>
     <div class="hint" id="storyHint"><span>往下滑</span><span class="mouse"></span></div>
@@ -1097,6 +1100,7 @@ footer:hover .egg{color:var(--dim)}
       else{ ambAu.pause(); sessionStorage.setItem('ambOff','1'); off=true;
             amb.classList.remove('playing'); ambTxt.textContent='播放背景音乐'; }
     });
+    window.__ambStart=start;
     if(off){ ambTxt.textContent='播放背景音乐'; }
 
     /* 切到别的分页 / 最小化 / 锁屏 → 暂停；回来才续播 */
@@ -1129,6 +1133,9 @@ footer:hover .egg{color:var(--dim)}
     });
   }
 
+
+  var sg=document.getElementById('storyGo');
+  if(sg) sg.addEventListener('click',function(){ if(window.__ambStart) window.__ambStart(); });
 
   /* ── scroll-driven story ── */
   (function(){
