@@ -196,13 +196,16 @@ header.hero{padding:126px 0 92px;position:relative;overflow:hidden}
 .work-group{margin-bottom:46px}
 .work-group>h3{font-family:"Inter",var(--sans);font-size:13.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);
   padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:6px;font-weight:600}
-.wi{position:relative;display:flex;align-items:center;gap:16px;padding:12px 8px;
-  border-bottom:1px solid var(--line-2);text-decoration:none;overflow:hidden;
-  transition:padding-left .35s cubic-bezier(.2,.7,.25,1)}
+.wi{position:relative;display:flex;align-items:center;gap:16px;padding:12px 8px 12px 16px;
+  border-bottom:1px solid var(--line-2);text-decoration:none;overflow:hidden}
+.wi::after{content:"";position:absolute;left:0;top:8px;bottom:8px;width:3px;border-radius:3px;
+  background:linear-gradient(180deg,var(--violet),var(--pink));
+  transform:scaleY(0);transform-origin:center;transition:transform .35s cubic-bezier(.2,.7,.25,1)}
+.wi:hover::after,.wi.mid::after{transform:scaleY(1)}
 .wi::before{content:"";position:absolute;inset:0;opacity:0;transition:opacity .35s ease;
   background:linear-gradient(90deg,rgba(var(--violet-rgb),.13),transparent 60%)}
 .wi:hover::before{opacity:1}
-.wi:hover{padding-left:16px}
+
 .wi>*{position:relative}
 .thumb{flex:0 0 auto;width:104px;height:60px;border-radius:8px;overflow:hidden;
   border:1px solid var(--line);background:linear-gradient(140deg,rgba(var(--violet-rgb),.34),rgba(var(--pink-rgb),.2));
@@ -283,12 +286,15 @@ details .a b{color:var(--ink);font-weight:500}
 /* ── CREDITS ───────────────────────────────── */
 .credits{border-top:1px solid var(--line)}
 .cr{position:relative;display:grid;grid-template-columns:78px 1fr auto;gap:20px;align-items:baseline;
-  padding:22px 8px;border-bottom:1px solid var(--line-2);text-decoration:none;overflow:hidden;
-  transition:padding-left .35s cubic-bezier(.2,.7,.25,1)}
+  padding:22px 8px 22px 18px;border-bottom:1px solid var(--line-2);text-decoration:none;overflow:hidden}
+.cr::after{content:"";position:absolute;left:0;top:14px;bottom:14px;width:3px;border-radius:3px;
+  background:linear-gradient(180deg,var(--violet),var(--pink));
+  transform:scaleY(0);transform-origin:center;transition:transform .35s cubic-bezier(.2,.7,.25,1);z-index:1}
+.cr:hover::after,.cr.mid::after{transform:scaleY(1)}
 .cr::before{content:"";position:absolute;inset:0;opacity:0;transition:opacity .35s ease;
   background:linear-gradient(90deg,rgba(var(--violet-rgb),.13),transparent 60%)}
 .cr:hover::before{opacity:1}
-.cr:hover{padding-left:16px}
+
 .cr>*{position:relative}
 .cr .yr{font-family:"Inter",var(--sans);font-size:15px;font-weight:600;color:var(--dim);letter-spacing:.04em}
 .cr .t{font-family:var(--serif);font-size:21px;font-weight:700;line-height:1.45;display:block}
@@ -568,10 +574,8 @@ h3,h4,.card h3,.node h3,.fx h4,.ts h4,.bt .ttl,.cr .t,.wi .t,.bub q,.bub .noq,.q
   .bt.mid{transform:translateY(-5px);border-color:rgba(var(--pink-rgb),.5)}
   .bt.mid img{transform:scale(1.06);filter:saturate(1.05) brightness(.8)}
   .bt.mid .glare{opacity:1}
-  .wi.mid{padding-left:16px}
   .wi.mid::before{opacity:1}
   .wi.mid .go{opacity:1}
-  .cr.mid{padding-left:16px}
   .cr.mid::before{opacity:1}
   .cr.mid .shot img{opacity:.46;transform:scale(1.09);filter:saturate(1)}
   .fx.mid{border-color:rgba(var(--pink-rgb),.5);transform:translateY(-4px)}
@@ -1357,13 +1361,29 @@ footer:hover .egg{color:var(--dim)}
 
   /* 触控装置：用「滚到画面中央」代替 hover */
   var touchLike = !hover || (navigator.maxTouchPoints||0) > 0 || window.innerWidth <= 900;
-  if(touchLike && 'IntersectionObserver' in window && !reduce){
-    var mids=[].slice.call(document.querySelectorAll(
-      '#who .card, .node, .bt, .wi, .cr, .fx, .ts, .bub, .card, .stat'));
-    var ioM=new IntersectionObserver(function(en){
-      en.forEach(function(x){ x.target.classList.toggle('mid', x.isIntersecting); });
-    },{rootMargin:'-44% 0px -44% 0px', threshold:0});
-    mids.forEach(function(e){ ioM.observe(e); });
+  if(touchLike && !reduce){
+    var mids=[].slice.call(document.querySelectorAll('#who .card, .node, .bt, .wi, .cr, .fx, .ts, .bub, .card'));
+    var last=null, midTick=false;
+    function pickMid(){
+      midTick=false;
+      var mid=window.innerHeight/2, best=null, bestD=Infinity;
+      for(var k=0;k<mids.length;k++){
+        var r=mids[k].getBoundingClientRect();
+        if(r.bottom<0 || r.top>window.innerHeight) continue;
+        var d=Math.abs((r.top+r.bottom)/2 - mid);
+        if(d<bestD){ bestD=d; best=mids[k]; }
+      }
+      /* 离中心太远就谁都不亮 */
+      if(best && bestD>window.innerHeight*0.32) best=null;
+      if(best!==last){
+        if(last) last.classList.remove('mid');
+        if(best) best.classList.add('mid');
+        last=best;
+      }
+    }
+    window.addEventListener('scroll',function(){ if(!midTick){ midTick=true; requestAnimationFrame(pickMid); } },{passive:true});
+    window.addEventListener('resize',function(){ if(!midTick){ midTick=true; requestAnimationFrame(pickMid); } },{passive:true});
+    pickMid();
   }
 
   if(!hover||reduce) return;
