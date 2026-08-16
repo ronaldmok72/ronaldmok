@@ -585,6 +585,25 @@ h3,h4,.card h3,.node h3,.fx h4,.ts h4,.bt .ttl,.cr .t,.wi .t,.bub q,.bub .noq,.q
   .card.mid{border-color:rgba(var(--violet-rgb),.5)}
   .card.mid::before{opacity:1}
 
+
+/* ── MAP / 足迹 ─────────────────────────────── */
+.geo{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.gc{position:relative;display:flex;align-items:center;gap:16px;padding:20px 22px;
+  border:1px solid var(--line);border-radius:18px;background:var(--glass);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);overflow:hidden;
+  transition:border-color .4s ease,transform .4s cubic-bezier(.2,.7,.25,1)}
+.gc::before{content:"";position:absolute;inset:0;opacity:0;transition:opacity .4s ease;
+  background:linear-gradient(90deg,rgba(var(--violet-rgb),.16),transparent 70%)}
+.gc:hover::before,.gc.mid::before{opacity:1}
+.gc:hover,.gc.mid{border-color:rgba(var(--pink-rgb),.45);transform:translateY(-4px)}
+.gc>*{position:relative}
+.gc .fl{flex:0 0 auto;width:52px;height:36px;border-radius:6px;overflow:hidden;
+  border:1px solid rgba(255,255,255,.2);box-shadow:0 4px 14px rgba(0,0,0,.4)}
+.gc .fl img{width:100%;height:100%;object-fit:cover;display:block}
+.gc .nm{font-size:18px;font-weight:600;line-height:1.4;display:block}
+.gc .rl{font-size:14px;color:var(--dim);line-height:1.55;display:block;margin-top:2px}
+@media(max-width:520px){.gc{padding:16px 18px;gap:13px}.gc .fl{width:44px;height:30px}.gc .nm{font-size:16.5px}}
+
 /* CLOSE */
 .close{position:relative;overflow:hidden;text-align:center;border-radius:28px;padding:66px 34px;border:1px solid var(--line);
   background:linear-gradient(150deg,rgba(var(--violet-rgb),.20),rgba(var(--pink-rgb),.11) 58%,transparent)}
@@ -630,7 +649,7 @@ footer:hover .egg{color:var(--dim)}
     <h1><span class="split" data-split>有人有想法，</span><br><span class="wipe grad">我把它变成能交出去的东西。</span></h1>
 
     <div class="kv rv rv-d1" style="margin-top:34px">
-      <b><span data-since="2010">16</span><span>年经验</span></b>
+      <b><span data-since="2009">15+</span><span>年专业经验</span></b>
       <b>500+<span>首歌</span></b>
       <b>10<span>部电影</span></b>
       <b>100+<span>场演出</span></b>
@@ -904,6 +923,37 @@ footer:hover .egg{color:var(--dim)}
   </div>
 </section>
 
+
+<section id="geo">
+  <div class="wrap">
+    <div class="sec-intro rv">
+      <div class="eyebrow">足迹</div>
+      <h2>作品与演出，<span class="grad">去过这些地方</span></h2>
+      <p class="lead">九个国家与地区。有些是作品在那里发行，有些是人真的站上那里的台。</p>
+    </div>
+    <div class="geo">
+      <div class="gc rv"><span class="fl"><img src="https://flagcdn.com/w160/my.png" alt="马来西亚" loading="lazy"></span>
+        <span><span class="nm">马来西亚</span><span class="rl">电影・剧集・广告・演唱会统筹</span></span></div>
+      <div class="gc rv"><span class="fl"><img src="https://flagcdn.com/w160/sg.png" alt="新加坡" loading="lazy"></span>
+        <span><span class="nm">新加坡</span><span class="rl">电影《DELETED 越界》· Netflix</span></span></div>
+      <div class="gc rv"><span class="fl"><img src="https://flagcdn.com/w160/cn.png" alt="中国大陆" loading="lazy"></span>
+        <span><span class="nm">中国大陆</span><span class="rl">网剧・电影配乐・版税发行</span></span></div>
+      <div class="gc rv"><span class="fl"><img src="https://flagcdn.com/w160/hk.png" alt="中国香港" loading="lazy"></span>
+        <span><span class="nm">中国香港</span><span class="rl">电影配乐 mm2 ·  国际声乐公开赛</span></span></div>
+      <div class="gc rv"><span class="fl"><img src="https://flagcdn.com/w160/tw.png" alt="台湾" loading="lazy"></span>
+        <span><span class="nm">台湾</span><span class="rl">原创音乐编制・音乐剧场</span></span></div>
+      <div class="gc rv"><span class="fl"><img src="https://flagcdn.com/w160/kr.png" alt="韩国" loading="lazy"></span>
+        <span><span class="nm">韩国</span><span class="rl">电影《顺风鱼》联合制作</span></span></div>
+      <div class="gc rv"><span class="fl"><img src="https://flagcdn.com/w160/th.png" alt="泰国" loading="lazy"></span>
+        <span><span class="nm">泰国</span><span class="rl">电影《忠犬流浪记》</span></span></div>
+      <div class="gc rv"><span class="fl"><img src="https://flagcdn.com/w160/vn.png" alt="越南" loading="lazy"></span>
+        <span><span class="nm">越南</span><span class="rl">演出呈现</span></span></div>
+      <div class="gc rv"><span class="fl"><img src="https://flagcdn.com/w160/eu.png" alt="欧洲" loading="lazy"></span>
+        <span><span class="nm">欧洲</span><span class="rl">《希望之光》共唱演出</span></span></div>
+    </div>
+  </div>
+</section>
+
 <section id="about">
   <div class="wrap">
     <div class="about">
@@ -919,7 +969,7 @@ footer:hover .egg{color:var(--dim)}
         <p>白天我在教育机构负责营运，晚上和周末接音乐项目。两件事其实用的是同一套脑——<b style="color:var(--ink);font-weight:500">把散的东西组织成一个成品</b>。</p>
         <div class="sig">
           <span>音乐监制</span><span>制作统筹</span><span>混音 · 母带</span>
-          <span>演绎指导</span><span>MACP 会员</span><span>马来西亚 Malaysia</span><span>作品跨 马 · 新 · 中 · 港 · 台</span>
+          <span>演绎指导</span><span>MACP 会员</span><span>马来西亚 Malaysia</span><span>作品跨 9 个国家 / 地区</span>
         </div>
       </div>
     </div>
@@ -1126,7 +1176,7 @@ footer:hover .egg{color:var(--dim)}
       <details>
         <summary>不在同一个城市，甚至不在马来西亚，可以合作吗？</summary>
         <div class="a">
-          <p>可以。我做过的项目发行地涵盖马来西亚、新加坡、中国大陆、香港和台湾，大部分全程线上就搞定——参考、Demo、修改、交付都可以远程。</p>
+          <p>可以。我的作品与演出去过九个国家和地区——马来西亚、新加坡、中国大陆、香港、台湾、韩国、泰国、越南、欧洲。大部分项目全程线上就搞定，参考、Demo、修改、交付都能远程。</p>
           <p>只有需要真人进棚录音那一段，才要约时间见面。</p>
         </div>
       </details>
@@ -1172,7 +1222,8 @@ footer:hover .egg{color:var(--dim)}
   var hover =window.matchMedia&&window.matchMedia('(hover: hover)').matches;
 
   document.querySelectorAll('[data-since]').forEach(function(el){
-    el.textContent = new Date().getFullYear() - parseInt(el.getAttribute('data-since'),10);
+    var y = new Date().getFullYear() - parseInt(el.getAttribute('data-since'),10);
+    el.textContent = (Math.floor(y/5)*5) + '+';   /* 每 5 年才跳一次：15+ / 20+ / 25+ */
   });
 
   var brands=[['Astro Shaw','astro-shaw'],['Netflix','netflix'],['GSC','gsc'],['mm2','mm2'],
@@ -1362,7 +1413,7 @@ footer:hover .egg{color:var(--dim)}
   /* 触控装置：用「滚到画面中央」代替 hover */
   var touchLike = !hover || (navigator.maxTouchPoints||0) > 0 || window.innerWidth <= 900;
   if(touchLike && !reduce){
-    var mids=[].slice.call(document.querySelectorAll('#who .card, .node, .bt, .wi, .cr, .fx, .ts, .bub, .card'));
+    var mids=[].slice.call(document.querySelectorAll('#who .card, .node, .bt, .wi, .cr, .fx, .ts, .bub, .card, .gc'));
     var last=null, midTick=false;
     function pickMid(){
       midTick=false;
