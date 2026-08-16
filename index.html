@@ -60,7 +60,8 @@ h2{font-family:var(--serif);font-size:clamp(28px,4vw,42px);line-height:1.34;font
 h3{font-size:20.5px;font-weight:500;margin-bottom:10px;line-height:1.55}
 p{color:var(--muted)}
 .lead{font-size:clamp(18px,2vw,21px);color:var(--muted);max-width:58ch;font-weight:400}
-.sec-intro{max-width:62ch;margin-bottom:52px}
+.sec-intro{max-width:62ch;margin:0 auto 52px;text-align:center}
+.sec-intro .lead{margin-left:auto;margin-right:auto}
 .grad{background:linear-gradient(100deg,var(--violet) 8%,var(--pink) 52%,var(--violet) 96%);
   background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
   animation:shine 7s linear infinite}
@@ -317,7 +318,8 @@ header.hero .wrap{text-align:center}
 
 /* LOGO MARQUEE */
 .track b.lg{display:inline-flex;align-items:center;padding:0 30px}
-.track b.lg img{height:30px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.72}
+.track b.lg img{height:36px;max-width:140px;width:auto;object-fit:contain;opacity:.92}
+.track b.lg.mono img{filter:brightness(0) invert(1);opacity:.8}
 .track b.lg i{display:none;font-style:normal}
 .track b.lg.noimg img{display:none}
 .track b.lg.noimg i{display:inline}
@@ -348,6 +350,30 @@ header.hero .wrap{text-align:center}
 
 /* SECTION COUNT */
 .work-group>h3 em{font-style:normal;color:var(--dim);letter-spacing:.05em;margin-left:10px;font-weight:600}
+
+
+/* STEP TIMELINE */
+.tl{position:relative;display:grid;grid-template-columns:repeat(6,1fr);gap:0;margin-top:12px}
+.tl::before{content:"";position:absolute;top:23px;left:8%;right:8%;height:2px;border-radius:2px;
+  background:linear-gradient(90deg,rgba(var(--violet-rgb),.15),var(--violet) 20%,var(--pink) 80%,rgba(var(--pink-rgb),.15))}
+.ts{position:relative;text-align:center;padding:0 8px}
+.ts .dot{position:relative;z-index:2;width:46px;height:46px;margin:0 auto 18px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:"Inter",var(--sans);font-size:15px;font-weight:700;color:#fff;
+  background:linear-gradient(140deg,var(--violet),var(--pink));
+  box-shadow:0 0 0 6px var(--bg),0 8px 26px rgba(var(--violet-rgb),.4);
+  transition:transform .35s cubic-bezier(.2,.7,.25,1)}
+.ts:hover .dot{transform:scale(1.12)}
+.ts h4{font-size:17px;font-weight:600;line-height:1.5;margin-bottom:6px}
+.ts .who{font-size:13.5px;color:var(--dim);line-height:1.6}
+@media(max-width:860px){
+  .tl{grid-template-columns:1fr;gap:0;text-align:left;padding-left:6px}
+  .tl::before{top:10px;bottom:10px;left:23px;right:auto;width:2px;height:auto;
+    background:linear-gradient(180deg,var(--violet),var(--pink))}
+  .ts{display:grid;grid-template-columns:46px 1fr;gap:18px;text-align:left;padding:0 0 30px}
+  .ts .dot{margin:0}
+  .ts h4{margin-bottom:3px}
+}
 
 /* CLOSE */
 .close{position:relative;overflow:hidden;text-align:center;border-radius:28px;padding:66px 34px;border:1px solid var(--line);
@@ -431,7 +457,7 @@ footer:hover .egg{color:var(--dim)}
         <div class="eyebrow">我是谁</div>
         <h2>Ronald Mok　莫荣烽</h2>
         <p>入行的时候，我什么都自己动手——编曲、录音、混音、母带。<br>做久了才发现，我真正擅长的不是弹得比谁快，是<b style="color:var(--ink);font-weight:500">看懂一件事要什么，找到对的人，把它做完</b>。</p>
-        <p>所以现在我的角色多数是监制和统筹：电影、剧集、广告、演唱会、比赛。我不一定出现在成品的每一轨里，但整件事能不能按时交出去，是我的责任。</p>
+        <p>所以现在我多数的角色是监制和统筹：电影、剧集、广告、演唱会、比赛。<br>我不一定出现在成品的每一轨里，<b style="color:var(--ink);font-weight:500">但东西准时交到你手上，是我的事</b>。</p>
         <p>白天我在教育机构负责营运，晚上和周末接音乐项目。两件事其实用的是同一套脑——<b style="color:var(--ink);font-weight:500">把散的东西组织成一个成品</b>。</p>
         <div class="sig">
           <span>音乐监制</span><span>制作统筹</span><span>混音 · 母带</span>
@@ -496,13 +522,13 @@ footer:hover .egg{color:var(--dim)}
       <h2>六步。<span class="grad">通常要找五到六个人。</span></h2>
       <p class="lead">你现在在哪一步，我们就从哪里接。</p>
     </div>
-    <div class="flow">
-      <div class="fx rv"><b>01</b><h4>词曲 / Demo</h4><div class="who">你自己 · 词曲作者</div></div>
-      <div class="fx rv rv-d1"><b>02</b><h4>编曲</h4><div class="who">编曲人</div></div>
-      <div class="fx rv rv-d2"><b>03</b><h4>录音</h4><div class="who">录音师 · 配唱制作</div></div>
-      <div class="fx rv rv-d3"><b>04</b><h4>混音 · 母带</h4><div class="who">混音 / 母带工程师</div></div>
-      <div class="fx rv"><b>05</b><h4>上架 · 版权</h4><div class="who">发行商 · MACP</div></div>
-      <div class="fx rv rv-d1"><b>06</b><h4>伴奏 · 分轨 · 乐谱</h4><div class="who">制谱 · 现场编制</div></div>
+    <div class="tl rv">
+      <div class="ts"><div class="dot">01</div><div><h4>词曲 / Demo</h4><div class="who">你自己 · 词曲作者</div></div></div>
+      <div class="ts"><div class="dot">02</div><div><h4>编曲</h4><div class="who">编曲人</div></div></div>
+      <div class="ts"><div class="dot">03</div><div><h4>录音</h4><div class="who">录音师 · 配唱制作</div></div></div>
+      <div class="ts"><div class="dot">04</div><div><h4>混音 · 母带</h4><div class="who">混音 / 母带工程师</div></div></div>
+      <div class="ts"><div class="dot">05</div><div><h4>上架 · 版权</h4><div class="who">发行商 · MACP</div></div></div>
+      <div class="ts"><div class="dot">06</div><div><h4>伴奏 · 分轨 · 乐谱</h4><div class="who">制谱 · 现场编制</div></div></div>
     </div>
   </div>
 </section>
@@ -858,8 +884,8 @@ footer:hover .egg{color:var(--dim)}
       </div>
       <div class="foot-links">
         <a href="https://zaap.bio/ronaldmok" target="_blank" rel="noopener">完整作品目录</a>
-        <a href="https://my.linkedin.com/in/ronald-mok-1a602a84" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://music.apple.com/ca/album/the-great-journey-single/1860226020" target="_blank" rel="noopener">Apple Music</a>
+        <a href="INSTAGRAM_URL" target="_blank" rel="noopener" id="igLink">Instagram</a>
+        <a href="https://wa.me/60149212571" target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </div>
     <div class="egg">你滚到这里了 — 那我们应该聊得起来 ♪</div>
@@ -881,7 +907,8 @@ footer:hover .egg{color:var(--dim)}
   var track=document.getElementById('track');
   if(track){
     var h=brands.map(function(b){
-      return '<b class="lg"><img src="assets/logos/'+b[1]+'.png" alt="'+b[0]+'"><i>'+b[0]+'</i></b>';
+      var mono=(['astro-shaw','nestle'].indexOf(b[1])>-1)?' mono':'';
+      return '<b class="lg'+mono+'"><img src="assets/logos/'+b[1]+'.png" alt="'+b[0]+'"><i>'+b[0]+'</i></b>';
     }).join('');
     track.innerHTML=h+h;
     track.querySelectorAll('img').forEach(function(im){
