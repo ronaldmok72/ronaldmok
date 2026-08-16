@@ -614,11 +614,11 @@ h3,h4,.card h3,.node h3,.fx h4,.ts h4,.bt .ttl,.cr .t,.wi .t,.bub q,.bub .noq,.q
     backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
   .card,.quote,.bub,.gc,.fx{background:rgba(255,255,255,.05)}
   .amb{background:rgba(16,13,24,.94)}
-  /* 精选卡：只保留最便宜的效果，不再在滚动中重算滤镜与缩放 */
-  .bt img{filter:saturate(.85) brightness(.66);transition:none}
-  .bt.mid img{transform:none;filter:saturate(.85) brightness(.66)}
-  .bt.mid{transform:none;border-color:rgba(var(--pink-rgb),.55)}
-  .bt .glare{display:none}
+  /* 精选卡：滤镜写死（重算滤镜才是卡顿主因），但保留 GPU 合成的缩放与光泽 */
+  .bt img{filter:saturate(.9) brightness(.66);transition:transform .55s cubic-bezier(.2,.7,.25,1);will-change:transform}
+  .bt.mid img{transform:scale(1.06);filter:saturate(.9) brightness(.66)}
+  .bt.mid{transform:none;border-color:rgba(var(--pink-rgb),.6)}
+  .bt.mid .glare{opacity:1}
   .grain{display:none}
 }
 
