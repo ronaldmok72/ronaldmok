@@ -999,7 +999,7 @@ footer:hover .egg{color:var(--dim)}
   var track=document.getElementById('track');
   if(track){
     var h=brands.map(function(b){
-      var mono=(b[1]==='nestle')?' mono':'';
+      var mono=(['nestle','astro-shaw'].indexOf(b[1])>-1)?' mono':'';
       return '<b class="lg'+mono+'"><img src="assets/logos/'+b[1]+'.png" alt="'+b[0]+'"><i>'+b[0]+'</i></b>';
     }).join('');
     track.innerHTML=h+h;
