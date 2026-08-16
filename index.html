@@ -443,6 +443,43 @@ header.hero .wrap{text-align:center}
 .bub .fact::before{content:"→";color:var(--pink);flex-shrink:0}
 @media(max-width:640px){.bub{max-width:94%}.bub q{font-size:18px}}
 
+
+/* ── STORY (scroll-driven kinetic type) ─────── */
+.story{position:relative;border-top:1px solid var(--line-2);padding:0}
+.story .stage{position:sticky;top:0;height:100svh;min-height:520px;display:flex;align-items:center;justify-content:center;
+  overflow:hidden;padding:0 26px}
+.cue{position:absolute;width:100%;max-width:900px;text-align:center;
+  opacity:0;transform:translateY(28px) scale(.985);transition:opacity .55s ease,transform .7s cubic-bezier(.2,.7,.25,1);
+  pointer-events:none}
+.cue.on{opacity:1;transform:none}
+.cue p{font-family:var(--serif);font-weight:700;color:var(--ink);
+  font-size:clamp(25px,4.4vw,50px);line-height:1.5;letter-spacing:-.005em}
+.cue p+p{margin-top:20px;font-family:var(--sans);font-weight:400;color:var(--muted);
+  font-size:clamp(16px,2vw,21px);line-height:1.85;letter-spacing:.02em}
+.cue .big{font-size:1.06em}
+.story .hint{position:absolute;left:0;right:0;bottom:38px;text-align:center;color:var(--dim);
+  font-size:13.5px;letter-spacing:.16em;display:flex;flex-direction:column;align-items:center;gap:10px;
+  transition:opacity .5s ease}
+.story .hint .mouse{width:22px;height:34px;border:1.5px solid rgba(255,255,255,.28);border-radius:12px;position:relative}
+.story .hint .mouse::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:7px;border-radius:2px;
+  transform:translateX(-50%);background:linear-gradient(180deg,var(--violet),var(--pink));
+  animation:wheel 1.7s ease-in-out infinite}
+@keyframes wheel{0%{opacity:0;transform:translate(-50%,0)}30%{opacity:1}100%{opacity:0;transform:translate(-50%,12px)}}
+.story .dots{position:absolute;right:26px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:9px}
+.story .dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.18);transition:all .4s ease}
+.story .dots i.on{background:linear-gradient(140deg,var(--violet),var(--pink));transform:scale(1.6)}
+@media(max-width:640px){
+  .story .dots{right:14px}
+  .story .hint{bottom:26px;font-size:12px}
+  .cue p{font-size:clamp(23px,6.4vw,34px)}
+}
+@media(prefers-reduced-motion:reduce){
+  .story{height:auto!important}
+  .story .stage{position:static;height:auto;min-height:0;display:block;padding:80px 26px}
+  .cue{position:static;opacity:1;transform:none;margin:0 auto 52px;max-width:760px}
+  .story .hint,.story .dots{display:none}
+}
+
 /* CLOSE */
 .close{position:relative;overflow:hidden;text-align:center;border-radius:28px;padding:66px 34px;border:1px solid var(--line);
   background:linear-gradient(150deg,rgba(var(--violet-rgb),.20),rgba(var(--pink-rgb),.11) 58%,transparent)}
@@ -513,6 +550,35 @@ footer:hover .egg{color:var(--dim)}
 
 
 
+
+
+<section class="story" id="story">
+  <div class="stage">
+    <div class="cue"><p>你手机里，<br>是不是也有一首歌，<br>一直没敢发出去？</p></div>
+
+    <div class="cue"><p>有人是自己写的歌，<br>录了半年。</p>
+      <p>放给朋友听之前，总要先说一句——<br>「你别介意音质」。</p></div>
+
+    <div class="cue"><p>有人是被交代<br>要一首歌。</p>
+      <p>周年曲、校歌、主题曲。<br>日期定死了，改不了。</p></div>
+
+    <div class="cue"><p>有人是要用音乐<br>讲一件事。</p>
+      <p>广告、电影、一整场演出。</p></div>
+
+    <div class="cue"><p>你以为你缺的，<br>是一个<span class="grad">会做音乐的人</span>。</p></div>
+
+    <div class="cue"><p class="big">其实一首歌从开始，<br>到能在平台上听到，有<span class="grad">六步</span>。<br>通常要找<span class="grad">五到六个不同的人</span>。</p>
+      <p>大部分人卡住，不是不会做——<br>是不知道该找谁。</p></div>
+
+    <div class="cue"><p>我做的事，<br>就是把这六步<span class="grad">串起来</span>。</p>
+      <p>判断你需要哪几步、找谁做，然后对结果负责。<br>你只需要跟一个人对话。</p></div>
+
+    <div class="cue"><p>继续往下滑，<br>你会<span class="grad">听到</span>我做过什么。</p></div>
+
+    <div class="dots" aria-hidden="true"></div>
+    <div class="hint" id="storyHint"><span>往下滑</span><span class="mouse"></span></div>
+  </div>
+</section>
 
 <section id="about">
   <div class="wrap">
@@ -1061,6 +1127,42 @@ footer:hover .egg{color:var(--dim)}
         s.textContent=c===' '?' ':c; s.style.animationDelay=(base+i*0.028)+'s'; el.appendChild(s);});
     });
   }
+
+
+  /* ── scroll-driven story ── */
+  (function(){
+    var story=document.getElementById('story');
+    if(!story) return;
+    var cues=[].slice.call(story.querySelectorAll('.cue'));
+    var dots=story.querySelector('.dots');
+    var hint=document.getElementById('storyHint');
+    if(reduce){ cues.forEach(function(c){c.classList.add('on');}); return; }
+
+    var n=cues.length;
+    story.style.height=(n*72)+'vh';
+    dots.innerHTML=cues.map(function(){return '<i></i>';}).join('');
+    var dotEls=[].slice.call(dots.children);
+    var cur=-1, ticking=false;
+
+    function paint(){
+      ticking=false;
+      var r=story.getBoundingClientRect();
+      var total=story.offsetHeight-window.innerHeight;
+      var prog=Math.min(Math.max(-r.top/Math.max(total,1),0),0.9999);
+      var i=Math.floor(prog*n);
+      if(i!==cur){
+        cur=i;
+        cues.forEach(function(c,j){ c.classList.toggle('on', j===i); });
+        dotEls.forEach(function(d,j){ d.classList.toggle('on', j===i); });
+      }
+      if(hint) hint.style.opacity = (prog>0.06 ? '0' : '1');
+    }
+    window.addEventListener('scroll',function(){
+      if(!ticking){ ticking=true; requestAnimationFrame(paint); }
+    },{passive:true});
+    window.addEventListener('resize',function(){ story.style.height=(n*72)+'vh'; paint(); },{passive:true});
+    paint();
+  })();
 
   var els=document.querySelectorAll('.rv');
   if(!('IntersectionObserver' in window)||reduce){els.forEach(function(e){e.classList.add('in');});}
