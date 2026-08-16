@@ -607,6 +607,21 @@ h3,h4,.card h3,.node h3,.fx h4,.ts h4,.bt .ttl,.cr .t,.wi .t,.bub q,.bub .noq,.q
 .gc .rl{font-size:14px;color:var(--dim);line-height:1.55;display:block;margin-top:2px}
 @media(max-width:520px){.gc{padding:16px 18px;gap:13px}.gc .fl{width:44px;height:30px}.gc .nm{font-size:16.5px}}
 
+
+/* ── 手机效能：backdrop-filter 与图片滤镜是滚动卡顿的主因 ── */
+@media(max-width:900px){
+  .card,.quote,.bub,.gc,.fx,.btn-ghost,.stat,.player,.amb,.bt .plat{
+    backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+  .card,.quote,.bub,.gc,.fx{background:rgba(255,255,255,.05)}
+  .amb{background:rgba(16,13,24,.94)}
+  /* 精选卡：只保留最便宜的效果，不再在滚动中重算滤镜与缩放 */
+  .bt img{filter:saturate(.85) brightness(.66);transition:none}
+  .bt.mid img{transform:none;filter:saturate(.85) brightness(.66)}
+  .bt.mid{transform:none;border-color:rgba(var(--pink-rgb),.55)}
+  .bt .glare{display:none}
+  .grain{display:none}
+}
+
 /* CLOSE */
 .close{position:relative;overflow:hidden;text-align:center;border-radius:28px;padding:66px 34px;border:1px solid var(--line);
   background:linear-gradient(150deg,rgba(var(--violet-rgb),.20),rgba(var(--pink-rgb),.11) 58%,transparent)}
@@ -1440,19 +1455,29 @@ footer:hover .egg{color:var(--dim)}
 
   /* 触控装置：用「滚到画面中央」代替 hover */
   var touchLike = !hover || (navigator.maxTouchPoints||0) > 0 || window.innerWidth <= 900;
-  if(touchLike && !reduce){
+  if(touchLike && !reduce && 'IntersectionObserver' in window){
     var mids=[].slice.call(document.querySelectorAll('#who .card, .node, .bt, .wi, .cr, .fx, .ts, .bub, .card, .gc'));
-    var last=null, midTick=false;
+    var visible=new Set(), last=null, midTick=false;
+
+    /* 先用 IntersectionObserver 维护「现在在画面里」的小清单，
+       滚动时只量这几个，不用每帧量全部（这是手机卡顿的主因） */
+    var ioV=new IntersectionObserver(function(en){
+      en.forEach(function(x){
+        if(x.isIntersecting) visible.add(x.target);
+        else { visible.delete(x.target); x.target.classList.remove('mid'); }
+      });
+      schedule();
+    },{rootMargin:'80px 0px 80px 0px', threshold:0});
+    mids.forEach(function(e){ ioV.observe(e); });
+
     function pickMid(){
       midTick=false;
       var mid=window.innerHeight/2, best=null, bestD=Infinity;
-      for(var k=0;k<mids.length;k++){
-        var r=mids[k].getBoundingClientRect();
-        if(r.bottom<0 || r.top>window.innerHeight) continue;
+      visible.forEach(function(el){
+        var r=el.getBoundingClientRect();
         var d=Math.abs((r.top+r.bottom)/2 - mid);
-        if(d<bestD){ bestD=d; best=mids[k]; }
-      }
-      /* 离中心太远就谁都不亮 */
+        if(d<bestD){ bestD=d; best=el; }
+      });
       if(best && bestD>window.innerHeight*0.32) best=null;
       if(best!==last){
         if(last) last.classList.remove('mid');
@@ -1460,9 +1485,10 @@ footer:hover .egg{color:var(--dim)}
         last=best;
       }
     }
-    window.addEventListener('scroll',function(){ if(!midTick){ midTick=true; requestAnimationFrame(pickMid); } },{passive:true});
-    window.addEventListener('resize',function(){ if(!midTick){ midTick=true; requestAnimationFrame(pickMid); } },{passive:true});
-    pickMid();
+    function schedule(){ if(!midTick){ midTick=true; requestAnimationFrame(pickMid); } }
+    window.addEventListener('scroll',schedule,{passive:true});
+    window.addEventListener('resize',schedule,{passive:true});
+    schedule();
   }
 
   if(!hover||reduce) return;
