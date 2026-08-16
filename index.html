@@ -559,8 +559,7 @@ h3,h4,.card h3,.node h3,.fx h4,.ts h4,.bt .ttl,.cr .t,.wi .t,.bub q,.bub .noq,.q
 }
 
 
-/* ── 触控装置：滚到画面中央就高亮（等同桌面 hover）── */
-@media (hover:none){
+/* ── 滚到画面中央就高亮（触控装置用，等同桌面 hover）── */
   #who .card.mid{border-color:rgba(var(--violet-rgb),.5);transform:translateY(-5px)}
   #who .card.mid::before{opacity:1}
   #who .card.mid .idx{color:rgba(var(--pink-rgb),.34)}
@@ -581,7 +580,6 @@ h3,h4,.card h3,.node h3,.fx h4,.ts h4,.bt .ttl,.cr .t,.wi .t,.bub q,.bub .noq,.q
   .stat.mid{background:rgba(var(--violet-rgb),.1)}
   .card.mid{border-color:rgba(var(--violet-rgb),.5)}
   .card.mid::before{opacity:1}
-}
 
 /* CLOSE */
 .close{position:relative;overflow:hidden;text-align:center;border-radius:28px;padding:66px 34px;border:1px solid var(--line);
@@ -1358,7 +1356,8 @@ footer:hover .egg{color:var(--dim)}
   }
 
   /* 触控装置：用「滚到画面中央」代替 hover */
-  if(!hover && 'IntersectionObserver' in window && !reduce){
+  var touchLike = !hover || (navigator.maxTouchPoints||0) > 0 || window.innerWidth <= 900;
+  if(touchLike && 'IntersectionObserver' in window && !reduce){
     var mids=[].slice.call(document.querySelectorAll(
       '#who .card, .node, .bt, .wi, .cr, .fx, .ts, .bub, .card, .stat'));
     var ioM=new IntersectionObserver(function(en){
