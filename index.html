@@ -1284,6 +1284,8 @@ footer:hover .egg{color:var(--dim)}
   function sSet(k,v){ try{ sessionStorage.setItem(k,v); }catch(e){} }
   function lGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
   function lSet(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+  var curLang='zh';
+  function T(zh){ return (curLang==='en' && typeof I18N!=='undefined' && I18N[zh]) ? I18N[zh] : zh; }
   var hover =window.matchMedia&&window.matchMedia('(hover: hover)').matches;
 
   document.querySelectorAll('[data-since]').forEach(function(el){
@@ -1323,11 +1325,11 @@ footer:hover .egg{color:var(--dim)}
     if(pr && pr.then){
       pr.then(function(){
         if(amb){ amb.classList.add('playing'); }
-        if(ambTxt){ ambTxt.textContent='音乐播放中'; }
+        if(ambTxt){ ambTxt.textContent=T('音乐播放中'); }
         if(!force){ var v=0, t=setInterval(function(){ v+=0.02; ambAu.volume=Math.min(v,.22); if(v>=.22) clearInterval(t); },120); }
         console.log('[ambient] playing');
       }).catch(function(err){
-        if(ambTxt) ambTxt.textContent='点我播放音乐';
+        if(ambTxt) ambTxt.textContent=T('点我播放音乐');
         if(amb) amb.classList.add('on');
         console.log('[ambient] play blocked:', err && err.name);
       });
@@ -1337,16 +1339,20 @@ footer:hover .egg{color:var(--dim)}
     if(!ambAu) return;
     ambAu.pause();
     if(amb) amb.classList.remove('playing');
-    if(remember){ ambOff=true; sSet('ambOff','1'); if(ambTxt) ambTxt.textContent='播放背景音乐'; }
+    if(remember){ ambOff=true; sSet('ambOff','1'); if(ambTxt) ambTxt.textContent=T('播放背景音乐'); }
   }
   window.__ambPlay=ambPlay;
+  window.__ambLabel=function(){
+    if(!ambTxt||!ambAu) return;
+    ambTxt.textContent = ambAu.paused ? T(ambOff?'播放背景音乐':'背景音乐') : T('音乐播放中');
+  };
 
   if(ambAu&&amb){
     fetch('assets/ambient.mp3',{method:'HEAD'}).then(function(r){
       if(!r.ok) return;
       ambReady=true;
       amb.classList.add('on');
-      if(ambOff && ambTxt) ambTxt.textContent='播放背景音乐';
+      window.__ambLabel();
 
       /* 任何一次真实互动都试一次 */
       ['pointerdown','keydown','touchstart'].forEach(function(ev){
@@ -1387,7 +1393,7 @@ footer:hover .egg{color:var(--dim)}
         if(!p) return NodeFilter.FILTER_REJECT;
         var tag=p.nodeName;
         if(tag==='SCRIPT'||tag==='STYLE') return NodeFilter.FILTER_REJECT;
-        if(p.closest && p.closest('[data-split],.lang')) return NodeFilter.FILTER_REJECT;
+        if(p.closest && p.closest('[data-split],.lang,.amb')) return NodeFilter.FILTER_REJECT;
         return n.nodeValue.trim() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
       }
     });
@@ -1412,7 +1418,7 @@ footer:hover .egg{color:var(--dim)}
   }
 
   function setLang(l){
-    var en = (l==='en');
+    var en = (l==='en'); curLang = l;
     nodes.forEach(function(o){
       var k=o.zh.trim();
       if(en){ if(I18N[k]!==undefined) o.n.nodeValue=o.zh.replace(k, I18N[k]); }
@@ -1423,6 +1429,7 @@ footer:hover .egg{color:var(--dim)}
       splitEl.setAttribute('data-text', t);
       doSplit();
     }
+    if(window.__ambLabel) window.__ambLabel();
     document.documentElement.lang = en ? 'en' : 'zh-Hans';
     document.title = en ? 'Ronald Mok \u83AB\u8363\u70FD \u2014 Music Producer \u00B7 Production Director'
                         : 'Ronald Mok \u83AB\u8363\u70FD \u2014 \u97F3\u4E50\u76D1\u5236 \u00B7 \u5236\u4F5C\u7EDF\u7B79';
