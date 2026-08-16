@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ronald Mok 莫荣烽 — 音乐监制 · 制作统筹</title>
-<meta name="description" content="16 年，500+ 首制作、10 部电影配乐、3 部剧集 OST、100+ 场演出与赛事统筹。有人有想法，我把它变成能交出去的东西。">
+<meta name="description" content="500+ 首制作、10 部电影配乐、3 部剧集 OST、100+ 场演出与赛事统筹。有人有想法，我把它变成能交出去的东西。">
 <meta property="og:title" content="Ronald Mok 莫荣烽 — 音乐监制 · 制作统筹">
 <meta property="og:description" content="有人有想法，我把它变成能交出去的东西。">
 <meta property="og:image" content="https://img.youtube.com/vi/_PxJHbGQ9dM/hqdefault.jpg">
@@ -241,7 +241,7 @@ details .a b{color:var(--ink);font-weight:500}
 .about{display:grid;grid-template-columns:300px 1fr;gap:52px;align-items:start}
 @media(max-width:820px){.about{grid-template-columns:1fr;gap:34px}}
 .avatar{position:relative;border-radius:26px;overflow:hidden;border:1px solid var(--line);
-  aspect-ratio:4/5;background:linear-gradient(150deg,rgba(var(--violet-rgb),.4),rgba(var(--pink-rgb),.25));
+  aspect-ratio:1/1;background:linear-gradient(150deg,rgba(var(--violet-rgb),.4),rgba(var(--pink-rgb),.25));
   display:flex;align-items:center;justify-content:center}
 .avatar img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
 .avatar .ini{font-family:var(--serif);font-size:64px;font-weight:700;color:rgba(255,255,255,.85)}
@@ -394,7 +394,7 @@ footer:hover .egg{color:var(--dim)}
     <h1><span class="split" data-split>有人有想法，</span><br><span class="wipe grad">我把它变成能交出去的东西。</span></h1>
 
     <div class="kv rv rv-d1" style="margin-top:34px">
-      <b>16<span>年</span></b>
+      <b><span data-since="2010">16</span><span>年经验</span></b>
       <b>500+<span>首歌</span></b>
       <b>10<span>部电影</span></b>
       <b>100+<span>场演出</span></b>
@@ -430,7 +430,7 @@ footer:hover .egg{color:var(--dim)}
       <div class="bio rv rv-d1">
         <div class="eyebrow">我是谁</div>
         <h2>Ronald Mok　莫荣烽</h2>
-        <p>做音乐十六年。前十年我自己动手——编曲、录音、混音、母带，什么都做。后十年我发现，我真正擅长的不是弹得比谁快，是<b style="color:var(--ink);font-weight:500">看懂一件事要什么，然后找到对的人，把它做完</b>。</p>
+        <p>入行的时候，我什么都自己动手——编曲、录音、混音、母带。<br>做久了才发现，我真正擅长的不是弹得比谁快，是<b style="color:var(--ink);font-weight:500">看懂一件事要什么，找到对的人，把它做完</b>。</p>
         <p>所以现在我的角色多数是监制和统筹：电影、剧集、广告、演唱会、比赛。我不一定出现在成品的每一轨里，但整件事能不能按时交出去，是我的责任。</p>
         <p>白天我在教育机构负责营运，晚上和周末接音乐项目。两件事其实用的是同一套脑——<b style="color:var(--ink);font-weight:500">把散的东西组织成一个成品</b>。</p>
         <div class="sig">
@@ -870,6 +870,10 @@ footer:hover .egg{color:var(--dim)}
 (function(){
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var hover =window.matchMedia&&window.matchMedia('(hover: hover)').matches;
+
+  document.querySelectorAll('[data-since]').forEach(function(el){
+    el.textContent = new Date().getFullYear() - parseInt(el.getAttribute('data-since'),10);
+  });
 
   var brands=[['Astro Shaw','astro-shaw'],['Netflix','netflix'],['GSC','gsc'],['mm2','mm2'],
               ['MILO®','milo'],['Nestlé','nestle'],['Great Eastern','great-eastern'],
