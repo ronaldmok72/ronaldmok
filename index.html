@@ -1033,7 +1033,7 @@ footer:hover .egg{color:var(--dim)}
 <div class="amb" id="amb" role="button" tabindex="0" aria-label="背景音乐开关">
   <span class="eq2"><i></i><i></i><i></i></span><span id="ambTxt">背景音乐</span>
 </div>
-<audio id="ambAu" loop preload="none" src="assets/ambient.mp3"></audio>
+<audio id="ambAu" loop preload="metadata" src="assets/ambient.mp3"></audio>
 
 <footer>
   <div class="wrap">
@@ -1078,58 +1078,66 @@ footer:hover .egg{color:var(--dim)}
     });
   }
 
-  /* ambient background music — browsers block真·autoplay，所以第一次互动才起播 */
+  /* ── ambient background music ───────────────────────────── */
   var ambAu=document.getElementById('ambAu'), amb=document.getElementById('amb'), ambTxt=document.getElementById('ambTxt');
-  if(ambAu&&amb){
-    fetch('assets/ambient.mp3',{method:'HEAD'}).then(function(r){ if(r.ok){ amb.classList.add('on'); armAmbient(); } }).catch(function(){});
-  }
-  function armAmbient(){
-    var started=false, off=(sessionStorage.getItem('ambOff')==='1');
-    function start(){
-      if(started||off) return; started=true;
-      ambAu.volume=0; ambAu.play().then(function(){
-        amb.classList.add('playing'); ambTxt.textContent='音乐播放中';
-        var v=0, t=setInterval(function(){ v+=0.02; ambAu.volume=Math.min(v,.22); if(v>=.22) clearInterval(t); },120);
-      }).catch(function(){ started=false; });
-    }
-    ['pointerdown','keydown','touchstart'].forEach(function(ev){
-      window.addEventListener(ev,start,{once:true,passive:true});
-    });
-    /* 滑到「精选作品」就试着起播（若浏览器还没给授权，会静默失败，继续等真正的点击） */
-    var aboutSec=document.getElementById('work');
-    if(aboutSec&&'IntersectionObserver' in window){
-      var ioA=new IntersectionObserver(function(en){
-        en.forEach(function(x){ if(x.isIntersecting){ start(); ioA.disconnect(); } });
-      },{threshold:.25});
-      ioA.observe(aboutSec);
-    }
-    amb.addEventListener('click',function(){
-      if(ambAu.paused){ sessionStorage.setItem('ambOff','0'); off=false; started=false; start(); }
-      else{ ambAu.pause(); sessionStorage.setItem('ambOff','1'); off=true;
-            amb.classList.remove('playing'); ambTxt.textContent='播放背景音乐'; }
-    });
-    window.__ambStart=start;
-    if(off){ ambTxt.textContent='播放背景音乐'; }
+  var ambOff=(sessionStorage.getItem('ambOff')==='1');
+  var ambReady=false;
 
-    /* 切到别的分页 / 最小化 / 锁屏 → 暂停；回来才续播 */
-    var wasPlaying=false;
-    document.addEventListener('visibilitychange',function(){
-      if(document.hidden){
-        wasPlaying = !ambAu.paused;
-        if(wasPlaying){ ambAu.pause(); amb.classList.remove('playing'); }
-      }else if(wasPlaying && !off){
-        ambAu.play().then(function(){ amb.classList.add('playing'); }).catch(function(){});
+  function ambPlay(force){
+    if(!ambAu) return;
+    if(force){ ambOff=false; sessionStorage.setItem('ambOff','0'); }
+    if(ambOff || !ambAu.paused) return;
+    ambAu.volume=0;
+    var pr=ambAu.play();
+    if(pr && pr.then){
+      pr.then(function(){
+        if(amb){ amb.classList.add('playing'); }
+        if(ambTxt){ ambTxt.textContent='音乐播放中'; }
+        var v=0, t=setInterval(function(){ v+=0.02; ambAu.volume=Math.min(v,.22); if(v>=.22) clearInterval(t); },120);
+      }).catch(function(){ /* 还没拿到用户授权，等下一次真实点击 */ });
+    }
+  }
+  function ambPause(remember){
+    if(!ambAu) return;
+    ambAu.pause();
+    if(amb) amb.classList.remove('playing');
+    if(remember){ ambOff=true; sessionStorage.setItem('ambOff','1'); if(ambTxt) ambTxt.textContent='播放背景音乐'; }
+  }
+  window.__ambPlay=ambPlay;
+
+  if(ambAu&&amb){
+    fetch('assets/ambient.mp3',{method:'HEAD'}).then(function(r){
+      if(!r.ok) return;
+      ambReady=true;
+      amb.classList.add('on');
+      if(ambOff && ambTxt) ambTxt.textContent='播放背景音乐';
+
+      /* 任何一次真实互动都试一次 */
+      ['pointerdown','keydown','touchstart'].forEach(function(ev){
+        window.addEventListener(ev,function(){ ambPlay(false); },{passive:true});
+      });
+
+      /* 滑到「精选作品」也试一次（桌面若还没授权会静默失败） */
+      var wk=document.getElementById('work');
+      if(wk&&'IntersectionObserver' in window){
+        var ioA=new IntersectionObserver(function(en){
+          en.forEach(function(x){ if(x.isIntersecting){ ambPlay(false); ioA.disconnect(); } });
+        },{threshold:.25});
+        ioA.observe(wk);
       }
-    });
-    window.addEventListener('pagehide',function(){ ambAu.pause(); amb.classList.remove('playing'); });
-    window.addEventListener('blur',function(){
-      if(!ambAu.paused){ wasPlaying=true; ambAu.pause(); amb.classList.remove('playing'); }
-    });
-    window.addEventListener('focus',function(){
-      if(wasPlaying && !off && document.visibilityState==='visible'){
-        ambAu.play().then(function(){ amb.classList.add('playing'); }).catch(function(){});
-      }
-    });
+
+      amb.addEventListener('click',function(){
+        if(ambAu.paused){ ambPlay(true); } else { ambPause(true); }
+      });
+
+      /* 离开分页 / 最小化 / 锁屏 → 暂停；回来才续播 */
+      var wasPlaying=false;
+      document.addEventListener('visibilitychange',function(){
+        if(document.hidden){ wasPlaying=!ambAu.paused; if(wasPlaying) ambPause(false); }
+        else if(wasPlaying && !ambOff){ ambPlay(false); }
+      });
+      window.addEventListener('pagehide',function(){ ambPause(false); });
+    }).catch(function(){});
   }
 
   if(!reduce){
@@ -1143,7 +1151,7 @@ footer:hover .egg{color:var(--dim)}
 
 
   var sg=document.getElementById('storyGo');
-  if(sg) sg.addEventListener('click',function(){ if(window.__ambStart) window.__ambStart(); });
+  if(sg) sg.addEventListener('click',function(){ if(window.__ambPlay) window.__ambPlay(true); });
 
   /* ── scroll-driven story ── */
   (function(){
