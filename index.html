@@ -7,7 +7,13 @@
 <meta name="description" content="500+ 首制作、10 部电影配乐、3 部剧集 OST、100+ 场演出与赛事统筹。有人有想法，我把它变成能交出去的东西。">
 <meta property="og:title" content="Ronald Mok 莫荣烽 — 音乐监制 · 制作统筹">
 <meta property="og:description" content="有人有想法，我把它变成能交出去的东西。">
-<meta property="og:image" content="https://img.youtube.com/vi/_PxJHbGQ9dM/hqdefault.jpg">
+<meta property="og:image" content="https://ronaldmok72.github.io/ronaldmok/assets/ronald.jpg">
+<meta property="og:image:width" content="854">
+<meta property="og:image:height" content="854">
+<meta property="og:url" content="https://ronaldmok72.github.io/ronaldmok/">
+<meta property="og:site_name" content="Ronald Mok 莫荣烽">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://ronaldmok72.github.io/ronaldmok/assets/ronald.jpg">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎧</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -106,7 +112,7 @@ header.hero{padding:126px 0 92px;position:relative;overflow:hidden}
 .btn-ghost:hover{border-color:rgba(var(--violet-rgb),.55);background:rgba(var(--violet-rgb),.10);transform:translateY(-2px)}
 
 /* MARQUEE */
-.marquee{margin-top:60px;overflow:hidden;
+.marquee{margin-top:60px;position:relative;overflow:hidden;
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
   mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
 .marquee-label{font-family:"Inter",var(--sans);font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);margin-bottom:18px}
@@ -375,6 +381,60 @@ header.hero .wrap{text-align:center}
   .ts h4{margin-bottom:3px}
 }
 
+
+/* LOGO RAIL — 让深色 logo 也看得见 */
+.rail{position:relative;padding:14px 0}
+.rail::before{content:"";position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);
+  height:60px;border-radius:100px;pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.13) 10%,rgba(255,255,255,.17) 50%,rgba(255,255,255,.13) 90%,transparent)}
+.rail .track{position:relative;z-index:1}
+.track b.lg img{filter:drop-shadow(0 1px 2px rgba(0,0,0,.35))}
+.track b.lg.mono img{filter:brightness(0) saturate(0) invert(.12)}
+.track b.lg i{color:#1A1622}
+
+
+/* HUB */
+.hub{display:flex;flex-direction:column;align-items:center}
+.hub .core{position:relative;width:190px;height:190px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  text-align:center;font-family:var(--serif);font-size:19px;font-weight:700;line-height:1.55;color:#fff;padding:0 26px;
+  background:linear-gradient(140deg,var(--violet),var(--pink));
+  box-shadow:0 0 0 10px rgba(var(--violet-rgb),.09),0 0 60px rgba(var(--violet-rgb),.4)}
+.hub .core::after{content:"";position:absolute;inset:-22px;border-radius:50%;border:1px dashed rgba(var(--violet-rgb),.35);
+  animation:spin 34s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hub .stem{width:2px;height:46px;background:linear-gradient(180deg,var(--pink),rgba(var(--violet-rgb),.25))}
+.hub .branch{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;width:100%;padding-top:30px}
+.hub .branch::before{content:"";position:absolute;top:0;left:16.6%;right:16.6%;height:2px;border-radius:2px;
+  background:linear-gradient(90deg,rgba(var(--violet-rgb),.3),var(--violet),rgba(var(--pink-rgb),.3))}
+.bnode{position:relative;display:flex;flex-direction:column;align-items:stretch}
+.bnode::before{content:"";position:absolute;top:-30px;left:50%;width:2px;height:30px;
+  background:linear-gradient(180deg,var(--violet),rgba(var(--violet-rgb),.25))}
+@media(max-width:860px){
+  .hub .branch{grid-template-columns:1fr;padding-top:0;gap:16px}
+  .hub .branch::before{display:none}
+  .bnode::before{display:none}
+  .hub .stem{height:28px}
+}
+
+
+/* CHAT BUBBLES */
+.chat{max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+.bub{position:relative;max-width:78%;padding:24px 28px;border:1px solid var(--line);
+  background:rgba(255,255,255,.045);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-radius:26px;transition:transform .35s ease,border-color .35s ease}
+.bub:hover{transform:translateY(-3px);border-color:rgba(var(--pink-rgb),.4)}
+.bub.l{align-self:flex-start;border-bottom-left-radius:7px}
+.bub.r{align-self:flex-end;border-bottom-right-radius:7px;
+  background:linear-gradient(140deg,rgba(var(--violet-rgb),.19),rgba(var(--pink-rgb),.11))}
+.bub q{display:block;font-family:var(--serif);font-size:20px;line-height:1.72;color:var(--ink);font-weight:500;quotes:none}
+.bub q::before,.bub q::after{content:""}
+.bub .who{margin-top:16px;font-size:14.5px;color:var(--dim)}
+.bub .who b{color:var(--muted);font-weight:600}
+.bub .fact{margin-top:16px;padding-top:14px;border-top:1px solid var(--line-2);
+  font-size:15px;color:var(--muted);display:flex;gap:10px;align-items:flex-start}
+.bub .fact::before{content:"→";color:var(--pink);flex-shrink:0}
+@media(max-width:640px){.bub{max-width:94%}.bub q{font-size:18px}}
+
 /* CLOSE */
 .close{position:relative;overflow:hidden;text-align:center;border-radius:28px;padding:66px 34px;border:1px solid var(--line);
   background:linear-gradient(150deg,rgba(var(--violet-rgb),.20),rgba(var(--pink-rgb),.11) 58%,transparent)}
@@ -438,7 +498,7 @@ footer:hover .egg{color:var(--dim)}
 
     <div class="marquee rv rv-d3">
       <div class="marquee-label">合作过</div>
-      <div class="track" id="track"></div>
+      <div class="rail"><div class="track" id="track"></div></div>
     </div>
   </div>
 </header>
@@ -747,25 +807,40 @@ footer:hover .egg{color:var(--dim)}
     <div class="sec-intro rv">
       <div class="eyebrow">不只是音乐</div>
       <h2>同一套能力，<span class="grad">换一个载体</span></h2>
-      <p class="lead">「把散的资源组织成一个成品」这件事，我在音乐以外也一直在做。找我谈的如果是团队、流程或活动，一样可以聊。</p>
+      <p class="lead">音乐只是我最常用的那个出口。真正在做的事，一直是同一件。</p>
     </div>
-    <div class="cards">
-      <div class="card rv" data-spot>
-        <div class="tag">企业营运</div>
-        <h3>营运统筹 Operations Strategist</h3>
-        <p>负责教育机构的日常营运与流程设计，并把方法整理成可传授的系统，训练他人接手同一套做法。</p>
-      </div>
-      <div class="card rv rv-d1" data-spot>
-        <div class="tag">教学 · 训练</div>
-        <h3>演绎 &amp; 制作导师</h3>
-        <p>声乐、器乐、编曲软件与学员作品指导，累计培育学员 200+。另任合唱团 Tenor 和声编唱与导师组。</p>
-      </div>
-      <div class="card rv rv-d2" data-spot>
-        <div class="tag">版权 · 资产</div>
-        <h3>MACP 会员</h3>
-        <p>作品在电视与串流平台长期播放并持续产生版税。懂得怎么把一次性的委托，做成能一直用下去的资产。</p>
+
+    <div class="hub rv">
+      <div class="core">把散的东西<br>组织成<br>一个成品</div>
+      <div class="stem"></div>
+      <div class="branch">
+        <div class="bnode">
+          <div class="card" data-spot>
+            <div class="tag">音乐</div>
+            <h3>监制 · 制作统筹</h3>
+            <p>电影、剧集、广告、演唱会。判断要什么、找对的人、管到交付。</p>
+          </div>
+        </div>
+        <div class="bnode">
+          <div class="card" data-spot>
+            <div class="tag">企业</div>
+            <h3>营运统筹 Operations</h3>
+            <p>教育机构的日常营运与流程设计，并把方法整理成可传授的系统。</p>
+          </div>
+        </div>
+        <div class="bnode">
+          <div class="card" data-spot>
+            <div class="tag">人</div>
+            <h3>演绎 &amp; 制作导师</h3>
+            <p>声乐、器乐、编曲软件与学员作品指导，累计培育学员 200+。</p>
+          </div>
+        </div>
       </div>
     </div>
+
+    <p class="lead rv" style="text-align:center;margin:44px auto 0;max-width:52ch">
+      所以找我谈的如果是<b style="color:var(--ink);font-weight:600">团队、流程或一整场活动</b>，一样可以聊。
+    </p>
   </div>
 </section>
 
@@ -776,19 +851,28 @@ footer:hover .egg{color:var(--dim)}
       <h2>最好的证明不是好评，<br><span class="grad">是他们又回来了</span></h2>
       <p class="lead">应合作方要求，以下不具名。</p>
     </div>
-    <div class="quotes">
-      <div class="quote rv"><q>不需要解释太多，就知道大家要什么。</q>
+
+    <div class="chat">
+      <div class="bub l rv">
+        <q>不需要解释太多，就知道大家要什么。</q>
         <div class="who"><b>音乐公司</b>　·　委托方</div>
-        <div class="fact">四个月内交付两个项目，第一首完成后直接指定第二首。</div></div>
-      <div class="quote rv rv-d1"><q>每次反馈沟通后，短时间内把问题完美解决。</q>
+        <div class="fact">四个月内交付两个项目，第一首完成后直接指定第二首。</div>
+      </div>
+      <div class="bub r rv">
+        <q>每次反馈沟通后，短时间内把问题完美解决。</q>
         <div class="who"><b>创作歌手</b>　·　单曲制作</div>
-        <div class="fact">成品上架 Apple Music 与各大串流平台。</div></div>
-      <div class="quote rv rv-d2"><q>我没有去问市场价格，因为你出现在我脑子里。</q>
+        <div class="fact">成品上架 Apple Music 与各大串流平台。</div>
+      </div>
+      <div class="bub l rv">
+        <q>我没有去问市场价格，因为你出现在我脑子里。</q>
         <div class="who"><b>长期学员</b></div>
-        <div class="fact">收费调整后照旧续约，全程没有议价。</div></div>
-      <div class="quote rv rv-d3"><q>同一位客户，四年内回头三次。</q>
+        <div class="fact">收费调整后照旧续约，全程没有议价。</div>
+      </div>
+      <div class="bub r rv">
+        <q>同一位客户，四年内回头三次。</q>
         <div class="who"><b>个人创作者</b>　·　长期合作</div>
-        <div class="fact">另有宗教团体在第一首交付后，随即委托第二首。</div></div>
+        <div class="fact">另有宗教团体在第一首交付后，随即委托第二首。</div>
+      </div>
     </div>
   </div>
 </section>
@@ -884,7 +968,7 @@ footer:hover .egg{color:var(--dim)}
       </div>
       <div class="foot-links">
         <a href="https://zaap.bio/ronaldmok" target="_blank" rel="noopener">完整作品目录</a>
-        <a href="INSTAGRAM_URL" target="_blank" rel="noopener" id="igLink">Instagram</a>
+        <a href="https://www.instagram.com/ronaldmok72/" target="_blank" rel="noopener" id="igLink">Instagram</a>
         <a href="https://wa.me/60149212571" target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </div>
@@ -907,7 +991,7 @@ footer:hover .egg{color:var(--dim)}
   var track=document.getElementById('track');
   if(track){
     var h=brands.map(function(b){
-      var mono=(['astro-shaw','nestle'].indexOf(b[1])>-1)?' mono':'';
+      var mono='';
       return '<b class="lg'+mono+'"><img src="assets/logos/'+b[1]+'.png" alt="'+b[0]+'"><i>'+b[0]+'</i></b>';
     }).join('');
     track.innerHTML=h+h;
