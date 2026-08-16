@@ -498,6 +498,53 @@ header.hero .wrap{text-align:center}
   .cr .shot img{opacity:.16}
 }
 
+
+/* ── WHO：三个「格子」，像选择题 ───────────────── */
+#who .card{padding-top:44px}
+#who .card .idx{position:absolute;top:20px;right:24px;font-family:"Inter",var(--sans);
+  font-size:44px;font-weight:800;line-height:1;color:rgba(255,255,255,.055);letter-spacing:-.04em;
+  transition:color .4s ease}
+#who .card:hover .idx{color:rgba(var(--pink-rgb),.32)}
+#who .card .fit{border-top:1px dashed rgba(var(--violet-rgb),.4)}
+#who .card .fit b{color:#DDCFFF}
+
+/* ── BEYOND：不是卡片，是图上的节点 ─────────────── */
+.hub .branch .node{background:none;border:0;backdrop-filter:none;-webkit-backdrop-filter:none;
+  padding:0;text-align:center;display:flex;flex-direction:column;align-items:center;transform:none}
+.hub .branch .node:hover{transform:none}
+.node .orb{width:74px;height:74px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-size:20px;font-weight:700;color:#fff;margin-bottom:20px;
+  border:1px solid rgba(var(--violet-rgb),.55);background:rgba(var(--violet-rgb),.14);
+  box-shadow:0 0 0 8px rgba(var(--violet-rgb),.05);
+  transition:transform .4s cubic-bezier(.2,.7,.25,1),background .4s ease,box-shadow .4s ease}
+.node:hover .orb{transform:scale(1.09);background:linear-gradient(140deg,var(--violet),var(--pink));
+  box-shadow:0 0 0 10px rgba(var(--pink-rgb),.09),0 10px 34px rgba(var(--violet-rgb),.42)}
+.node h3{font-size:19px;font-weight:600;margin-bottom:8px}
+.node p{font-size:15px;max-width:26ch;margin:0 auto}
+@media(max-width:860px){
+  .node{flex-direction:row;text-align:left;gap:18px;align-items:flex-start}
+  .node .orb{flex:0 0 auto;width:60px;height:60px;font-size:17px;margin-bottom:0}
+  .node p{margin:0}
+}
+
+/* ── 气泡：加上引号，手机也看得出是别人说的 ─────── */
+.bub q::before{content:"「";color:var(--pink);font-weight:700;margin-right:2px}
+.bub q::after{content:"」";color:var(--pink);font-weight:700;margin-left:2px}
+.bub::after{top:-30px;font-size:120px}
+.bub .tail{position:absolute;bottom:-1px;width:16px;height:16px;overflow:hidden}
+.bub.l .tail{left:-8px}
+.bub.r .tail{right:-8px}
+.bub .tail::before{content:"";position:absolute;width:22px;height:22px;transform:rotate(45deg);
+  background:rgba(255,255,255,.045);border:1px solid var(--line)}
+.bub.l .tail::before{left:6px;top:-8px}
+.bub.r .tail::before{right:6px;top:-8px;background:rgba(var(--pink-rgb),.1)}
+@media(max-width:640px){
+  .bub{max-width:100%}
+  .bub.l{border-left:3px solid rgba(var(--violet-rgb),.55)}
+  .bub.r{border-right:3px solid rgba(var(--pink-rgb),.55)}
+  .bub q{font-size:18.5px}
+}
+
 /* CLOSE */
 .close{position:relative;overflow:hidden;text-align:center;border-radius:28px;padding:66px 34px;border:1px solid var(--line);
   background:linear-gradient(150deg,rgba(var(--violet-rgb),.20),rgba(var(--pink-rgb),.11) 58%,transparent)}
@@ -848,18 +895,21 @@ footer:hover .egg{color:var(--dim)}
     </div>
     <div class="cards">
       <div class="card rv" data-spot>
+        <span class="idx">01</span>
         <div class="tag">创作者 · 歌手</div>
         <h3>你有歌，要一个能上架的版本</h3>
         <p>我配编曲、录音、混音、母带，交给你一首能放上串流、能拿出手的成品。</p>
         <div class="fit"><b>你会拿到</b>——母带成品、分轨、上架规格档。</div>
       </div>
       <div class="card rv rv-d1" data-spot>
+        <span class="idx">02</span>
         <div class="tag">团体 · 机构 · 学校</div>
         <h3>你有 Deadline，要有人负责</h3>
         <p>周年曲、校歌、营歌。你只跟我对话，其余五六个人我来配、我来追。</p>
         <div class="fit"><b>你会拿到</b>——成品、伴奏版、乐谱，按日期交。</div>
       </div>
       <div class="card rv rv-d2" data-spot>
+        <span class="idx">03</span>
         <div class="tag">品牌 · 影视 · 活动</div>
         <h3>你有画面，要音乐撑得起来</h3>
         <p>广告、电影、剧集、演出。做到能播出、能授权、能长期使用。</p>
@@ -910,22 +960,22 @@ footer:hover .egg{color:var(--dim)}
       <div class="stem"></div>
       <div class="branch">
         <div class="bnode">
-          <div class="card" data-spot>
-            <div class="tag">音乐</div>
+          <div class="node">
+            <div class="orb">音乐</div>
             <h3>监制 · 制作统筹</h3>
             <p>电影、剧集、广告、演唱会。判断要什么、找对的人、管到交付。</p>
           </div>
         </div>
         <div class="bnode">
-          <div class="card" data-spot>
-            <div class="tag">企业</div>
+          <div class="node">
+            <div class="orb">企业</div>
             <h3>营运统筹 Operations</h3>
             <p>教育机构的日常营运与流程设计，并把方法整理成可传授的系统。</p>
           </div>
         </div>
         <div class="bnode">
-          <div class="card" data-spot>
-            <div class="tag">人</div>
+          <div class="node">
+            <div class="orb">人</div>
             <h3>演绎 &amp; 制作导师</h3>
             <p>声乐、器乐、编曲软件与学员作品指导，累计培育学员 200+。</p>
           </div>
@@ -953,22 +1003,22 @@ footer:hover .egg{color:var(--dim)}
     </div>
 
     <div class="chat">
-      <div class="bub l rv">
+      <div class="bub l rv"><span class="tail"></span>
         <q>不需要解释太多，就知道大家要什么。</q>
         <div class="who"><b>音乐公司</b>　·　委托方</div>
         <div class="fact">四个月内交付两个项目，第一首完成后直接指定第二首。</div>
       </div>
-      <div class="bub r rv">
+      <div class="bub r rv"><span class="tail"></span>
         <q>每次反馈沟通后，短时间内把问题完美解决。</q>
         <div class="who"><b>创作歌手</b>　·　单曲制作</div>
         <div class="fact">成品上架 Apple Music 与各大串流平台。</div>
       </div>
-      <div class="bub l rv">
+      <div class="bub l rv"><span class="tail"></span>
         <q>我没有去问市场价格，因为你出现在我脑子里。</q>
         <div class="who"><b>长期学员</b></div>
         <div class="fact">收费调整后照旧续约，全程没有议价。</div>
       </div>
-      <div class="bub r rv">
+      <div class="bub r rv"><span class="tail"></span>
         <q>同一位客户，四年内回头三次。</q>
         <div class="who"><b>个人创作者</b>　·　长期合作</div>
         <div class="fact">另有团体客户在第一首交付后，随即委托第二首。</div>
