@@ -305,6 +305,50 @@ details .a b{color:var(--ink);font-weight:500}
 .bt.prev iframe{opacity:1}
 .bt.prev img{opacity:0}
 
+
+/* HERO CENTERED */
+header.hero .wrap{text-align:center}
+.hero h1{max-width:none;margin-left:auto;margin-right:auto}
+.hero .lead{margin-left:auto;margin-right:auto;max-width:52ch}
+.hero .cta-row{justify-content:center}
+.hero .kv{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 30px;margin:0 auto 38px;max-width:60ch}
+.hero .kv b{font-family:"Inter",var(--sans);font-size:clamp(19px,2.4vw,25px);font-weight:700;color:var(--ink)}
+.hero .kv b span{font-size:.62em;font-weight:500;color:var(--muted);margin-left:6px}
+
+/* LOGO MARQUEE */
+.track b.lg{display:inline-flex;align-items:center;padding:0 30px}
+.track b.lg img{height:30px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.72}
+.track b.lg i{display:none;font-style:normal}
+.track b.lg.noimg img{display:none}
+.track b.lg.noimg i{display:inline}
+
+/* AMBIENT TOGGLE */
+.amb{position:fixed;right:20px;bottom:20px;z-index:40;display:none;align-items:center;gap:10px;
+  border:1px solid var(--line);background:rgba(16,13,24,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-radius:100px;padding:9px 18px 9px 10px;cursor:pointer;color:var(--muted);font-size:14px;
+  transition:border-color .3s ease,color .3s ease}
+.amb:hover{border-color:rgba(var(--pink-rgb),.5);color:var(--ink)}
+.amb.on{display:flex}
+.amb .eq2{display:flex;align-items:flex-end;gap:3px;height:15px;width:20px;justify-content:center}
+.amb .eq2 i{width:3px;border-radius:2px;height:4px;background:linear-gradient(180deg,var(--violet),var(--pink))}
+.amb.playing .eq2 i{animation:bar .9s ease-in-out infinite alternate}
+.amb.playing .eq2 i:nth-child(2){animation-delay:.2s}
+.amb.playing .eq2 i:nth-child(3){animation-delay:.4s}
+
+/* THUMB TEXT VARIANT */
+.thumb.txt{background:linear-gradient(140deg,rgba(var(--violet-rgb),.42),rgba(var(--pink-rgb),.26));
+  font-family:"Inter",var(--sans);font-size:15px;font-weight:700;color:#fff;letter-spacing:.02em}
+
+/* BENTO PLATFORM BADGE */
+.bt .plat{position:absolute;top:16px;left:16px;z-index:3;
+  font-family:"Inter",var(--sans);font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  background:rgba(8,7,12,.72);border:1px solid rgba(255,255,255,.24);backdrop-filter:blur(8px);
+  border-radius:100px;padding:5px 13px;color:#fff}
+.bt .role{font-size:12.5px;font-weight:700;border-color:rgba(var(--pink-rgb),.6);background:rgba(var(--pink-rgb),.2);color:#FFDDEE}
+
+/* SECTION COUNT */
+.work-group>h3 em{font-style:normal;color:var(--dim);letter-spacing:.05em;margin-left:10px;font-weight:600}
+
 /* CLOSE */
 .close{position:relative;overflow:hidden;text-align:center;border-radius:28px;padding:66px 34px;border:1px solid var(--line);
   background:linear-gradient(150deg,rgba(var(--violet-rgb),.20),rgba(var(--pink-rgb),.11) 58%,transparent)}
@@ -346,24 +390,25 @@ footer:hover .egg{color:var(--dim)}
   </div>
 
   <div class="wrap">
-    <div class="eyebrow rv">音乐监制 · 制作统筹　Music Producer</div>
+    <div class="eyebrow rv">音乐监制 · 制作统筹</div>
     <h1><span class="split" data-split>有人有想法，</span><br><span class="wipe grad">我把它变成能交出去的东西。</span></h1>
-    <p class="lead rv rv-d2" style="margin-top:26px">
-      20 年，500+ 首曲目制作、10 部电影配乐、3 部剧集 OST，
-      以及超过百场演出与赛事的统筹。<br>
-      编曲、录音、混音、母带、乐手、制谱、舞台——我负责把它们整合起来，
-      让你只需要对一个人负责。
+
+    <div class="kv rv rv-d1" style="margin-top:34px">
+      <b>20<span>年</span></b>
+      <b>500+<span>首歌</span></b>
+      <b>10<span>部电影</span></b>
+      <b>100+<span>场演出</span></b>
+    </div>
+
+    <p class="lead rv rv-d2">
+      编曲、录音、混音、母带、乐手、制谱、舞台——<br>
+      <b style="color:var(--ink);font-weight:600">你只需要对一个人负责。</b>
     </p>
+
     <div class="cta-row rv rv-d3">
       <a class="btn" href="https://wa.me/60149212571" data-magnet>聊聊你的项目 →</a>
       <a class="btn-ghost" href="#work">先看作品</a>
     </div>
-    <div class="player rv rv-d3" id="player" hidden>
-      <span class="pp" id="pp">&#9654;</span>
-      <span class="eq"><i></i><i></i><i></i><i></i></span>
-      <span class="lbl">听一段我做的东西　<b>《The Great Journey》</b></span>
-    </div>
-    <audio id="au" preload="none" src="assets/hero.mp3"></audio>
 
     <div class="marquee rv rv-d3">
       <div class="marquee-label">合作过</div>
@@ -372,17 +417,7 @@ footer:hover .egg{color:var(--dim)}
   </div>
 </header>
 
-<section>
-  <div class="wrap">
-    <div class="stats rv">
-      <div class="stat"><b data-count="20" data-suffix="+">0</b><span>年制作经验</span></div>
-      <div class="stat"><b data-count="500" data-suffix="+">0</b><span>首曲目制作</span></div>
-      <div class="stat"><b data-count="10" data-suffix="">0</b><span>部电影配乐</span></div>
-      <div class="stat"><b data-count="100" data-suffix="+">0</b><span>场演出与赛事</span></div>
-      <div class="stat"><b data-count="200" data-suffix="+">0</b><span>培育学员</span></div>
-    </div>
-  </div>
-</section>
+
 
 
 <section id="about">
@@ -410,28 +445,28 @@ footer:hover .egg{color:var(--dim)}
 <section id="who">
   <div class="wrap">
     <div class="sec-intro rv">
-      <div class="eyebrow">我解决什么</div>
-      <h2>三种人来找我，<br><span class="grad">痛点完全不一样</span></h2>
-      <p class="lead">所以我不给统一报价。先弄清楚你在哪一格，方案和规模才有意义。</p>
+      <div class="eyebrow">你是哪一种</div>
+      <h2>三种人来找我，<br><span class="grad">要的东西完全不一样</span></h2>
+      <p class="lead">先弄清楚你在哪一格，谈规模和价钱才有意义。</p>
     </div>
     <div class="cards">
       <div class="card rv" data-spot>
         <div class="tag">创作者 · 歌手</div>
-        <h3>你有词有曲，缺的是让人听进去的制作</h3>
-        <p>Demo 在手机里躺了半年，自己听觉得还行，放给别人听总觉得差一口气。差的通常不是旋律，是编曲的层次、人声的处理，还有最后那一版母带。</p>
-        <div class="fit"><b>适合你，如果</b>——第一次正式录制，想要一个能上架、能拿得出手的完整版本。</div>
+        <h3>歌在手机里放了半年，<br>放给人听之前总要先说抱歉</h3>
+        <p>差的通常不是旋律。是编曲的层次、人声的处理，还有最后那一版母带。</p>
+        <div class="fit"><b>适合你，如果</b>——想要一个能上架、拿得出手的完整版本。</div>
       </div>
       <div class="card rv rv-d1" data-spot>
         <div class="tag">团体 · 机构 · 学校</div>
-        <h3>一首主题曲要交出去，但没有人统筹</h3>
-        <p>周年曲、校歌、营歌、活动主题曲——需求清楚，deadline 硬，但找了编曲找不到录音，找了录音又缺制谱和伴奏带，中间没有人对整件事负责。</p>
-        <div class="fit"><b>适合你，如果</b>——你要的是「到日子东西就在」，而不是自己去追五个供应商。</div>
+        <h3>日期是定死的，<br>但没有人在管整条线</h3>
+        <p>找到编曲，找不到录音；录完了，才发现还缺伴奏版和乐谱。每一环都要你自己重讲一次。</p>
+        <div class="fit"><b>适合你，如果</b>——你要的是「到日子东西就在」。</div>
       </div>
       <div class="card rv rv-d2" data-spot>
         <div class="tag">品牌 · 影视 · 活动</div>
-        <h3>音乐要成为作品的一部分，不是背景</h3>
-        <p>广告、电影、剧集、企业定制单曲，或是一整场演出的音乐结构。要服务画面与叙事，也要经得起播出规格与版权流程。</p>
-        <div class="fit"><b>适合你，如果</b>——你需要的是可交付、可授权、可长期使用的音乐资产。</div>
+        <h3>音乐要撑起画面，<br>不是垫在后面</h3>
+        <p>要服务叙事，也要经得起播出规格和版权流程——包括之后长期使用。</p>
+        <div class="fit"><b>适合你，如果</b>——你要的是能授权、能一直用的音乐资产。</div>
       </div>
     </div>
   </div>
@@ -457,22 +492,18 @@ footer:hover .egg{color:var(--dim)}
 <section id="flow">
   <div class="wrap">
     <div class="sec-intro rv">
-      <div class="eyebrow">一首歌是怎么做出来的</div>
-      <h2>从一句旋律，<br><span class="grad">到能在平台上听到</span></h2>
-      <p class="lead">很多人第一次做歌，卡在不知道整件事有几步、每一步该找谁。先给你看全貌——你现在在哪一步，我们就从哪里接。</p>
+      <div class="eyebrow">一首歌怎么做出来</div>
+      <h2>六步。<span class="grad">通常要找五到六个人。</span></h2>
+      <p class="lead">你现在在哪一步，我们就从哪里接。</p>
     </div>
     <div class="flow">
-      <div class="fx rv"><b>STEP 01</b><h4>词曲 / Demo</h4><p>把脑子里的旋律变成一段听得出来的东西。手机哼的也算数。</p><div class="who">词曲作者 · 你自己</div></div>
-      <div class="fx rv rv-d1"><b>STEP 02</b><h4>编曲</h4><p>决定这首歌用什么乐器、什么情绪、什么结构。歌好不好听，八成在这里定。</p><div class="who">编曲人</div></div>
-      <div class="fx rv rv-d2"><b>STEP 03</b><h4>录音</h4><p>人声、真人乐器进棚。唱得对不对，跟录得好不好，是两件事。</p><div class="who">录音师 · 配唱制作</div></div>
-      <div class="fx rv rv-d3"><b>STEP 04</b><h4>混音 · 母带</h4><p>让所有声音各就各位，音量和质感达到能公开播放的标准。</p><div class="who">混音 / 母带工程师</div></div>
-      <div class="fx rv"><b>STEP 05</b><h4>上架 · 版权</h4><p>发行到串流平台、登记版权。做对了，这首歌以后会一直帮你赚钱。</p><div class="who">发行商 · MACP</div></div>
-      <div class="fx rv rv-d1"><b>STEP 06</b><h4>延伸交付</h4><p>伴奏版、分轨、乐谱、现场编制——真正要用的时候才发现缺，就来不及了。</p><div class="who">制谱 · 现场编制</div></div>
+      <div class="fx rv"><b>01</b><h4>词曲 / Demo</h4><div class="who">你自己 · 词曲作者</div></div>
+      <div class="fx rv rv-d1"><b>02</b><h4>编曲</h4><div class="who">编曲人</div></div>
+      <div class="fx rv rv-d2"><b>03</b><h4>录音</h4><div class="who">录音师 · 配唱制作</div></div>
+      <div class="fx rv rv-d3"><b>04</b><h4>混音 · 母带</h4><div class="who">混音 / 母带工程师</div></div>
+      <div class="fx rv"><b>05</b><h4>上架 · 版权</h4><div class="who">发行商 · MACP</div></div>
+      <div class="fx rv rv-d1"><b>06</b><h4>伴奏 · 分轨 · 乐谱</h4><div class="who">制谱 · 现场编制</div></div>
     </div>
-    <p class="lead rv" style="margin-top:36px;max-width:64ch">
-      <b style="color:var(--ink);font-weight:500">这六步，通常要找五到六个不同的人。</b>
-      我做的事是：判断你需要哪几步、找谁做、把他们串起来，然后对结果负责。你只需要跟我一个人对话。
-    </p>
   </div>
 </section>
 
@@ -487,38 +518,38 @@ footer:hover .egg{color:var(--dim)}
     <div class="bento rv">
       <a class="bt b-lg" href="https://www.youtube.com/watch?v=_PxJHbGQ9dM" target="_blank" rel="noopener">
         <img src="https://img.youtube.com/vi/_PxJHbGQ9dM/hqdefault.jpg" alt="GEMENCHEH BOYS" loading="lazy">
-        <span class="veil"></span><span class="glare"></span>
+        <span class="veil"></span><span class="glare"></span><span class="plat">Astro Shaw</span>
         <span class="meta"><span class="role">制作 · 混音 · 编曲</span>
           <span class="ttl">《GEMENCHEH BOYS》</span>
           <span class="sub">2023 · 体育励志片 · Astro Shaw</span></span>
       </a>
       <a class="bt b-md" href="https://www.youtube.com/watch?v=y48tKa_Cog0" target="_blank" rel="noopener">
         <img src="https://img.youtube.com/vi/y48tKa_Cog0/hqdefault.jpg" alt="DELETED 越界" loading="lazy">
-        <span class="veil"></span><span class="glare"></span>
+        <span class="veil"></span><span class="glare"></span><span class="plat">Netflix</span>
         <span class="meta"><span class="role">制作 · 混音</span>
           <span class="ttl">《DELETED 越界》</span>
           <span class="sub">2022 · 新加坡 &amp; 马来西亚 · Netflix</span></span>
       </a>
       <a class="bt b-sm" href="https://youtu.be/MuUq9CT3WDo" target="_blank" rel="noopener">
         <img src="https://img.youtube.com/vi/MuUq9CT3WDo/hqdefault.jpg" alt="The Great Journey" loading="lazy">
-        <span class="veil"></span><span class="glare"></span>
+        <span class="veil"></span><span class="glare"></span><span class="plat">Great Eastern</span>
         <span class="meta"><span class="role">监制 · 演唱</span>
           <span class="ttl">《The Great Journey》</span>
           <span class="sub">2025 · Great Eastern</span></span>
       </a>
       <a class="bt b-sm" href="https://www.youtube.com/watch?v=-ckIQsDDRfk" target="_blank" rel="noopener">
         <img src="https://img.youtube.com/vi/-ckIQsDDRfk/hqdefault.jpg" alt="感謝妳 趙傳" loading="lazy">
-        <span class="veil"></span><span class="glare"></span>
+        <span class="veil"></span><span class="glare"></span><span class="plat">趙傳</span>
         <span class="meta"><span class="role">编曲</span>
           <span class="ttl">《感謝妳》趙傳</span>
           <span class="sub">电影《海墘新路》主题曲</span></span>
       </a>
-      <a class="bt b-sm" href="https://www.youtube.com/watch?v=4gYK2FkKD4M" target="_blank" rel="noopener">
-        <img src="https://img.youtube.com/vi/4gYK2FkKD4M/hqdefault.jpg" alt="看见西廖 SILIAU" loading="lazy">
-        <span class="veil"></span><span class="glare"></span>
-        <span class="meta"><span class="role">音乐统筹 · 声音设计</span>
-          <span class="ttl">《看见西廖》SILIAU</span>
-          <span class="sub">2025 · 公益微电影 · 华教</span></span>
+      <a class="bt b-sm" href="https://youtu.be/0gg2L3biPMw" target="_blank" rel="noopener">
+        <img src="https://img.youtube.com/vi/0gg2L3biPMw/hqdefault.jpg" alt="大马最好听脏话版 小幸运" loading="lazy">
+        <span class="veil"></span><span class="glare"></span><span class="plat">ChiliTomato</span>
+        <span class="meta"><span class="role">制作 · 编曲 · 演唱</span>
+          <span class="ttl">大马脏话版《小幸运》</span>
+          <span class="sub">全网疯传的改编 cover</span></span>
       </a>
     </div>
   </div>
@@ -527,7 +558,7 @@ footer:hover .egg{color:var(--dim)}
 <section>
   <div class="wrap">
     <div class="work-group rv">
-      <h3>电影</h3>
+      <h3>电影<em>10 部</em></h3>
       <a class="wi" href="https://www.youtube.com/watch?v=JQPEx019B-w" target="_blank" rel="noopener">
         <span class="thumb"><img src="https://img.youtube.com/vi/JQPEx019B-w/hqdefault.jpg" alt="" loading="lazy"></span>
         <span class="body"><span class="t">《海墘新路》You Mean The World To Me</span><span class="m">2017 · 马来西亚 · Astro Shaw</span></span>
@@ -555,7 +586,15 @@ footer:hover .egg{color:var(--dim)}
     </div>
 
     <div class="work-group rv">
-      <h3>剧集 OST</h3>
+      <h3>剧集 OST<em>3 部 · 共 52 集</em></h3>
+      <a class="wi" href="https://www.youtube.com/playlist?list=PLcHRE_huWMAx3S6mMn1TibNZmKyPdpcnE" target="_blank" rel="noopener">
+        <span class="thumb txt">12 集</span>
+        <span class="body"><span class="t">《偶然闯入的世界》偶像剧</span><span class="m">2021 · 中国大陆 · 搜狐视频</span></span>
+        <span class="role">制作 · 混音</span><span class="go">听 ↗</span></a>
+      <a class="wi" href="https://www.youtube.com/playlist?list=PLkGgRIFLBge1bjW3LimpfZFPF0PST_QcH" target="_blank" rel="noopener">
+        <span class="thumb txt">10 集</span>
+        <span class="body"><span class="t">《爱的约定》A Promise To Love</span><span class="m">2021 · 马来西亚 · 八度空间</span></span>
+        <span class="role">制作 · 配乐 · 混音</span><span class="go">听 ↗</span></a>
       <a class="wi" href="https://www.youtube.com/watch?v=YGQgS53nIB0" target="_blank" rel="noopener">
         <span class="thumb"><img src="https://img.youtube.com/vi/YGQgS53nIB0/hqdefault.jpg" alt="" loading="lazy"></span>
         <span class="body"><span class="t">《刺客列传 2 之龙血玄黄》网剧 30 集</span><span class="m">2017 · 中国大陆</span></span>
@@ -563,7 +602,7 @@ footer:hover .egg{color:var(--dim)}
     </div>
 
     <div class="work-group rv">
-      <h3>品牌 · 广告</h3>
+      <h3>品牌 · 广告<em>6 支</em></h3>
       <a class="wi" href="https://youtu.be/rl4_0yZvEL8" target="_blank" rel="noopener">
         <span class="thumb"><img src="https://img.youtube.com/vi/rl4_0yZvEL8/hqdefault.jpg" alt="" loading="lazy"></span>
         <span class="body"><span class="t">Nestlé Lively™</span><span class="m">2023 · 品牌广告</span></span>
@@ -587,7 +626,7 @@ footer:hover .egg{color:var(--dim)}
     </div>
 
     <div class="work-group rv">
-      <h3>歌曲制作</h3>
+      <h3>歌曲制作<em>500+ 首</em></h3>
       <a class="wi" href="https://www.youtube.com/watch?v=fn9pA-Wnx_Q" target="_blank" rel="noopener">
         <span class="thumb"><img src="https://img.youtube.com/vi/fn9pA-Wnx_Q/hqdefault.jpg" alt="" loading="lazy"></span>
         <span class="body"><span class="t">《亲爱的，怎么了》Crystal 王雪晶</span><span class="m">和声 · 录音 · 后期 · 混音 &amp; 母带</span></span>
@@ -805,6 +844,11 @@ footer:hover .egg{color:var(--dim)}
   </div>
 </section>
 
+<div class="amb" id="amb" role="button" tabindex="0" aria-label="背景音乐开关">
+  <span class="eq2"><i></i><i></i><i></i></span><span id="ambTxt">背景音乐</span>
+</div>
+<audio id="ambAu" loop preload="none" src="assets/ambient.mp3"></audio>
+
 <footer>
   <div class="wrap">
     <div class="foot-row">
@@ -827,9 +871,44 @@ footer:hover .egg{color:var(--dim)}
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var hover =window.matchMedia&&window.matchMedia('(hover: hover)').matches;
 
-  var brands=['Astro Shaw','Netflix','GSC','mm2','MILO®','Nestlé','Great Eastern','趙傳','八度空间','搜狐视频'];
+  var brands=[['Astro Shaw','astro-shaw'],['Netflix','netflix'],['GSC','gsc'],['mm2','mm2'],
+              ['MILO®','milo'],['Nestlé','nestle'],['Great Eastern','great-eastern'],
+              ['趙傳','zhaochuan'],['八度空间','8tv'],['搜狐视频','sohu']];
   var track=document.getElementById('track');
-  if(track){var h=brands.map(function(b){return '<b>'+b+'</b>';}).join('');track.innerHTML=h+h;}
+  if(track){
+    var h=brands.map(function(b){
+      return '<b class="lg"><img src="assets/logos/'+b[1]+'.png" alt="'+b[0]+'"><i>'+b[0]+'</i></b>';
+    }).join('');
+    track.innerHTML=h+h;
+    track.querySelectorAll('img').forEach(function(im){
+      im.addEventListener('error',function(){ im.parentNode.classList.add('noimg'); });
+    });
+  }
+
+  /* ambient background music — browsers block真·autoplay，所以第一次互动才起播 */
+  var ambAu=document.getElementById('ambAu'), amb=document.getElementById('amb'), ambTxt=document.getElementById('ambTxt');
+  if(ambAu&&amb){
+    fetch('assets/ambient.mp3',{method:'HEAD'}).then(function(r){ if(r.ok){ amb.classList.add('on'); armAmbient(); } }).catch(function(){});
+  }
+  function armAmbient(){
+    var started=false, off=(sessionStorage.getItem('ambOff')==='1');
+    function start(){
+      if(started||off) return; started=true;
+      ambAu.volume=0; ambAu.play().then(function(){
+        amb.classList.add('playing'); ambTxt.textContent='音乐播放中';
+        var v=0, t=setInterval(function(){ v+=0.02; ambAu.volume=Math.min(v,.22); if(v>=.22) clearInterval(t); },120);
+      }).catch(function(){ started=false; });
+    }
+    ['pointerdown','keydown','scroll','touchstart'].forEach(function(ev){
+      window.addEventListener(ev,start,{once:true,passive:true});
+    });
+    amb.addEventListener('click',function(){
+      if(ambAu.paused){ sessionStorage.setItem('ambOff','0'); off=false; started=false; start(); }
+      else{ ambAu.pause(); sessionStorage.setItem('ambOff','1'); off=true;
+            amb.classList.remove('playing'); ambTxt.textContent='播放背景音乐'; }
+    });
+    if(off){ ambTxt.textContent='播放背景音乐'; }
+  }
 
   if(!reduce){
     document.querySelectorAll('[data-split]').forEach(function(el){
@@ -862,16 +941,6 @@ footer:hover .egg{color:var(--dim)}
   });
 
 
-  /* hero audio — only shows if assets/hero.mp3 exists */
-  var au=document.getElementById('au'), pl=document.getElementById('player'), pp=document.getElementById('pp');
-  if(au&&pl){
-    fetch('assets/hero.mp3',{method:'HEAD'}).then(function(r){ if(r.ok) pl.hidden=false; }).catch(function(){});
-    pl.addEventListener('click',function(){
-      if(au.paused){ au.volume=.6; au.play(); pl.classList.add('playing'); pp.innerHTML='&#10074;&#10074;'; }
-      else{ au.pause(); pl.classList.remove('playing'); pp.innerHTML='&#9654;'; }
-    });
-    au.addEventListener('ended',function(){ pl.classList.remove('playing'); pp.innerHTML='&#9654;'; });
-  }
 
   /* bento hover preview — muted 15s clip */
   if(hover&&!reduce){
