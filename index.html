@@ -557,9 +557,9 @@ footer:hover .egg{color:var(--dim)}
     <div class="cue"><p>你手机里，<br>是不是也有一首歌，<br>一直没敢发出去？</p></div>
 
     <div class="cue"><p>有人是自己写的歌，<br>录了半年。</p>
-      <p>放给朋友听之前，总要先说一句——<br>「你别介意音质」。</p></div>
+      <p>放给朋友听之前，总要先说一句——<br>「这只是 Demo」。</p></div>
 
-    <div class="cue"><p>有人是被交代<br>要一首歌。</p>
+    <div class="cue"><p>有人是要<br>安排定制一首歌。</p>
       <p>周年曲、校歌、主题曲。<br>日期定死了，改不了。</p></div>
 
     <div class="cue"><p>有人是要用音乐<br>讲一件事。</p>
@@ -827,7 +827,7 @@ footer:hover .egg{color:var(--dim)}
       </div>
       <div class="card rv rv-d1" data-spot>
         <div class="tag">团体 · 机构 · 学校</div>
-        <h3>你有死线，要有人扛整条线</h3>
+        <h3>你有 Deadline，要有人负责</h3>
         <p>周年曲、校歌、营歌。你只跟我对话，其余五六个人我来配、我来追。</p>
         <div class="fit"><b>你会拿到</b>——成品、伴奏版、乐谱，按日期交。</div>
       </div>
@@ -1084,8 +1084,8 @@ footer:hover .egg{color:var(--dim)}
     ['pointerdown','keydown','touchstart'].forEach(function(ev){
       window.addEventListener(ev,start,{once:true,passive:true});
     });
-    /* 滑到「我是谁」就试着起播（若浏览器还没给授权，会静默失败，继续等真正的点击） */
-    var aboutSec=document.getElementById('about');
+    /* 滑到「精选作品」就试着起播（若浏览器还没给授权，会静默失败，继续等真正的点击） */
+    var aboutSec=document.getElementById('work');
     if(aboutSec&&'IntersectionObserver' in window){
       var ioA=new IntersectionObserver(function(en){
         en.forEach(function(x){ if(x.isIntersecting){ start(); ioA.disconnect(); } });
