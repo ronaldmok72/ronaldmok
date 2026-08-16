@@ -482,6 +482,8 @@ header.hero .wrap{text-align:center}
   .story .hint,.story .dots{display:none}
 }
 
+.track.rev{animation-direction:reverse}
+
 /* CLOSE */
 .close{position:relative;overflow:hidden;text-align:center;border-radius:28px;padding:66px 34px;border:1px solid var(--line);
   background:linear-gradient(150deg,rgba(var(--violet-rgb),.20),rgba(var(--pink-rgb),.11) 58%,transparent)}
@@ -812,6 +814,13 @@ footer:hover .egg{color:var(--dim)}
       </div>
     </div>
   </div>
+
+  <div class="wrap" style="margin-top:72px">
+    <div class="marquee rv" style="margin-top:0">
+      <div class="marquee-label" style="text-align:center">合作过的单位</div>
+      <div class="rail"><div class="track rev"></div></div>
+    </div>
+  </div>
 </section>
 
 <section id="who">
@@ -1058,15 +1067,17 @@ footer:hover .egg{color:var(--dim)}
   var brands=[['Astro Shaw','astro-shaw'],['Netflix','netflix'],['GSC','gsc'],['mm2','mm2'],
               ['MILO®','milo'],['Nestlé','nestle'],['Great Eastern','great-eastern'],
               ['八度空间','8tv'],['搜狐视频','sohu']];
-  var track=document.getElementById('track');
-  if(track){
+  var tracks=[].slice.call(document.querySelectorAll('.track'));
+  if(tracks.length){
     var h=brands.map(function(b){
       var mono=(['nestle','astro-shaw'].indexOf(b[1])>-1)?' mono':'';
       return '<b class="lg'+mono+'"><img src="assets/logos/'+b[1]+'.png" alt="'+b[0]+'"><i>'+b[0]+'</i></b>';
     }).join('');
-    track.innerHTML=h+h;
-    track.querySelectorAll('img').forEach(function(im){
-      im.addEventListener('error',function(){ im.parentNode.classList.add('noimg'); });
+    tracks.forEach(function(tr){
+      tr.innerHTML=h+h;
+      tr.querySelectorAll('img').forEach(function(im){
+        im.addEventListener('error',function(){ im.parentNode.classList.add('noimg'); });
+      });
     });
   }
 
