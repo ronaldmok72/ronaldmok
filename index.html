@@ -16,18 +16,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@500;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#08070C; --ink:#F4F2F8; --muted:#A09AB4; --dim:#6E6883;
-  --violet:#8B5CF6; --violet-rgb:139,92,246;
-  --pink:#EC4899;   --pink-rgb:236,72,153;
-  --line:rgba(255,255,255,.08); --line-2:rgba(255,255,255,.045); --glass:rgba(255,255,255,.032);
+  --bg:#08070C; --ink:#F7F5FB; --muted:#C6BFD6; --dim:#9C94B2;
+  --violet:#9D7BFF; --violet-rgb:157,123,255;
+  --pink:#F472B6;   --pink-rgb:244,114,182;
+  --line:rgba(255,255,255,.11); --line-2:rgba(255,255,255,.06); --glass:rgba(255,255,255,.04);
   --max:1140px;
   --sans:"Noto Sans SC","Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif;
   --serif:"Noto Serif SC",Georgia,"Songti SC",serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;
-  font-size:16.5px;line-height:1.85;letter-spacing:.02em;-webkit-font-smoothing:antialiased;
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:400;
+  font-size:18px;line-height:1.9;letter-spacing:.015em;-webkit-font-smoothing:antialiased;
   overflow-x:hidden;position:relative}
 img{display:block;max-width:100%}
 
@@ -52,14 +52,14 @@ img{display:block;max-width:100%}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 26px;position:relative}
 section{padding:104px 0;border-top:1px solid var(--line-2)}
 a{color:inherit}
-.eyebrow{font-family:"Inter",var(--sans);font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;
-  font-weight:600;margin-bottom:20px;
+.eyebrow{font-family:"Inter",var(--sans);font-size:13px;letter-spacing:.24em;text-transform:uppercase;
+  font-weight:700;margin-bottom:20px;
   background:linear-gradient(90deg,var(--violet),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
-h1{font-family:var(--serif);font-size:clamp(35px,6.2vw,66px);line-height:1.26;font-weight:700;letter-spacing:-.01em}
-h2{font-family:var(--serif);font-size:clamp(26px,3.8vw,40px);line-height:1.34;font-weight:700;margin-bottom:16px}
-h3{font-size:18.5px;font-weight:500;margin-bottom:9px;line-height:1.55}
+h1{font-family:var(--serif);font-size:clamp(36px,6.2vw,66px);line-height:1.26;font-weight:700;letter-spacing:-.01em}
+h2{font-family:var(--serif);font-size:clamp(28px,4vw,42px);line-height:1.34;font-weight:700;margin-bottom:18px}
+h3{font-size:20.5px;font-weight:500;margin-bottom:10px;line-height:1.55}
 p{color:var(--muted)}
-.lead{font-size:clamp(16.5px,1.9vw,19px);color:var(--muted);max-width:60ch;font-weight:300}
+.lead{font-size:clamp(18px,2vw,21px);color:var(--muted);max-width:58ch;font-weight:400}
 .sec-intro{max-width:62ch;margin-bottom:52px}
 .grad{background:linear-gradient(100deg,var(--violet) 8%,var(--pink) 52%,var(--violet) 96%);
   background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
@@ -108,11 +108,11 @@ header.hero{padding:126px 0 92px;position:relative;overflow:hidden}
 .marquee{margin-top:60px;overflow:hidden;
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
   mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
-.marquee-label{font-family:"Inter",var(--sans);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);margin-bottom:18px}
+.marquee-label{font-family:"Inter",var(--sans);font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);margin-bottom:18px}
 .track{display:flex;width:max-content;animation:slide 34s linear infinite}
 .hero:hover .track{animation-play-state:paused}
 @keyframes slide{to{transform:translateX(-50%)}}
-.track b{font-family:"Inter",var(--sans);font-weight:500;font-size:19px;color:var(--muted);padding:0 30px;white-space:nowrap}
+.track b{font-family:"Inter",var(--sans);font-weight:600;font-size:21px;color:var(--muted);padding:0 30px;white-space:nowrap}
 .track b::after{content:"·";margin-left:30px;color:var(--violet)}
 
 /* STATS */
@@ -122,7 +122,7 @@ header.hero{padding:126px 0 92px;position:relative;overflow:hidden}
 .stat:hover{background:rgba(var(--violet-rgb),.09)}
 .stat b{display:block;font-family:"Inter",var(--sans);font-size:clamp(30px,4vw,42px);font-weight:600;letter-spacing:-.03em;
   background:linear-gradient(140deg,#fff 20%,var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
-.stat span{font-size:12.5px;color:var(--dim);letter-spacing:.06em}
+.stat span{font-size:14px;color:var(--muted);letter-spacing:.06em}
 
 /* CARDS */
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
@@ -134,12 +134,12 @@ header.hero{padding:126px 0 92px;position:relative;overflow:hidden}
   background:radial-gradient(320px circle at var(--cx,50%) var(--cy,50%),rgba(var(--violet-rgb),.16),transparent 62%)}
 .card:hover::before{opacity:1}
 .card:hover{border-color:rgba(var(--violet-rgb),.42);transform:translateY(-5px)}
-.card .tag{position:relative;font-family:"Inter",var(--sans);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+.card .tag{position:relative;font-family:"Inter",var(--sans);font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;
   margin-bottom:16px;font-weight:600;
   background:linear-gradient(90deg,var(--violet),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
 .card h3,.card p,.card .fit{position:relative}
-.card p{font-size:15px}
-.card .fit{margin-top:20px;padding-top:17px;border-top:1px solid var(--line-2);font-size:14px;color:var(--dim)}
+.card p{font-size:16.5px}
+.card .fit{margin-top:20px;padding-top:17px;border-top:1px solid var(--line-2);font-size:15.5px;color:var(--muted)}
 .card .fit b{color:var(--muted);font-weight:500}
 
 /* STEPS */
@@ -147,9 +147,9 @@ header.hero{padding:126px 0 92px;position:relative;overflow:hidden}
 .step{position:relative;padding-left:22px}
 .step::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:2px;border-radius:2px;
   background:linear-gradient(180deg,var(--violet),rgba(var(--pink-rgb),.15))}
-.step .n{font-family:"Inter",var(--sans);font-size:11px;letter-spacing:.2em;font-weight:700;margin-bottom:10px;
+.step .n{font-family:"Inter",var(--sans);font-size:12.5px;letter-spacing:.2em;font-weight:700;margin-bottom:10px;
   background:linear-gradient(90deg,var(--violet),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
-.step p{font-size:14.5px}
+.step p{font-size:16px}
 
 /* ── FEATURED BENTO ─────────────────────────── */
 .bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
@@ -166,11 +166,11 @@ header.hero{padding:126px 0 92px;position:relative;overflow:hidden}
   background:linear-gradient(115deg,transparent 38%,rgba(var(--violet-rgb),.28) 50%,transparent 62%)}
 .bt:hover .glare{opacity:1}
 .bt .meta{position:absolute;left:0;right:0;bottom:0;padding:22px 22px 20px}
-.bt .role{display:inline-block;font-family:"Inter",var(--sans);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+.bt .role{display:inline-block;font-family:"Inter",var(--sans);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
   border:1px solid rgba(var(--violet-rgb),.5);background:rgba(var(--violet-rgb),.16);backdrop-filter:blur(6px);
   border-radius:100px;padding:3px 11px;color:#DCCBFF;font-weight:500;margin-bottom:10px}
-.bt .ttl{font-family:var(--serif);font-size:20px;font-weight:700;line-height:1.35;color:#fff;margin-bottom:4px}
-.bt .sub{font-size:13px;color:#B6AECD}
+.bt .ttl{font-family:var(--serif);font-size:23px;font-weight:700;line-height:1.35;color:#fff;margin-bottom:4px}
+.bt .sub{font-size:14.5px;color:#CFC7E2}
 .b-lg{grid-column:span 3;min-height:320px}
 .b-md{grid-column:span 3;min-height:250px}
 .b-sm{grid-column:span 2;min-height:220px}
@@ -179,7 +179,7 @@ header.hero{padding:126px 0 92px;position:relative;overflow:hidden}
 
 /* ── WORK LIST WITH THUMBS ──────────────────── */
 .work-group{margin-bottom:46px}
-.work-group>h3{font-family:"Inter",var(--sans);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);
+.work-group>h3{font-family:"Inter",var(--sans);font-size:13.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);
   padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:6px;font-weight:600}
 .wi{position:relative;display:flex;align-items:center;gap:16px;padding:12px 8px;
   border-bottom:1px solid var(--line-2);text-decoration:none;overflow:hidden;
@@ -189,20 +189,20 @@ header.hero{padding:126px 0 92px;position:relative;overflow:hidden}
 .wi:hover::before{opacity:1}
 .wi:hover{padding-left:16px}
 .wi>*{position:relative}
-.thumb{flex:0 0 auto;width:78px;height:46px;border-radius:8px;overflow:hidden;
+.thumb{flex:0 0 auto;width:104px;height:60px;border-radius:8px;overflow:hidden;
   border:1px solid var(--line);background:linear-gradient(140deg,rgba(var(--violet-rgb),.34),rgba(var(--pink-rgb),.2));
   display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.7);font-size:16px}
 .thumb img{width:100%;height:100%;object-fit:cover;filter:saturate(.8) brightness(.82);transition:filter .4s ease,transform .5s ease}
 .wi:hover .thumb img{filter:saturate(1.05) brightness(1);transform:scale(1.08)}
 .wi .body{flex:1 1 auto;min-width:0}
-.wi .t{font-weight:500;font-size:16px;display:block;line-height:1.5}
-.wi .m{color:var(--dim);font-size:13.5px;display:block;line-height:1.5}
-.wi .role{flex:0 0 auto;font-family:"Inter",var(--sans);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
-  border:1px solid rgba(var(--violet-rgb),.34);border-radius:100px;padding:3px 11px;color:#C9B6FF;font-weight:500;white-space:nowrap}
-.wi .go{flex:0 0 auto;font-size:13px;opacity:0;transition:opacity .3s ease;
+.wi .t{font-weight:500;font-size:18px;display:block;line-height:1.5}
+.wi .m{color:var(--muted);font-size:15px;display:block;line-height:1.5}
+.wi .role{flex:0 0 auto;font-family:"Inter",var(--sans);font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+  border:1px solid rgba(var(--violet-rgb),.45);background:rgba(var(--violet-rgb),.12);border-radius:100px;padding:4px 13px;color:#DDCFFF;font-weight:600;white-space:nowrap}
+.wi .go{flex:0 0 auto;font-size:14.5px;font-weight:600;opacity:0;transition:opacity .3s ease;
   background:linear-gradient(90deg,var(--violet),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
 .wi:hover .go{opacity:1}
-@media(max-width:620px){.wi .role{display:none}.thumb{width:62px;height:38px}}
+@media(max-width:620px){.wi .role{display:none}.thumb{width:84px;height:50px}}
 
 /* QUOTES */
 .quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:20px}
@@ -212,41 +212,110 @@ header.hero{padding:126px 0 92px;position:relative;overflow:hidden}
 .quote:hover{border-color:rgba(var(--pink-rgb),.34);transform:translateY(-4px)}
 .quote::after{content:"”";position:absolute;top:-26px;right:14px;font-family:var(--serif);font-size:130px;
   color:rgba(var(--violet-rgb),.13);line-height:1;pointer-events:none}
-.quote q{display:block;font-family:var(--serif);font-size:19px;line-height:1.7;color:var(--ink);font-weight:500;quotes:none}
+.quote q{display:block;font-family:var(--serif);font-size:21px;line-height:1.7;color:var(--ink);font-weight:500;quotes:none}
 .quote q::before,.quote q::after{content:""}
-.quote .who{margin-top:18px;font-size:13.5px;color:var(--dim)}
+.quote .who{margin-top:18px;font-size:15px;color:var(--dim)}
 .quote .who b{color:var(--muted);font-weight:500}
 .quote .fact{margin-top:17px;padding-top:15px;border-top:1px solid var(--line-2);
-  font-size:14px;color:var(--muted);display:flex;gap:10px;align-items:flex-start}
+  font-size:15.5px;color:var(--muted);display:flex;gap:10px;align-items:flex-start}
 .quote .fact::before{content:"→";color:var(--pink);flex-shrink:0}
 
 /* FAQ */
 details{border-bottom:1px solid var(--line-2);padding:24px 0}
-summary{cursor:pointer;list-style:none;font-weight:500;font-size:17.5px;
+summary{cursor:pointer;list-style:none;font-weight:500;font-size:19.5px;
   display:flex;justify-content:space-between;align-items:center;gap:18px;transition:color .3s ease}
 summary:hover{color:#D9C7FF}
 summary::-webkit-details-marker{display:none}
 summary::after{content:"";width:11px;height:11px;flex-shrink:0;border-right:1.5px solid var(--violet);border-bottom:1.5px solid var(--pink);
   transform:rotate(45deg) translateY(-3px);transition:transform .35s cubic-bezier(.2,.7,.25,1)}
 details[open] summary::after{transform:rotate(-135deg) translateY(-3px)}
-details .a{margin-top:16px;font-size:15px;max-width:64ch;color:var(--muted);animation:fadeIn .45s ease}
+details .a{margin-top:16px;font-size:17px;max-width:62ch;color:var(--muted);animation:fadeIn .45s ease}
 @keyframes fadeIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
 details .a p{margin-bottom:13px}details .a p:last-child{margin-bottom:0}
 details .a ol{margin:0 0 13px 22px}
 details .a li{margin-bottom:7px;color:var(--muted)}
 details .a b{color:var(--ink);font-weight:500}
 
+
+/* ── ABOUT ─────────────────────────────────── */
+.about{display:grid;grid-template-columns:300px 1fr;gap:52px;align-items:start}
+@media(max-width:820px){.about{grid-template-columns:1fr;gap:34px}}
+.avatar{position:relative;border-radius:26px;overflow:hidden;border:1px solid var(--line);
+  aspect-ratio:4/5;background:linear-gradient(150deg,rgba(var(--violet-rgb),.4),rgba(var(--pink-rgb),.25));
+  display:flex;align-items:center;justify-content:center}
+.avatar img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.avatar .ini{font-family:var(--serif);font-size:64px;font-weight:700;color:rgba(255,255,255,.85)}
+.about .bio p{font-size:18px;margin-bottom:18px}
+.about .bio p:last-child{margin-bottom:0}
+.about .sig{margin-top:26px;padding-top:22px;border-top:1px solid var(--line-2);display:flex;flex-wrap:wrap;gap:10px}
+.about .sig span{font-family:"Inter",var(--sans);font-size:13px;font-weight:600;letter-spacing:.06em;
+  border:1px solid rgba(var(--violet-rgb),.4);background:rgba(var(--violet-rgb),.1);
+  border-radius:100px;padding:5px 15px;color:#DDCFFF}
+
+/* ── FLOW ──────────────────────────────────── */
+.flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}
+.fx{position:relative;border:1px solid var(--line);border-radius:18px;padding:26px 22px 24px;
+  background:var(--glass);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  transition:border-color .35s ease,transform .35s ease}
+.fx:hover{border-color:rgba(var(--pink-rgb),.45);transform:translateY(-4px)}
+.fx b{display:block;font-family:"Inter",var(--sans);font-size:12.5px;letter-spacing:.16em;font-weight:700;margin-bottom:12px;
+  background:linear-gradient(90deg,var(--violet),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.fx h4{font-size:18px;font-weight:600;margin-bottom:7px;line-height:1.5}
+.fx p{font-size:15px;line-height:1.75}
+.fx .who{margin-top:14px;padding-top:12px;border-top:1px solid var(--line-2);font-size:13.5px;color:var(--dim)}
+
+/* ── CREDITS ───────────────────────────────── */
+.credits{border-top:1px solid var(--line)}
+.cr{position:relative;display:grid;grid-template-columns:78px 1fr auto;gap:20px;align-items:baseline;
+  padding:22px 8px;border-bottom:1px solid var(--line-2);text-decoration:none;overflow:hidden;
+  transition:padding-left .35s cubic-bezier(.2,.7,.25,1)}
+.cr::before{content:"";position:absolute;inset:0;opacity:0;transition:opacity .35s ease;
+  background:linear-gradient(90deg,rgba(var(--violet-rgb),.13),transparent 60%)}
+.cr:hover::before{opacity:1}
+.cr:hover{padding-left:16px}
+.cr>*{position:relative}
+.cr .yr{font-family:"Inter",var(--sans);font-size:15px;font-weight:600;color:var(--dim);letter-spacing:.04em}
+.cr .t{font-family:var(--serif);font-size:21px;font-weight:700;line-height:1.45;display:block}
+.cr .m{font-size:15px;color:var(--muted);display:block;margin-top:2px}
+.cr .role{font-family:"Inter",var(--sans);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;
+  border:1px solid rgba(var(--pink-rgb),.45);background:rgba(var(--pink-rgb),.12);
+  border-radius:100px;padding:5px 14px;color:#FFD3E8;white-space:nowrap}
+@media(max-width:700px){.cr{grid-template-columns:1fr;gap:6px}.cr .role{justify-self:start;margin-top:6px}}
+
+/* ── HERO AUDIO ────────────────────────────── */
+.player{display:inline-flex;align-items:center;gap:14px;margin-top:34px;
+  border:1px solid var(--line);background:var(--glass);border-radius:100px;padding:9px 22px 9px 9px;
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);cursor:pointer;
+  transition:border-color .3s ease,background .3s ease}
+.player:hover{border-color:rgba(var(--pink-rgb),.5);background:rgba(var(--violet-rgb),.1)}
+.player .pp{width:38px;height:38px;border-radius:50%;flex:0 0 auto;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(120deg,var(--violet),var(--pink));color:#fff;font-size:13px}
+.player .lbl{font-size:15px;color:var(--muted)}
+.player .lbl b{color:var(--ink);font-weight:500}
+.eq{display:flex;align-items:flex-end;gap:3px;height:16px}
+.eq i{width:3px;background:linear-gradient(180deg,var(--violet),var(--pink));border-radius:2px;height:4px}
+.player.playing .eq i{animation:bar .9s ease-in-out infinite alternate}
+.player.playing .eq i:nth-child(2){animation-delay:.15s}
+.player.playing .eq i:nth-child(3){animation-delay:.3s}
+.player.playing .eq i:nth-child(4){animation-delay:.45s}
+@keyframes bar{to{height:16px}}
+
+/* ── BENTO PREVIEW ─────────────────────────── */
+.bt iframe{position:absolute;inset:0;width:100%;height:100%;border:0;opacity:0;transition:opacity .5s ease;pointer-events:none}
+.bt.prev iframe{opacity:1}
+.bt.prev img{opacity:0}
+
 /* CLOSE */
 .close{position:relative;overflow:hidden;text-align:center;border-radius:28px;padding:66px 34px;border:1px solid var(--line);
   background:linear-gradient(150deg,rgba(var(--violet-rgb),.20),rgba(var(--pink-rgb),.11) 58%,transparent)}
 .close h2{margin-bottom:14px}
 .close p{max-width:48ch;margin:0 auto 32px}
-footer{padding:50px 0 70px;border-top:1px solid var(--line-2);color:var(--dim);font-size:13.5px}
+footer{padding:50px 0 70px;border-top:1px solid var(--line-2);color:var(--muted);font-size:15px}
 .foot-row{display:flex;flex-wrap:wrap;gap:18px 30px;align-items:center;justify-content:space-between}
 .foot-links{display:flex;flex-wrap:wrap;gap:20px}
 .foot-links a{text-decoration:none;color:var(--muted);transition:color .3s ease}
 .foot-links a:hover{color:var(--pink)}
-.egg{margin-top:22px;font-size:12.5px;color:transparent;transition:color .6s ease}
+.egg{margin-top:22px;font-size:14px;color:transparent;transition:color .6s ease}
 footer:hover .egg{color:var(--dim)}
 
 @media(max-width:640px){
@@ -289,6 +358,13 @@ footer:hover .egg{color:var(--dim)}
       <a class="btn" href="https://wa.me/60149212571" data-magnet>聊聊你的项目 →</a>
       <a class="btn-ghost" href="#work">先看作品</a>
     </div>
+    <div class="player rv rv-d3" id="player" hidden>
+      <span class="pp" id="pp">&#9654;</span>
+      <span class="eq"><i></i><i></i><i></i><i></i></span>
+      <span class="lbl">听一段我做的东西　<b>《The Great Journey》</b></span>
+    </div>
+    <audio id="au" preload="none" src="assets/hero.mp3"></audio>
+
     <div class="marquee rv rv-d3">
       <div class="marquee-label">合作过</div>
       <div class="track" id="track"></div>
@@ -304,6 +380,29 @@ footer:hover .egg{color:var(--dim)}
       <div class="stat"><b data-count="10" data-suffix="">0</b><span>部电影配乐</span></div>
       <div class="stat"><b data-count="100" data-suffix="+">0</b><span>场演出与赛事</span></div>
       <div class="stat"><b data-count="200" data-suffix="+">0</b><span>培育学员</span></div>
+    </div>
+  </div>
+</section>
+
+
+<section id="about">
+  <div class="wrap">
+    <div class="about">
+      <div class="avatar rv">
+        <span class="ini">RM</span>
+        <img src="assets/ronald.jpg" alt="Ronald Mok 莫荣烽" loading="lazy" onerror="this.remove()">
+      </div>
+      <div class="bio rv rv-d1">
+        <div class="eyebrow">我是谁</div>
+        <h2>Ronald Mok　莫荣烽</h2>
+        <p>做音乐二十年。前十年我自己动手——编曲、录音、混音、母带，什么都做。后十年我发现，我真正擅长的不是弹得比谁快，是<b style="color:var(--ink);font-weight:500">看懂一件事要什么，然后找到对的人，把它做完</b>。</p>
+        <p>所以现在我的角色多数是监制和统筹：电影、剧集、广告、演唱会、比赛。我不一定出现在成品的每一轨里，但整件事能不能按时交出去，是我的责任。</p>
+        <p>白天我在教育机构负责营运，晚上和周末接音乐项目。两件事其实用的是同一套脑——<b style="color:var(--ink);font-weight:500">把散的东西组织成一个成品</b>。</p>
+        <div class="sig">
+          <span>音乐监制</span><span>制作统筹</span><span>混音 · 母带</span>
+          <span>演绎指导</span><span>MACP 会员</span><span>Kuala Lumpur</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -351,6 +450,29 @@ footer:hover .egg{color:var(--dim)}
       <div class="step rv rv-d2"><div class="n">03</div><h3>我来管交付</h3><p>方向、进度、修改、协调，全部经过我。你只对我一个人说话。</p></div>
       <div class="step rv rv-d3"><div class="n">04</div><h3>交出能用的成品</h3><p>成品、分轨、伴奏版、谱，按你的用途配齐。需要上架或版权登记，也一并处理。</p></div>
     </div>
+  </div>
+</section>
+
+
+<section id="flow">
+  <div class="wrap">
+    <div class="sec-intro rv">
+      <div class="eyebrow">一首歌是怎么做出来的</div>
+      <h2>从一句旋律，<br><span class="grad">到能在平台上听到</span></h2>
+      <p class="lead">很多人第一次做歌，卡在不知道整件事有几步、每一步该找谁。先给你看全貌——你现在在哪一步，我们就从哪里接。</p>
+    </div>
+    <div class="flow">
+      <div class="fx rv"><b>STEP 01</b><h4>词曲 / Demo</h4><p>把脑子里的旋律变成一段听得出来的东西。手机哼的也算数。</p><div class="who">词曲作者 · 你自己</div></div>
+      <div class="fx rv rv-d1"><b>STEP 02</b><h4>编曲</h4><p>决定这首歌用什么乐器、什么情绪、什么结构。歌好不好听，八成在这里定。</p><div class="who">编曲人</div></div>
+      <div class="fx rv rv-d2"><b>STEP 03</b><h4>录音</h4><p>人声、真人乐器进棚。唱得对不对，跟录得好不好，是两件事。</p><div class="who">录音师 · 配唱制作</div></div>
+      <div class="fx rv rv-d3"><b>STEP 04</b><h4>混音 · 母带</h4><p>让所有声音各就各位，音量和质感达到能公开播放的标准。</p><div class="who">混音 / 母带工程师</div></div>
+      <div class="fx rv"><b>STEP 05</b><h4>上架 · 版权</h4><p>发行到串流平台、登记版权。做对了，这首歌以后会一直帮你赚钱。</p><div class="who">发行商 · MACP</div></div>
+      <div class="fx rv rv-d1"><b>STEP 06</b><h4>延伸交付</h4><p>伴奏版、分轨、乐谱、现场编制——真正要用的时候才发现缺，就来不及了。</p><div class="who">制谱 · 现场编制</div></div>
+    </div>
+    <p class="lead rv" style="margin-top:36px;max-width:64ch">
+      <b style="color:var(--ink);font-weight:500">这六步，通常要找五到六个不同的人。</b>
+      我做的事是：判断你需要哪几步、找谁做、把他们串起来，然后对结果负责。你只需要跟我一个人对话。
+    </p>
   </div>
 </section>
 
@@ -430,22 +552,10 @@ footer:hover .egg{color:var(--dim)}
         <span class="thumb"><img src="https://img.youtube.com/vi/B112k6wpn78/hqdefault.jpg" alt="" loading="lazy"></span>
         <span class="body"><span class="t">《愛存在 Love Endures》</span><span class="m">2015 · 廖启智 × 汤小康 · mm2</span></span>
         <span class="role">制作助理 · 录音</span><span class="go">听 ↗</span></a>
-      <a class="wi" href="https://www.le.com/ptv/vplay/75640443.html" target="_blank" rel="noopener">
-        <span class="thumb">♪</span>
-        <span class="body"><span class="t">《忠犬流浪记》A Dog's Tale</span><span class="m">2021 · 中国大陆 &amp; 泰国</span></span>
-        <span class="role">制作 · 混音</span><span class="go">看 ↗</span></a>
     </div>
 
     <div class="work-group rv">
       <h3>剧集 OST</h3>
-      <a class="wi" href="https://www.youtube.com/playlist?list=PLcHRE_huWMAx3S6mMn1TibNZmKyPdpcnE" target="_blank" rel="noopener">
-        <span class="thumb">♪</span>
-        <span class="body"><span class="t">《偶然闯入的世界》偶像剧 12 集</span><span class="m">2021 · 中国大陆 · 搜狐视频</span></span>
-        <span class="role">制作 · 混音</span><span class="go">听 ↗</span></a>
-      <a class="wi" href="https://www.youtube.com/playlist?list=PLkGgRIFLBge1bjW3LimpfZFPF0PST_QcH" target="_blank" rel="noopener">
-        <span class="thumb">♪</span>
-        <span class="body"><span class="t">《爱的约定》A Promise To Love 10 集</span><span class="m">2021 · 马来西亚 · 八度空间</span></span>
-        <span class="role">制作 · 配乐 · 混音</span><span class="go">听 ↗</span></a>
       <a class="wi" href="https://www.youtube.com/watch?v=YGQgS53nIB0" target="_blank" rel="noopener">
         <span class="thumb"><img src="https://img.youtube.com/vi/YGQgS53nIB0/hqdefault.jpg" alt="" loading="lazy"></span>
         <span class="body"><span class="t">《刺客列传 2 之龙血玄黄》网剧 30 集</span><span class="m">2017 · 中国大陆</span></span>
@@ -486,18 +596,10 @@ footer:hover .egg{color:var(--dim)}
         <span class="thumb"><img src="https://img.youtube.com/vi/XPmSwJo4sU0/hqdefault.jpg" alt="" loading="lazy"></span>
         <span class="body"><span class="t">《Fly To The Sky》Henley &amp; Jordan</span><span class="m">《爱的约定》主题曲</span></span>
         <span class="role">配唱制作 · 和声编写</span><span class="go">听 ↗</span></a>
-      <a class="wi" href="https://music.apple.com/cn/song/1812851921" target="_blank" rel="noopener">
-        <span class="thumb">♪</span>
-        <span class="body"><span class="t">《小小的要求》Jade 李佳洁</span><span class="m">2025 · Apple Music</span></span>
-        <span class="role">单曲制作</span><span class="go">听 ↗</span></a>
       <a class="wi" href="https://www.youtube.com/watch?v=WZR_7c5RRPE" target="_blank" rel="noopener">
         <span class="thumb"><img src="https://img.youtube.com/vi/WZR_7c5RRPE/hqdefault.jpg" alt="" loading="lazy"></span>
         <span class="body"><span class="t">《暖暖的光》Andrew 雷振光</span><span class="m">单曲制作 · 录音 · 混音</span></span>
         <span class="role">单曲制作</span><span class="go">听 ↗</span></a>
-      <a class="wi" href="https://www.youtube.com/playlist?list=PL-ZYnKKKm2nceJMzcNi_DtfKuhBBiFjtM" target="_blank" rel="noopener">
-        <span class="thumb">♪</span>
-        <span class="body"><span class="t">MOSES 周傲倫 首張同名專輯</span><span class="m">2018 · 全专辑</span></span>
-        <span class="role">专辑制作</span><span class="go">听 ↗</span></a>
       <a class="wi" href="https://www.youtube.com/watch?v=uMuYMm5PalQ" target="_blank" rel="noopener">
         <span class="thumb"><img src="https://img.youtube.com/vi/uMuYMm5PalQ/hqdefault.jpg" alt="" loading="lazy"></span>
         <span class="body"><span class="t">《大马 Mamak 档》国庆歌曲</span><span class="m">2019 · 马来西亚</span></span>
@@ -510,10 +612,6 @@ footer:hover .egg{color:var(--dim)}
         <span class="thumb"><img src="https://img.youtube.com/vi/0gg2L3biPMw/hqdefault.jpg" alt="" loading="lazy"></span>
         <span class="body"><span class="t">大马最好听脏话版《小幸运》</span><span class="m">ChiliTomato 奇力藩茄</span></span>
         <span class="role">制作 · 编曲 · 演唱</span><span class="go">听 ↗</span></a>
-      <a class="wi" href="https://www.facebook.com/visitationycm/videos/716000990185557/" target="_blank" rel="noopener">
-        <span class="thumb">♪</span>
-        <span class="body"><span class="t">基青 40 周年主题曲《心满意足》</span><span class="m">2023 · 团体周年曲</span></span>
-        <span class="role">单曲制作</span><span class="go">听 ↗</span></a>
       <a class="wi" href="https://www.youtube.com/watch?v=0gNzgr_Uyj8" target="_blank" rel="noopener">
         <span class="thumb"><img src="https://img.youtube.com/vi/0gNzgr_Uyj8/hqdefault.jpg" alt="" loading="lazy"></span>
         <span class="body"><span class="t">吉隆坡康乐华小 校歌</span><span class="m">2022 · 学校委托</span></span>
@@ -535,50 +633,46 @@ footer:hover .egg{color:var(--dim)}
     <div class="sec-intro rv">
       <div class="eyebrow">统筹 · 舞台</div>
       <h2>不只是把歌做出来，<br><span class="grad">还要让它在台上成立</span></h2>
-      <p class="lead">
-        巡回演唱会、周年音乐会、国际赛事——从节目结构、曲目编排、演绎训练到现场执行，
-        我做的是整场怎么走，不只是其中一首歌怎么响。
-      </p>
+      <p class="lead">巡回演唱会、周年音乐会、国际赛事——从节目结构、曲目编排、演绎训练到现场执行，我做的是整场怎么走，不只是其中一首歌怎么响。累计超过百场。</p>
     </div>
 
-    <div class="work-group rv">
-      <h3>演出 · 赛事 · 统筹</h3>
-      <a class="wi" href="https://www.youtube.com/watch?v=RSzl-4ZSKoY" target="_blank" rel="noopener">
-        <span class="thumb"><img src="https://img.youtube.com/vi/RSzl-4ZSKoY/hqdefault.jpg" alt="" loading="lazy"></span>
-        <span class="body"><span class="t">亚洲真理电台中文部播音 50 周年 巡回演唱会</span><span class="m">2026 · 马来西亚 / 武汉 / 温州 / 高雄</span></span>
-        <span class="role">节目总监</span><span class="go">看 ↗</span></a>
-      <a class="wi" href="https://www.instagram.com/p/C-k5gsJPtnZ/" target="_blank" rel="noopener">
-        <span class="thumb">♪</span>
-        <span class="body"><span class="t">《你好，蒲公英》演唱会</span><span class="m">2024 · 蒲公英合唱团</span></span>
-        <span class="role">舞台监督 · 音乐制作</span><span class="go">看 ↗</span></a>
-      <a class="wi" href="https://m.alltuu.com/album/3200fb92627bff9bd02da971bcc8233b/1252450242?menu=live" target="_blank" rel="noopener">
-        <span class="thumb">♪</span>
-        <span class="body"><span class="t">第 11 届 国际声乐公开赛 总决赛</span><span class="m">2024 · 中国香港 &amp; 马来西亚</span></span>
-        <span class="role">行政总协调</span><span class="go">看 ↗</span></a>
-      <a class="wi" href="https://youtu.be/GzCfaVbIBWw" target="_blank" rel="noopener">
-        <span class="thumb"><img src="https://img.youtube.com/vi/GzCfaVbIBWw/hqdefault.jpg" alt="" loading="lazy"></span>
-        <span class="body"><span class="t">第九届《微光也能照亮》世界之光游艺晚会</span><span class="m">2017 · 公教青年总委会</span></span>
-        <span class="role">音乐总监 · 歌咏协调员</span><span class="go">看 ↗</span></a>
-      <a class="wi" href="https://www.facebook.com/apextaracademy/videos/314114703882516/" target="_blank" rel="noopener">
-        <span class="thumb">♪</span>
-        <span class="body"><span class="t">虎虎生威 新春歌曲创意大赛</span><span class="m">2021 · 创作赛事</span></span>
-        <span class="role">节目监制 · 执行</span><span class="go">看 ↗</span></a>
-      <a class="wi" href="https://www.facebook.com/watch/?v=197651852368420" target="_blank" rel="noopener">
-        <span class="thumb">♪</span>
-        <span class="body"><span class="t">【YES WE CAN 我们可以】歌唱大赛 总决赛</span><span class="m">2021 · 全国赛事</span></span>
-        <span class="role">活动总执行</span><span class="go">看 ↗</span></a>
-      <a class="wi" href="https://fb.watch/fXSRH0Ee49/" target="_blank" rel="noopener">
-        <span class="thumb">♪</span>
-        <span class="body"><span class="t">Neway K 歌之王 第四季</span><span class="m">2018 · 全马赛事</span></span>
-        <span class="role">全马初赛评审</span><span class="go">看 ↗</span></a>
-      <a class="wi" href="https://www.facebook.com/greattimemusic/" target="_blank" rel="noopener">
-        <span class="thumb">♪</span>
-        <span class="body"><span class="t">時大音樂 Great Time Music</span><span class="m">2017 · 台湾</span></span>
-        <span class="role">原创心灵音乐编制</span><span class="go">看 ↗</span></a>
-      <a class="wi" href="https://www.blisswisdom.org/events/d/1547-40466" target="_blank" rel="noopener">
-        <span class="thumb">♪</span>
-        <span class="body"><span class="t">舞台劇《熊娃娃的夢》</span><span class="m">2016 · 台湾</span></span>
-        <span class="role">配乐</span><span class="go">看 ↗</span></a>
+    <div class="credits rv">
+      <a class="cr" href="https://www.youtube.com/watch?v=RSzl-4ZSKoY" target="_blank" rel="noopener">
+        <span class="yr">2026</span>
+        <span><span class="t">亚洲真理电台中文部播音 50 周年 巡回演唱会</span><span class="m">暨全球华语圣歌创作大赛 12 周年 · 马来西亚 / 武汉 / 温州 / 高雄</span></span>
+        <span class="role">节目总监</span></a>
+      <a class="cr" href="https://www.instagram.com/p/C-k5gsJPtnZ/" target="_blank" rel="noopener">
+        <span class="yr">2024</span>
+        <span><span class="t">《你好，蒲公英》演唱会</span><span class="m">蒲公英合唱团 · 马来西亚</span></span>
+        <span class="role">舞台监督 · 音乐制作</span></a>
+      <a class="cr" href="https://m.alltuu.com/album/3200fb92627bff9bd02da971bcc8233b/1252450242?menu=live" target="_blank" rel="noopener">
+        <span class="yr">2024</span>
+        <span><span class="t">第 11 届 国际声乐公开赛 总决赛</span><span class="m">中国香港 &amp; 马来西亚</span></span>
+        <span class="role">行政总协调</span></a>
+      <a class="cr" href="https://www.facebook.com/apextaracademy/videos/314114703882516/" target="_blank" rel="noopener">
+        <span class="yr">2021</span>
+        <span><span class="t">虎虎生威 新春歌曲创意大赛</span><span class="m">全国创作赛事</span></span>
+        <span class="role">节目监制 · 执行</span></a>
+      <a class="cr" href="https://www.facebook.com/watch/?v=197651852368420" target="_blank" rel="noopener">
+        <span class="yr">2021</span>
+        <span><span class="t">【YES WE CAN 我们可以】歌唱大赛 总决赛</span><span class="m">全国赛事</span></span>
+        <span class="role">活动总执行</span></a>
+      <a class="cr" href="https://fb.watch/fXSRH0Ee49/" target="_blank" rel="noopener">
+        <span class="yr">2018</span>
+        <span><span class="t">Neway K 歌之王 第四季</span><span class="m">全马赛事</span></span>
+        <span class="role">全马初赛评审</span></a>
+      <a class="cr" href="https://youtu.be/GzCfaVbIBWw" target="_blank" rel="noopener">
+        <span class="yr">2017</span>
+        <span><span class="t">第九届《微光也能照亮》世界之光游艺晚会</span><span class="m">公教青年总委会</span></span>
+        <span class="role">音乐总监 · 歌咏协调员</span></a>
+      <a class="cr" href="https://www.facebook.com/greattimemusic/" target="_blank" rel="noopener">
+        <span class="yr">2017</span>
+        <span><span class="t">時大音樂 Great Time Music</span><span class="m">台湾 · 原创心灵音乐</span></span>
+        <span class="role">音乐编制</span></a>
+      <a class="cr" href="https://www.blisswisdom.org/events/d/1547-40466" target="_blank" rel="noopener">
+        <span class="yr">2016</span>
+        <span><span class="t">舞台劇《熊娃娃的夢》</span><span class="m">台湾 · 音乐剧场</span></span>
+        <span class="role">配乐</span></a>
     </div>
   </div>
 </section>
@@ -766,6 +860,39 @@ footer:hover .egg{color:var(--dim)}
   document.querySelectorAll('.thumb img, .bt img').forEach(function(img){
     img.addEventListener('error',function(){ img.remove(); });
   });
+
+
+  /* hero audio — only shows if assets/hero.mp3 exists */
+  var au=document.getElementById('au'), pl=document.getElementById('player'), pp=document.getElementById('pp');
+  if(au&&pl){
+    fetch('assets/hero.mp3',{method:'HEAD'}).then(function(r){ if(r.ok) pl.hidden=false; }).catch(function(){});
+    pl.addEventListener('click',function(){
+      if(au.paused){ au.volume=.6; au.play(); pl.classList.add('playing'); pp.innerHTML='&#10074;&#10074;'; }
+      else{ au.pause(); pl.classList.remove('playing'); pp.innerHTML='&#9654;'; }
+    });
+    au.addEventListener('ended',function(){ pl.classList.remove('playing'); pp.innerHTML='&#9654;'; });
+  }
+
+  /* bento hover preview — muted 15s clip */
+  if(hover&&!reduce){
+    document.querySelectorAll('.bt').forEach(function(card){
+      var m=(card.getAttribute('href')||'').match(/(?:v=|youtu\.be\/)([\w-]{11})/);
+      if(!m) return;
+      var id=m[1], tmr=null, fr=null;
+      card.addEventListener('pointerenter',function(){
+        tmr=setTimeout(function(){
+          fr=document.createElement('iframe');
+          fr.setAttribute('allow','autoplay; encrypted-media');
+          fr.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&mute=1&controls=0&start=25&end=40&modestbranding=1&rel=0&playsinline=1';
+          card.appendChild(fr); card.classList.add('prev');
+        },500);
+      });
+      card.addEventListener('pointerleave',function(){
+        clearTimeout(tmr); card.classList.remove('prev');
+        if(fr){ fr.remove(); fr=null; }
+      });
+    });
+  }
 
   if(!hover||reduce) return;
 
