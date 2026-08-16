@@ -117,6 +117,7 @@ header.hero{padding:126px 0 92px;position:relative;overflow:hidden}
   mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
 .marquee-label{font-family:"Inter",var(--sans);font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);margin-bottom:18px}
 .track{display:flex;width:max-content;animation:slide 34s linear infinite}
+.hero .track{animation-duration:24s}
 @keyframes slide{to{transform:translateX(-50%)}}
 .track b{font-family:"Inter",var(--sans);font-weight:600;font-size:21px;color:var(--muted);padding:0 30px;white-space:nowrap}
 .track b::after{content:"·";margin-left:30px;color:var(--violet)}
@@ -483,6 +484,20 @@ header.hero .wrap{text-align:center}
 
 .track.rev{animation-direction:reverse}
 
+
+/* CREDITS — 右侧渐隐大图 */
+.cr{isolation:isolate}
+.cr .shot{position:absolute;inset:0 0 0 auto;width:46%;z-index:-1;overflow:hidden;border-radius:0 14px 14px 0;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 55%);mask-image:linear-gradient(90deg,transparent,#000 55%)}
+.cr .shot img{width:100%;height:100%;object-fit:cover;opacity:.22;
+  filter:saturate(.75);transform:scale(1.04);
+  transition:opacity .5s ease,transform .8s cubic-bezier(.2,.7,.25,1),filter .5s ease}
+.cr:hover .shot img{opacity:.5;transform:scale(1.1);filter:saturate(1)}
+@media(max-width:700px){
+  .cr .shot{width:100%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 78%);mask-image:linear-gradient(90deg,transparent,#000 78%)}
+  .cr .shot img{opacity:.16}
+}
+
 /* CLOSE */
 .close{position:relative;overflow:hidden;text-align:center;border-radius:28px;padding:66px 34px;border:1px solid var(--line);
   background:linear-gradient(150deg,rgba(var(--violet-rgb),.20),rgba(var(--pink-rgb),.11) 58%,transparent)}
@@ -665,11 +680,11 @@ footer:hover .egg{color:var(--dim)}
     <div class="work-group rv">
       <h3>剧集 OST<em>3 部 · 共 52 集</em></h3>
       <a class="wi" href="https://www.youtube.com/playlist?list=PLcHRE_huWMAx3S6mMn1TibNZmKyPdpcnE" target="_blank" rel="noopener">
-        <span class="thumb txt">12 集</span>
+        <span class="thumb"><img src="assets/works/ouran.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('txt');this.parentNode.textContent='12 集'"></span>
         <span class="body"><span class="t">《偶然闯入的世界》偶像剧</span><span class="m">2021 · 中国大陆 · 搜狐视频</span></span>
         <span class="role">制作 · 混音</span><span class="go">听 ↗</span></a>
       <a class="wi" href="https://www.youtube.com/playlist?list=PLkGgRIFLBge1bjW3LimpfZFPF0PST_QcH" target="_blank" rel="noopener">
-        <span class="thumb txt">10 集</span>
+        <span class="thumb"><img src="assets/works/promise.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('txt');this.parentNode.textContent='10 集'"></span>
         <span class="body"><span class="t">《爱的约定》A Promise To Love</span><span class="m">2021 · 马来西亚 · 八度空间</span></span>
         <span class="role">制作 · 配乐 · 混音</span><span class="go">听 ↗</span></a>
       <a class="wi" href="https://www.youtube.com/watch?v=YGQgS53nIB0" target="_blank" rel="noopener">
@@ -754,38 +769,47 @@ footer:hover .egg{color:var(--dim)}
 
     <div class="credits rv">
       <a class="cr" href="https://www.youtube.com/watch?v=RSzl-4ZSKoY" target="_blank" rel="noopener">
+        <span class="shot"><img src="assets/works/veritas.jpg" alt="" loading="lazy" onerror="this.parentNode.remove()"></span>
         <span class="yr">2026</span>
         <span><span class="t">亚洲真理电台中文部播音 50 周年 巡回演唱会</span><span class="m">暨全球华语圣歌创作大赛 12 周年 · 马来西亚 / 武汉 / 温州 / 高雄</span></span>
         <span class="role">节目总监</span></a>
       <a class="cr" href="https://www.instagram.com/p/C-k5gsJPtnZ/" target="_blank" rel="noopener">
+        <span class="shot"><img src="assets/works/dandelion.jpg" alt="" loading="lazy" onerror="this.parentNode.remove()"></span>
         <span class="yr">2024</span>
         <span><span class="t">《你好，蒲公英》演唱会</span><span class="m">蒲公英合唱团 · 马来西亚</span></span>
         <span class="role">舞台监督 · 音乐制作</span></a>
       <a class="cr" href="https://m.alltuu.com/album/3200fb92627bff9bd02da971bcc8233b/1252450242?menu=live" target="_blank" rel="noopener">
+        <span class="shot"><img src="assets/works/vocal-open.jpg" alt="" loading="lazy" onerror="this.parentNode.remove()"></span>
         <span class="yr">2024</span>
         <span><span class="t">第 11 届 国际声乐公开赛 总决赛</span><span class="m">中国香港 &amp; 马来西亚</span></span>
         <span class="role">行政总协调</span></a>
       <a class="cr" href="https://www.facebook.com/apextaracademy/videos/314114703882516/" target="_blank" rel="noopener">
+        <span class="shot"><img src="assets/works/tiger.jpg" alt="" loading="lazy" onerror="this.parentNode.remove()"></span>
         <span class="yr">2021</span>
         <span><span class="t">虎虎生威 新春歌曲创意大赛</span><span class="m">全国创作赛事</span></span>
         <span class="role">节目监制 · 执行</span></a>
       <a class="cr" href="https://www.facebook.com/watch/?v=197651852368420" target="_blank" rel="noopener">
+        <span class="shot"><img src="assets/works/yeswecan.jpg" alt="" loading="lazy" onerror="this.parentNode.remove()"></span>
         <span class="yr">2021</span>
         <span><span class="t">【YES WE CAN 我们可以】歌唱大赛 总决赛</span><span class="m">全国赛事</span></span>
         <span class="role">活动总执行</span></a>
       <a class="cr" href="https://fb.watch/fXSRH0Ee49/" target="_blank" rel="noopener">
+        <span class="shot"><img src="assets/works/neway.jpg" alt="" loading="lazy" onerror="this.parentNode.remove()"></span>
         <span class="yr">2018</span>
         <span><span class="t">Neway K 歌之王 第四季</span><span class="m">全马赛事</span></span>
         <span class="role">全马初赛评审</span></a>
       <a class="cr" href="https://youtu.be/GzCfaVbIBWw" target="_blank" rel="noopener">
+        <span class="shot"><img src="assets/works/lightworld.jpg" alt="" loading="lazy" onerror="this.parentNode.remove()"></span>
         <span class="yr">2017</span>
         <span><span class="t">第九届《微光也能照亮》世界之光游艺晚会</span><span class="m">公教青年总委会</span></span>
         <span class="role">音乐总监 · 歌咏协调员</span></a>
       <a class="cr" href="https://www.facebook.com/greattimemusic/" target="_blank" rel="noopener">
+        <span class="shot"><img src="assets/works/greattime.jpg" alt="" loading="lazy" onerror="this.parentNode.remove()"></span>
         <span class="yr">2017</span>
         <span><span class="t">時大音樂 Great Time Music</span><span class="m">台湾 · 原创心灵音乐</span></span>
         <span class="role">音乐编制</span></a>
       <a class="cr" href="https://www.blisswisdom.org/events/d/1547-40466" target="_blank" rel="noopener">
+        <span class="shot"><img src="assets/works/bear.jpg" alt="" loading="lazy" onerror="this.parentNode.remove()"></span>
         <span class="yr">2016</span>
         <span><span class="t">舞台劇《熊娃娃的夢》</span><span class="m">台湾 · 音乐剧场</span></span>
         <span class="role">配乐</span></a>
@@ -1087,14 +1111,20 @@ footer:hover .egg{color:var(--dim)}
     if(!ambAu) return;
     if(force){ ambOff=false; sessionStorage.setItem('ambOff','0'); }
     if(ambOff || !ambAu.paused) return;
-    ambAu.volume=0;
+    ambAu.muted=false;
+    ambAu.volume=(force?0.22:0);
     var pr=ambAu.play();
     if(pr && pr.then){
       pr.then(function(){
         if(amb){ amb.classList.add('playing'); }
         if(ambTxt){ ambTxt.textContent='音乐播放中'; }
-        var v=0, t=setInterval(function(){ v+=0.02; ambAu.volume=Math.min(v,.22); if(v>=.22) clearInterval(t); },120);
-      }).catch(function(){ /* 还没拿到用户授权，等下一次真实点击 */ });
+        if(!force){ var v=0, t=setInterval(function(){ v+=0.02; ambAu.volume=Math.min(v,.22); if(v>=.22) clearInterval(t); },120); }
+        console.log('[ambient] playing');
+      }).catch(function(err){
+        if(ambTxt) ambTxt.textContent='点我播放音乐';
+        if(amb) amb.classList.add('on');
+        console.log('[ambient] play blocked:', err && err.name);
+      });
     }
   }
   function ambPause(remember){
