@@ -126,6 +126,12 @@
   .quote q::before,.quote q::after{content:""}
   .quote .who{margin-top:16px;font-size:14px;color:var(--dim)}
   .quote .who b{color:var(--muted);font-weight:600}
+  .quote .fact{
+    margin-top:16px;padding-top:14px;border-top:1px solid var(--line);
+    font-size:14.5px;color:var(--muted);display:flex;gap:9px;align-items:flex-start;
+  }
+  .quote .fact::before{content:"→";color:var(--accent);flex-shrink:0}
+  .quote.fact-only q{font-size:19px;font-weight:600;color:var(--text)}
 
   /* FAQ */
   details{border-bottom:1px solid var(--line);padding:20px 0}
@@ -171,7 +177,7 @@
       我负责把它整合起来，让你只需要对一个人负责。
     </p>
     <div class="cta-row">
-      <a class="btn" href="https://wa.me/60123456789" data-wa>聊聊你的项目 →</a>
+      <a class="btn" href="https://wa.me/60149212571" data-wa>聊聊你的项目 →</a>
       <a class="btn-ghost" href="#work">先看作品</a>
     </div>
 
@@ -350,25 +356,33 @@
   <div class="wrap">
     <div class="sec-intro">
       <div class="eyebrow">合作过的人怎么说</div>
-      <h2>信任比报价先来</h2>
+      <h2>最好的证明不是好评，是他们又回来了</h2>
+      <p class="lead">应合作方要求，以下不具名。</p>
     </div>
 
     <div class="quotes">
       <div class="quote">
-        <q>我没有去问市场价格，因为你出现在我脑子里，所以我想跟你学。</q>
-        <div class="who"><b>Catherine Chan</b></div>
+        <q>不需要解释太多，就知道大家要什么。</q>
+        <div class="who"><b>音乐公司</b>　·　委托方</div>
+        <div class="fact">四个月内交付两个项目，第一首完成后直接指定第二首。</div>
       </div>
+
       <div class="quote">
         <q>每次反馈沟通后，短时间内把问题完美解决。</q>
-        <div class="who"><b>Lichie Woon</b>　·　《小小的要求》</div>
+        <div class="who"><b>创作歌手</b>　·　单曲制作</div>
+        <div class="fact">成品上架 Apple Music 与各大串流平台。</div>
       </div>
+
       <div class="quote">
-        <q>不需要解释太多，就知道大家要什么。</q>
-        <div class="who"><b>JIRO</b></div>
+        <q>我没有去问市场价格，因为你出现在我脑子里。</q>
+        <div class="who"><b>长期学员</b></div>
+        <div class="fact">收费调整后照旧续约，全程没有议价。</div>
       </div>
-      <div class="quote">
-        <q>四年之内，同一位客户回头合作三次。</q>
-        <div class="who"><b>Ricky Woon</b>　·　长期合作</div>
+
+      <div class="quote fact-only">
+        <q>同一位客户，四年内回头三次。</q>
+        <div class="who"><b>个人创作者</b>　·　长期合作</div>
+        <div class="fact">另有宗教团体在第一首交付后，随即委托第二首。</div>
       </div>
     </div>
   </div>
@@ -418,7 +432,7 @@
     <div class="close">
       <h2>先聊聊，再决定</h2>
       <p>不用先准备好完整企划。告诉我你想做什么、什么时候要，我给你一个实际的方向和区间。</p>
-      <a class="btn" href="https://wa.me/60123456789" data-wa>WhatsApp 找我 →</a>
+      <a class="btn" href="https://wa.me/60149212571" data-wa>WhatsApp 找我 →</a>
     </div>
   </div>
 </section>
