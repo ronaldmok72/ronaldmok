@@ -31,7 +31,7 @@
   --serif:"Noto Serif SC",Georgia,"Songti SC",serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:400;
   font-size:18px;line-height:1.9;letter-spacing:.015em;-webkit-font-smoothing:antialiased;
   overflow-x:hidden;position:relative}
@@ -61,11 +61,11 @@ a{color:inherit}
 .eyebrow{font-family:"Inter",var(--sans);font-size:13px;letter-spacing:.24em;text-transform:uppercase;
   font-weight:700;margin-bottom:20px;
   background:linear-gradient(90deg,var(--violet),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
-h1{font-family:var(--serif);font-size:clamp(36px,6.2vw,66px);line-height:1.26;font-weight:700;letter-spacing:-.01em}
-h2{font-family:var(--serif);font-size:clamp(28px,4vw,42px);line-height:1.34;font-weight:700;margin-bottom:18px}
+h1{font-family:var(--serif);font-size:clamp(31px,6.2vw,66px);line-height:1.26;font-weight:700;letter-spacing:-.01em;text-wrap:balance}
+h2{font-family:var(--serif);font-size:clamp(24px,4vw,42px);line-height:1.4;font-weight:700;margin-bottom:18px;text-wrap:balance}
 h3{font-size:20.5px;font-weight:500;margin-bottom:10px;line-height:1.55}
 p{color:var(--muted)}
-.lead{font-size:clamp(18px,2vw,21px);color:var(--muted);max-width:58ch;font-weight:400}
+.lead{font-size:clamp(16.5px,2vw,21px);color:var(--muted);max-width:58ch;font-weight:400;text-wrap:pretty}
 .sec-intro{max-width:62ch;margin:0 auto 52px;text-align:center}
 .sec-intro .lead{margin-left:auto;margin-right:auto}
 .grad{background:linear-gradient(100deg,var(--violet) 8%,var(--pink) 52%,var(--violet) 96%);
@@ -547,6 +547,13 @@ header.hero .wrap{text-align:center}
 
 .bub .noq{font-family:var(--serif);font-size:21px;line-height:1.72;color:var(--ink);font-weight:600}
 @media(max-width:640px){.bub .noq{font-size:18.5px}}
+
+/* 窄屏：交给自动平衡换行，不用硬断行 */
+@media(max-width:760px){
+  h1 br,h2 br,.sec-intro .lead br{display:none}
+  .cue p{text-wrap:balance}
+  .cue p br{display:none}
+}
 
 /* CLOSE */
 .close{position:relative;overflow:hidden;text-align:center;border-radius:28px;padding:66px 34px;border:1px solid var(--line);
@@ -1232,6 +1239,13 @@ footer:hover .egg{color:var(--dim)}
     });
   }
 
+
+  var faqs=[].slice.call(document.querySelectorAll('#faq details'));
+  faqs.forEach(function(d){
+    d.addEventListener('toggle',function(){
+      if(d.open) faqs.forEach(function(o){ if(o!==d) o.open=false; });
+    });
+  });
 
   var sg=document.getElementById('storyGo');
   if(sg) sg.addEventListener('click',function(){ if(window.__ambPlay) window.__ambPlay(true); });
