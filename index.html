@@ -185,7 +185,7 @@ header.hero{padding:126px 0 92px;position:relative;overflow:hidden}
 @media(max-width:600px){
   .bento{grid-template-columns:1fr;gap:14px}
   .b-lg,.b-md,.b-sm{grid-column:span 1;min-height:270px}
-  .bt .plat{top:auto;bottom:auto;left:auto;right:14px;top:14px;font-size:11px;padding:4px 11px}
+  .bento .bt .plat{top:14px;left:14px;right:auto;width:auto;font-size:11.5px;padding:4px 11px}
   .bt .meta{padding:18px 16px 16px}
   .bt .ttl{font-size:19px}
   .bt .sub{font-size:13px}
@@ -356,7 +356,7 @@ header.hero .wrap{text-align:center}
   font-family:"Inter",var(--sans);font-size:15px;font-weight:700;color:#fff;letter-spacing:.02em}
 
 /* BENTO PLATFORM BADGE */
-.bt .plat{position:absolute;top:16px;left:16px;z-index:3;
+.bt .plat{position:absolute;top:16px;left:16px;right:auto;width:auto;max-width:calc(100% - 32px);z-index:3;
   font-family:"Inter",var(--sans);font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
   background:rgba(8,7,12,.72);border:1px solid rgba(255,255,255,.24);backdrop-filter:blur(8px);
   border-radius:100px;padding:5px 13px;color:#fff}
@@ -995,7 +995,7 @@ footer:hover .egg{color:var(--dim)}
 
   var brands=[['Astro Shaw','astro-shaw'],['Netflix','netflix'],['GSC','gsc'],['mm2','mm2'],
               ['MILO®','milo'],['Nestlé','nestle'],['Great Eastern','great-eastern'],
-              ['趙傳','zhaochuan'],['八度空间','8tv'],['搜狐视频','sohu']];
+              ['八度空间','8tv'],['搜狐视频','sohu']];
   var track=document.getElementById('track');
   if(track){
     var h=brands.map(function(b){
