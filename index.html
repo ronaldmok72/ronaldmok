@@ -173,7 +173,7 @@ header.hero{padding:126px 0 92px;position:relative;overflow:hidden}
   background:linear-gradient(115deg,transparent 38%,rgba(var(--violet-rgb),.28) 50%,transparent 62%)}
 .bt:hover .glare{opacity:1}
 .bt .meta{position:absolute;left:0;right:0;bottom:0;padding:22px 22px 20px;display:flex;flex-direction:column;align-items:flex-start}
-.bt .role{display:inline-block;max-width:100%;font-family:"Inter",var(--sans);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+.bt .role{display:inline-block;max-width:100%;text-align:center;font-family:"Inter",var(--sans);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
   border:1px solid rgba(var(--violet-rgb),.5);background:rgba(var(--violet-rgb),.16);backdrop-filter:blur(6px);
   border-radius:100px;padding:3px 11px;color:#DCCBFF;font-weight:500;margin-bottom:10px}
 .bt .ttl{display:block;font-family:var(--serif);font-size:23px;font-weight:700;line-height:1.35;color:#fff;margin-bottom:5px}
@@ -215,7 +215,7 @@ header.hero{padding:126px 0 92px;position:relative;overflow:hidden}
 .wi .body{flex:1 1 auto;min-width:0}
 .wi .t{font-weight:500;font-size:18px;display:block;line-height:1.5}
 .wi .m{color:var(--muted);font-size:15px;display:block;line-height:1.5}
-.wi .role{flex:0 0 auto;font-family:"Inter",var(--sans);font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+.wi .role{flex:0 0 auto;text-align:center;font-family:"Inter",var(--sans);font-size:12px;letter-spacing:.08em;text-transform:uppercase;
   border:1px solid rgba(var(--violet-rgb),.45);background:rgba(var(--violet-rgb),.12);border-radius:100px;padding:4px 13px;color:#DDCFFF;font-weight:600;white-space:nowrap}
 .wi .go{flex:0 0 auto;font-size:14.5px;font-weight:600;opacity:0;transition:opacity .3s ease;
   background:linear-gradient(90deg,var(--violet),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -300,14 +300,14 @@ div.cr{cursor:default}
 .cr .yr{font-family:"Inter",var(--sans);font-size:15px;font-weight:600;color:var(--dim);letter-spacing:.04em}
 .cr .t{font-family:var(--serif);font-size:21px;font-weight:700;line-height:1.45;display:block}
 .cr .m{font-size:15px;color:var(--muted);display:block;margin-top:2px}
-.cr .role{font-family:"Inter",var(--sans);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;
+.cr .role{text-align:center;font-family:"Inter",var(--sans);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;
   border:1px solid rgba(var(--pink-rgb),.45);background:rgba(var(--pink-rgb),.12);
   border-radius:100px;padding:5px 14px;color:#FFD3E8;white-space:nowrap}
 @media(max-width:700px){
   .cr{grid-template-columns:1fr;gap:6px}
   .cr .role{justify-self:start;margin-top:8px;white-space:normal;max-width:100%;
     line-height:1.6;padding:6px 14px;font-size:11.5px}
-  .bt .role{white-space:normal;max-width:100%}
+  .bt .role{white-space:normal;max-width:100%;font-size:11px;padding:4px 12px;line-height:1.55}
 }
 
 /* ── HERO AUDIO ────────────────────────────── */
@@ -1500,11 +1500,15 @@ footer:hover .egg{color:var(--dim)}
     splitEl.setAttribute('data-text', txt);
     if(reduce){ splitEl.textContent=txt; return; }
     splitEl.textContent='';
-    Array.from(txt).forEach(function(c,i){
+    /* 英文以「单字」为单位、中文以「字」为单位；空白留成真正的空白节点，才能在正确的地方断行 */
+    var tokens = txt.match(/[A-Za-z0-9\u2019'\-]+|\s+|[\s\S]/g) || [];
+    var i=0;
+    tokens.forEach(function(tk){
+      if(/^\s+$/.test(tk)){ splitEl.appendChild(document.createTextNode(' ')); return; }
       var sp=document.createElement('span');
-      sp.textContent = c===' ' ? '\u00a0' : c;
+      sp.textContent=tk;
       sp.style.animationDelay=(i*0.028)+'s';
-      splitEl.appendChild(sp);
+      splitEl.appendChild(sp); i++;
     });
   }
 
