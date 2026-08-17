@@ -1096,9 +1096,8 @@ footer:hover .egg{color:var(--dim)}
         </div>
         <p>刚入行的时候，我几乎包办了每一个环节——编曲、录音、混音、母带，能自己做的都自己做。</p>
         <p>做的项目越多越发现，我真正擅长的不是弹得比谁快，是<b style="color:var(--ink);font-weight:500">看懂一个项目要什么，找到对的人，把每个环节串起来</b>。</p>
-        <p>所以现在我多数以监制和统筹的身份参与：电影、剧集、广告、演唱会、比赛。<br>我未必出现在每一轨里，<b style="color:var(--ink);font-weight:500">但东西准时交到你手上，是我的事</b>。</p>
-        <p>白天我在教育机构负责营运，晚上和周末接音乐项目。</p>
-        <div class="thesis">看起来是两份完全不同的工作，其实在做同一件事：<br><span class="grad">把散的东西理清楚，把对的人组织起来，让想法真正落地。</span></div>
+        <p>所以现在我多数以监制和统筹的身份参与：电影、剧集、广告、演唱会、比赛。</p>
+        <div class="thesis">我未必出现在每一轨里，<br><span class="grad">但东西准时交到你手上，是我的事</span>。</div>
         <div class="sig">
           <span>音乐监制</span><span>制作统筹</span><span>混音 · 母带</span>
           <span>演绎指导</span><span>MACP 会员</span><span>马来西亚 Malaysia</span><span>作品跨 12 个市场</span>
@@ -1473,11 +1472,24 @@ footer:hover .egg{color:var(--dim)}
 
 
 
-  /* ── 站内跳转不写入 #hash；重新整理一律回到顶部 ── */
+  /* ── 外部深连结（?#work 之类）要跳到该段；跳完把 hash 抹掉，重新整理才回顶部 ── */
   if(location.hash){
+    var _tid = location.hash.slice(1);
+    var _tEl = document.getElementById(_tid);
     try{ history.replaceState(null,'',location.pathname+location.search); }catch(e){}
-    window.scrollTo(0,0);
-    setTimeout(function(){ window.scrollTo(0,0); },0);
+    if(_tEl){
+      /* 字体、图片、rv 动画都会改变高度，所以要补跳几次直到 layout 稳定 */
+      var _jump=function(){
+        var y=_tEl.getBoundingClientRect().top + window.pageYOffset - 8;
+        window.scrollTo({top:y, behavior:'auto'});
+      };
+      _jump();
+      setTimeout(_jump,0); setTimeout(_jump,200); setTimeout(_jump,700);
+      window.addEventListener('load',_jump);
+    }else{
+      window.scrollTo(0,0);
+      setTimeout(function(){ window.scrollTo(0,0); },0);
+    }
   }
   document.addEventListener('click',function(e){
     var a=e.target.closest && e.target.closest('a[href^="#"]');
