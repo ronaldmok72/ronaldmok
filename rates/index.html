@@ -128,8 +128,13 @@ tbody tr:last-child td{border-bottom:0}
 .u .un2{font-size:12.5px;color:var(--dim);margin-top:2px;line-height:1.6}
 
 /* NOTES */
-.notes{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-@media(max-width:820px){.notes{grid-template-columns:1fr}}
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px}
+.rush{margin-top:12px}
+.rush li{list-style:none;display:flex;justify-content:space-between;align-items:baseline;gap:14px;
+  padding:10px 0;border-bottom:1px solid var(--line-2);font-size:14.5px;color:var(--muted);line-height:1.7}
+.rush li:last-child{border-bottom:0}
+.rush li b{font-family:"Inter",var(--sans);font-weight:700;color:var(--violet);white-space:nowrap}
+.rush li:last-child b{color:var(--dim);font-weight:600;font-size:13.5px;white-space:normal;text-align:right}
 .note{border:1px solid var(--line-2);border-radius:18px;padding:24px;background:rgba(255,255,255,.02)}
 .note h3{font-family:var(--serif);font-weight:700;font-size:17px;margin-bottom:12px}
 .note li{list-style:none;color:var(--muted);font-size:15px;line-height:1.85;padding-left:18px;position:relative;margin-top:7px}
@@ -329,12 +334,21 @@ footer a:hover{color:var(--ink)}
         <p class="alt">没有录音阶段的项目：<b>50% 订金，50% 尾款</b>。</p>
       </div>
       <div class="note">
+        <h3>加急费 Rush Fee</h3>
+        <p class="alt">标准工期 <b>2–4 周</b>。要更快：</p>
+        <ul class="rush">
+          <li><span>压到 2 周内交付</span><b>+30%</b></li>
+          <li><span>压到 1 周内交付</span><b>+50%</b></li>
+          <li><span>再更急</span><b>先聊，看排期</b></li>
+        </ul>
+      </div>
+      <div class="note">
         <h3>几件先讲清楚的事</h3>
         <ul>
           <li>所有配套以 <b>1 位主唱</b> 为基准。多一位主唱或多一件乐器，会另外算。</li>
           <li>单价是起跳价，最终看编制、难度和交付规格。</li>
           <li>词曲版权是创作者的；制作交付给你的东西，你拿去用没问题。</li>
-          <li>标准工期 <b>2–4 周</b>。大型项目另行排期；要更快则有加急费。</li>
+          <li>大型项目另行排期，工期和费用会先谈好再开工。</li>
           <li>广告、影视、剧集的配乐另有一套报价，这一页只涵盖单曲制作。</li>
         </ul>
       </div>
@@ -478,6 +492,13 @@ footer a:hover{color:var(--ink)}
     "RM100 起":"From RM100",
 
     "付款方式":"Payment",
+    "加急费 Rush Fee":"Rush Fee",
+    "。要更快：":". Need it sooner:",
+    "压到 2 周内交付":"Delivered within 2 weeks",
+    "压到 1 周内交付":"Delivered within 1 week",
+    "再更急":"Sooner than that",
+    "先聊，看排期":"Talk first — depends on the schedule",
+    "大型项目另行排期，工期和费用会先谈好再开工。":"Larger projects are scheduled separately; timeline and fee are agreed before work starts.",
     "没有录音阶段的项目：":"Projects with no recording stage: ",
     "50% 订金，50% 尾款":"50% deposit, 50% on completion",
     "标准工期":"Standard turnaround is ",
