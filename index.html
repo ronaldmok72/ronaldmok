@@ -31,10 +31,12 @@
   --serif:"Noto Serif SC",Georgia,"Songti SC",serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%;
+  /* clip 不建立滚动容器，sticky 不受影响；旧浏览器不认得会自动忽略，退回 body 的 hidden */
+  overflow-x:clip}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:400;
   font-size:18px;line-height:1.9;letter-spacing:.015em;-webkit-font-smoothing:antialiased;
-  overflow-x:hidden;position:relative}
+  overflow-x:hidden;overflow-x:clip;position:relative}
 img{display:block;max-width:100%}
 
 /* AURORA */
@@ -463,7 +465,7 @@ header.hero .wrap{text-align:center}
 .story .stage{position:sticky;top:0;height:100svh;min-height:520px;display:flex;align-items:center;justify-content:center;
   overflow:hidden;padding:0 26px}
 .cue{position:absolute;width:100%;max-width:900px;text-align:center;
-  opacity:0;transform:translateY(28px) scale(.985);transition:opacity .55s ease,transform .7s cubic-bezier(.2,.7,.25,1);
+  opacity:0;transform:translateY(28px) scale(.985);transition:opacity .38s ease,transform .48s cubic-bezier(.2,.7,.25,1);
   pointer-events:none}
 .cue.on{opacity:1;transform:none;pointer-events:auto}
 .cue .btn{margin-top:38px;pointer-events:auto}
@@ -1618,7 +1620,7 @@ footer:hover .egg{color:var(--dim)}
        不用 vh —— vh 在手机上是「地址栏收起后」的大视窗，地址栏一动整页就位移。 */
     function stageH(){ return (stage && stage.offsetHeight) || window.innerHeight; }
     function layout(){
-      var per = (window.innerWidth<=900) ? 0.80 : 0.72;
+      var per = (window.innerWidth<=900) ? 0.88 : 0.85;
       story.style.height = Math.round(n * per * stageH()) + 'px';
     }
     layout();
