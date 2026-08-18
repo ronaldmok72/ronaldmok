@@ -661,9 +661,7 @@ html[lang="en"] .cue p,html[lang="en"] h1,html[lang="en"] h2{letter-spacing:-.01
 
 
 /* ── 手机：滚动叙事一次一页 ────────────────── */
-.snap{position:absolute;left:0;width:1px;height:1px;pointer-events:none;scroll-snap-align:start}
 @media(max-width:900px){
-  html{scroll-snap-type:y proximity}
   /* 作品列表：英文比较长，右侧标签会把标题挤成一字一行 */
   .wi .role,.wi .go{display:none}
   .wi .body{min-width:0;flex:1 1 auto}
@@ -1614,16 +1612,17 @@ footer:hover .egg{color:var(--dim)}
     if(reduce){ cues.forEach(function(c){c.classList.add('on');}); return; }
 
     var n=cues.length;
-    var perVH = (window.innerWidth<=900) ? 80 : 72;
-    story.style.height=(n*perVH)+'vh';
-    if(window.innerWidth<=900){
-      for(var q=0;q<n;q++){
-        var mk=document.createElement('span');
-        mk.className='snap';
-        mk.style.top=(q*perVH)+'vh';
-        story.appendChild(mk);
-      }
+    var stage=story.querySelector('.stage');
+
+    /* 高度用 stage 的实际像素高来算（stage 是 100svh，不随手机地址栏伸缩），
+       不用 vh —— vh 在手机上是「地址栏收起后」的大视窗，地址栏一动整页就位移。 */
+    function stageH(){ return (stage && stage.offsetHeight) || window.innerHeight; }
+    function layout(){
+      var per = (window.innerWidth<=900) ? 0.80 : 0.72;
+      story.style.height = Math.round(n * per * stageH()) + 'px';
     }
+    layout();
+
     dots.innerHTML=cues.map(function(){return '<i></i>';}).join('');
     var dotEls=[].slice.call(dots.children);
     var cur=-1, ticking=false;
@@ -1631,7 +1630,7 @@ footer:hover .egg{color:var(--dim)}
     function paint(){
       ticking=false;
       var r=story.getBoundingClientRect();
-      var total=story.offsetHeight-window.innerHeight;
+      var total=story.offsetHeight-stageH();
       var prog=Math.min(Math.max(-r.top/Math.max(total,1),0),0.9999);
       var i=Math.floor(prog*n);
       if(i!==cur){
@@ -1644,7 +1643,16 @@ footer:hover .egg{color:var(--dim)}
     window.addEventListener('scroll',function(){
       if(!ticking){ ticking=true; requestAnimationFrame(paint); }
     },{passive:true});
-    window.addEventListener('resize',function(){ story.style.height=(n*((window.innerWidth<=900)?80:72))+'vh'; paint(); },{passive:true});
+    /* 手机地址栏收合会触发 resize 但宽度不变 —— 那种情况不能重排，否则整页会跳 */
+    var lastW = window.innerWidth;
+    window.addEventListener('resize',function(){
+      if(window.innerWidth === lastW) return;
+      lastW = window.innerWidth;
+      layout(); paint();
+    },{passive:true});
+    window.addEventListener('orientationchange',function(){
+      setTimeout(function(){ lastW=window.innerWidth; layout(); paint(); },250);
+    },{passive:true});
     paint();
   })();
 
