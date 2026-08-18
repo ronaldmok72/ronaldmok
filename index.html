@@ -1472,25 +1472,21 @@ footer:hover .egg{color:var(--dim)}
 
 
 
-  /* ── 外部深连结（?#work 之类）要跳到该段；跳完把 hash 抹掉，重新整理才回顶部 ── */
+  /* ── 外部深连结（#work 之类）：交给浏览器原生跳转，
+        不抢、不抹 hash；只在载入完成后校正（字体/图片会改变高度）── */
   if(location.hash){
-    var _tid = location.hash.slice(1);
-    var _tEl = document.getElementById(_tid);
-    try{ history.replaceState(null,'',location.pathname+location.search); }catch(e){}
+    var _tEl = document.getElementById(location.hash.slice(1));
     if(_tEl){
-      /* 字体、图片、rv 动画都会改变高度，所以要补跳几次直到 layout 稳定 */
-      var _jump=function(){
+      var _align=function(){
         var y=_tEl.getBoundingClientRect().top + window.pageYOffset - 8;
-        window.scrollTo({top:y, behavior:'auto'});
+        if(Math.abs(y - window.pageYOffset) > 4) window.scrollTo({top:y, behavior:'auto'});
       };
-      _jump();
-      setTimeout(_jump,0); setTimeout(_jump,200); setTimeout(_jump,700);
-      window.addEventListener('load',_jump);
-    }else{
-      window.scrollTo(0,0);
-      setTimeout(function(){ window.scrollTo(0,0); },0);
+      _align();
+      setTimeout(_align,0); setTimeout(_align,120); setTimeout(_align,350); setTimeout(_align,800);
+      window.addEventListener('load',function(){ _align(); setTimeout(_align,250); });
     }
   }
+
   document.addEventListener('click',function(e){
     var a=e.target.closest && e.target.closest('a[href^="#"]');
     if(!a) return;
