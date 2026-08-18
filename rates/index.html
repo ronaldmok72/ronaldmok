@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>报价与配套 — Ronald Mok 莫荣烽</title>
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+<meta name="googlebot" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎧</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@500;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#08070C; --ink:#F7F5FB; --muted:#C6BFD6; --dim:#9C94B2;
+  --violet:#9D7BFF; --violet-rgb:157,123,255;
+  --pink:#F472B6;   --pink-rgb:244,114,182;
+  --line:rgba(255,255,255,.11); --line-2:rgba(255,255,255,.06); --glass:rgba(255,255,255,.04);
+  --max:1140px;
+  --sans:"Noto Sans SC","Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif;
+  --serif:"Noto Serif SC",Georgia,"Songti SC",serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:400;
+  font-size:17px;line-height:1.9;letter-spacing:.015em;-webkit-font-smoothing:antialiased;
+  overflow-x:hidden;position:relative}
+img{display:block;max-width:100%}
+a{color:inherit}
+
+/* AURORA */
+.aurora{position:fixed;inset:0;z-index:-3;pointer-events:none;overflow:hidden}
+.aurora i{position:absolute;display:block;border-radius:50%;filter:blur(90px);opacity:.30}
+.aurora .a1{width:60vw;height:60vw;left:-16vw;top:-18vw;background:radial-gradient(circle,rgba(var(--violet-rgb),.55),transparent 62%)}
+.aurora .a2{width:52vw;height:52vw;right:-14vw;top:26vh;background:radial-gradient(circle,rgba(var(--pink-rgb),.42),transparent 62%)}
+@media(max-width:900px){.aurora i{filter:blur(60px);opacity:.22}}
+
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+@media(max-width:640px){.wrap{padding:0 18px}}
+
+/* LANG */
+.lang{position:fixed;top:18px;right:18px;z-index:60;display:flex;align-items:center;
+  border:1px solid var(--line);border-radius:100px;overflow:hidden;
+  background:rgba(16,13,24,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.lang button{appearance:none;border:0;background:none;cursor:pointer;color:var(--dim);
+  font-family:"Inter",var(--sans);font-size:13.5px;font-weight:600;letter-spacing:.06em;
+  padding:8px 15px;transition:color .3s ease,background .3s ease}
+.lang button:hover{color:var(--ink)}
+.lang button.on{color:#fff;background:linear-gradient(120deg,var(--violet),var(--pink))}
+@media(max-width:640px){.lang{top:12px;right:12px}.lang button{padding:7px 13px;font-size:12.5px}}
+.only-en{display:none}
+html[lang="en"] .only-zh{display:none}
+html[lang="en"] .only-en{display:inline}
+
+.eyebrow{font-family:"Inter",var(--sans);font-size:12px;font-weight:600;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--violet);margin-bottom:16px}
+.grad{background:linear-gradient(100deg,var(--violet),var(--pink));-webkit-background-clip:text;
+  background-clip:text;color:transparent}
+
+/* HERO */
+header.top{padding:104px 0 56px;text-align:center}
+header.top h1{font-family:var(--serif);font-weight:700;font-size:clamp(32px,5.4vw,52px);
+  line-height:1.34;letter-spacing:.01em;text-wrap:balance}
+header.top .lead{color:var(--muted);max-width:46ch;margin:26px auto 0;text-align:left;font-size:16.5px}
+@media(max-width:640px){header.top{padding:88px 0 42px}header.top .lead{text-align:center}}
+.who{margin-top:22px;font-size:13.5px;color:var(--dim);font-family:"Inter",var(--sans);letter-spacing:.04em}
+
+section{padding:56px 0}
+.sec-h{text-align:center;margin-bottom:40px}
+.sec-h h2{font-family:var(--serif);font-weight:700;font-size:clamp(23px,3.4vw,32px);line-height:1.45;text-wrap:balance}
+.sec-h p{color:var(--muted);max-width:44ch;margin:14px auto 0;font-size:15.5px}
+
+/* PACKAGE CARDS */
+.pk{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
+@media(max-width:960px){.pk{grid-template-columns:1fr;gap:16px}}
+.card{position:relative;border:1px solid var(--line);border-radius:22px;background:var(--glass);
+  padding:30px 24px 26px;display:flex;flex-direction:column}
+.card.best{border-color:rgba(var(--violet-rgb),.55);
+  background:linear-gradient(180deg,rgba(var(--violet-rgb),.12),rgba(var(--pink-rgb),.05));
+  box-shadow:0 18px 60px rgba(var(--violet-rgb),.18)}
+.tagbest{position:absolute;top:-12px;left:50%;transform:translateX(-50%);white-space:nowrap;
+  font-family:"Inter",var(--sans);font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:#fff;background:linear-gradient(120deg,var(--violet),var(--pink));padding:5px 16px;border-radius:100px}
+.card .nm{font-family:var(--serif);font-weight:700;font-size:20px;line-height:1.4}
+.card .en{font-family:"Inter",var(--sans);font-size:12px;font-weight:600;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--dim);margin-top:4px}
+.card .was{margin-top:18px;font-size:14px;color:var(--dim);text-decoration:line-through}
+.card .now{font-family:"Inter",var(--sans);font-weight:700;font-size:38px;line-height:1.2;letter-spacing:-.01em;margin-top:2px}
+.card.best .now{background:linear-gradient(100deg,var(--violet),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.card .save{font-size:13.5px;color:var(--pink);font-weight:500;margin-top:4px}
+.card .for{margin-top:20px;padding-top:18px;border-top:1px solid var(--line-2);font-size:15px;color:var(--muted);line-height:1.85}
+.card .for b{color:var(--ink);font-weight:600}
+.card .key{margin-top:14px;font-size:14.5px;color:var(--muted);line-height:1.8}
+.card .key li{list-style:none;padding-left:20px;position:relative;margin-top:5px}
+.card .key li::before{content:"✓";position:absolute;left:0;color:var(--violet);font-weight:700}
+
+/* CUSTOM */
+.only1{margin-top:18px;border:1px dashed var(--line);border-radius:20px;padding:24px;
+  display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between}
+.only1 .l{font-family:var(--serif);font-weight:700;font-size:18px}
+.only1 .r{color:var(--muted);font-size:15px;max-width:56ch}
+
+/* TABLE */
+.tscroll{overflow-x:auto;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.02)}
+table{border-collapse:collapse;width:100%;min-width:660px;font-size:14.5px}
+th,td{padding:12px 14px;text-align:center;border-bottom:1px solid var(--line-2);vertical-align:middle}
+th:first-child,td:first-child{text-align:left;min-width:250px}
+thead th{font-family:"Inter",var(--sans);font-size:12.5px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--dim);background:rgba(255,255,255,.03);
+  position:sticky;top:0;backdrop-filter:blur(6px)}
+thead th.hl{color:var(--violet)}
+td.hl{background:rgba(var(--violet-rgb),.07)}
+tr.grp td{background:rgba(var(--pink-rgb),.07);font-family:"Inter",var(--sans);font-weight:700;
+  font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--pink);text-align:left}
+.yes{color:#6EE7A8;font-weight:700}
+.no{color:rgba(255,255,255,.16)}
+.qty{font-family:"Inter",var(--sans);font-weight:600;font-size:13.5px;color:var(--muted)}
+tbody tr:last-child td{border-bottom:0}
+
+/* UNIT PRICES */
+.units{display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:12px}
+.u{border:1px solid var(--line-2);border-radius:15px;padding:16px 18px;background:rgba(255,255,255,.02)}
+.u .un{font-size:15.5px;font-weight:500;line-height:1.6}
+.u .ue{font-family:"Inter",var(--sans);font-size:11.5px;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--dim);margin-top:3px}
+.u .up{font-family:"Inter",var(--sans);font-weight:700;font-size:17px;margin-top:9px;color:var(--violet)}
+.u .un2{font-size:12.5px;color:var(--dim);margin-top:2px;line-height:1.6}
+
+/* NOTES */
+.notes{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:820px){.notes{grid-template-columns:1fr}}
+.note{border:1px solid var(--line-2);border-radius:18px;padding:24px;background:rgba(255,255,255,.02)}
+.note h3{font-family:var(--serif);font-weight:700;font-size:17px;margin-bottom:12px}
+.note li{list-style:none;color:var(--muted);font-size:15px;line-height:1.85;padding-left:18px;position:relative;margin-top:7px}
+.note li::before{content:"";position:absolute;left:0;top:.78em;width:6px;height:6px;border-radius:50%;background:var(--violet);opacity:.6}
+.pay{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.pay div{flex:1 1 88px;border:1px solid var(--line-2);border-radius:13px;padding:13px 10px;text-align:center;background:rgba(255,255,255,.02)}
+.pay b{display:block;font-family:"Inter",var(--sans);font-size:21px;font-weight:700;color:var(--violet)}
+.pay span{display:block;font-size:12.5px;color:var(--dim);line-height:1.6;margin-top:3px}
+
+/* CTA */
+.cta{text-align:center;padding:64px 0 40px}
+.cta h2{font-family:var(--serif);font-weight:700;font-size:clamp(23px,3.6vw,32px);line-height:1.45;text-wrap:balance}
+.cta p{color:var(--muted);max-width:42ch;margin:16px auto 0;font-size:16px}
+.btn{display:inline-block;margin-top:26px;text-decoration:none;color:#fff;font-weight:600;font-size:16px;
+  padding:15px 34px;border-radius:100px;background:linear-gradient(120deg,var(--violet),var(--pink));
+  box-shadow:0 10px 40px rgba(var(--violet-rgb),.32);transition:transform .3s ease,box-shadow .3s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 16px 52px rgba(var(--violet-rgb),.42)}
+
+footer{border-top:1px solid var(--line-2);margin-top:30px;padding:32px 0 46px;text-align:center;
+  color:var(--dim);font-size:13.5px;line-height:2}
+footer .nm3{font-family:var(--serif);font-weight:700;font-size:17px;color:var(--ink)}
+footer a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+footer a:hover{color:var(--ink)}
+.rev{font-family:"Inter",var(--sans);font-size:12px;letter-spacing:.1em;color:rgba(255,255,255,.24);margin-top:14px}
+
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="lang" id="lang" role="group" aria-label="Language">
+  <button type="button" data-l="zh">中文</button><button type="button" data-l="en">EN</button>
+</div>
+
+<div class="aurora" aria-hidden="true"><i class="a1"></i><i class="a2"></i><i class="a3"></i></div>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">报价与配套</div>
+    <h1>单曲制作<br>要花多少，先给你一个底</h1>
+    <p class="lead">下面有两个部分：<b>四个配套系列</b>，和<b>逐项单价</b>。你可以整套走，也可以只做其中几步。看完我们再聊你的项目实际需要哪几项，我给你一个准的数字。</p>
+    <div class="who">Ronald Mok 莫荣烽　·　制作由 Around 一圈执行</div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="sec-h">
+      <h2>四个配套系列</h2>
+      <p>价格已经是配套价，括号里是逐项加起来的原价。</p>
+    </div>
+
+    <div class="pk">
+
+      <div class="card">
+        <div class="nm">收藏系列</div>
+        <div class="en">Collection</div>
+        <div class="was">原价 RM3,500</div>
+        <div class="now">RM2,980</div>
+        <div class="save">省 RM520</div>
+        <div class="for"><b>把歌做出来。</b><br>做到一首完整、能听的成品，发行你自己处理。</div>
+        <ul class="key">
+          <li>制作费 · 编曲</li>
+          <li>录音室 2 小时</li>
+          <li>剪辑调音 · 混音 · 母带</li>
+          <li>修改 1 次</li>
+        </ul>
+      </div>
+
+      <div class="card best">
+        <div class="tagbest">最多人选</div>
+        <div class="nm">专属系列</div>
+        <div class="en">Exclusive</div>
+        <div class="was">原价 RM6,000</div>
+        <div class="now">RM4,880</div>
+        <div class="save">省 RM1,120</div>
+        <div class="for"><b>把歌发出去。</b><br>最便宜的、能真正上架发行的一档——版权、推广、伴奏版都从这里才开始有。</div>
+        <ul class="key">
+          <li>收藏系列全部内容</li>
+          <li>配唱制作人</li>
+          <li>录音室 4 小时</li>
+          <li>伴奏 MMO · 纯音乐 MMA</li>
+          <li>版权管理 · 媒体推广上架</li>
+          <li>修改 3 次</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="nm">品牌系列</div>
+        <div class="en">Label</div>
+        <div class="was">原价 RM12,000</div>
+        <div class="now">RM8,880</div>
+        <div class="save">省 RM3,120</div>
+        <div class="for"><b>做到能上台、能授权。</b><br>要真人乐器、要和声、要乐谱和分轨的规格。</div>
+        <ul class="key">
+          <li>专属系列全部内容</li>
+          <li>制谱 · 和声编唱</li>
+          <li>真人乐器录制 1 项</li>
+          <li>录音室 10 小时</li>
+          <li>分轨混音 Component Mix</li>
+          <li>修改次数面议</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="only1">
+      <div class="l">唯一系列　Only</div>
+      <div class="r">上面三个都对不上，或者你有自己的想法——那就按你的项目单独开一个。先聊，再报价。</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-h">
+      <h2>三个系列，差在哪里</h2>
+      <p>横向可以滑动。</p>
+    </div>
+    <div class="tscroll">
+      <table>
+        <thead>
+          <tr>
+            <th>项目 Item</th>
+            <th>收藏 Collection</th>
+            <th class="hl">专属 Exclusive</th>
+            <th>品牌 Label</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="grp"><td colspan="4">Production 制作</td></tr>
+          <tr><td>制作费 Song&#39;s / Music Producer</td><td><span class="yes">✓</span></td><td class="hl"><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+          <tr><td>编曲 Music Arrangement</td><td><span class="yes">✓</span></td><td class="hl"><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+          <tr><td>制谱 Scoring</td><td><span class="no">—</span></td><td class="hl"><span class="no">—</span></td><td><span class="yes">✓</span></td></tr>
+
+          <tr class="grp"><td colspan="4">Studio Recording 录音</td></tr>
+          <tr><td>配唱制作人 Vocal Producer</td><td><span class="no">—</span></td><td class="hl"><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+          <tr><td>录音室 + 录音师 Studio + Engineer</td><td><span class="qty">2 小时</span></td><td class="hl"><span class="qty">4 小时</span></td><td><span class="qty">10 小时</span></td></tr>
+          <tr><td>和声编唱 Backing Vocal Scoring + Record</td><td><span class="no">—</span></td><td class="hl"><span class="no">—</span></td><td><span class="yes">✓</span></td></tr>
+          <tr><td>真人乐器录制 1 项 Live Instrument<br><span class="qty">乐队 · 弦乐 · 铜管 · 长笛等</span></td><td><span class="no">—</span></td><td class="hl"><span class="no">—</span></td><td><span class="yes">✓</span></td></tr>
+
+          <tr class="grp"><td colspan="4">Post-Production 后期</td></tr>
+          <tr><td>剪辑调音 Vocal Editing &amp; Tuning</td><td><span class="yes">✓</span></td><td class="hl"><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+          <tr><td>混音 — 完整版 Full Song</td><td><span class="yes">✓</span></td><td class="hl"><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+          <tr><td>混音 — 伴奏 MMO</td><td><span class="no">—</span></td><td class="hl"><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+          <tr><td>混音 — 纯音乐 MMA</td><td><span class="no">—</span></td><td class="hl"><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+          <tr><td>混音 — 分轨 Component Mix</td><td><span class="no">—</span></td><td class="hl"><span class="no">—</span></td><td><span class="yes">✓</span></td></tr>
+          <tr><td>母带后期 Mastering</td><td><span class="yes">✓</span></td><td class="hl"><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+
+          <tr class="grp"><td colspan="4">Others 其他</td></tr>
+          <tr><td>版权管理 Music Publishing<br><span class="qty">帮你收之后的版税</span></td><td><span class="no">—</span></td><td class="hl"><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+          <tr><td>媒体推广上架 Digital Distribution<br><span class="qty">Spotify · iTunes · TikTok · YouTube Music</span></td><td><span class="no">—</span></td><td class="hl"><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+          <tr><td>修改 Revision</td><td><span class="qty">1 次</span></td><td class="hl"><span class="qty">3 次</span></td><td><span class="qty">面议</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-h">
+      <h2>逐项单价</h2>
+      <p>不走配套也可以，只做其中一两项。价格是起跳价，实际看编制和难度。</p>
+    </div>
+    <div class="units">
+      <div class="u"><div class="un">制作费</div><div class="ue">Song&#39;s / Music Producer</div><div class="up">RM500 – RM5,000</div></div>
+      <div class="u"><div class="un">编曲</div><div class="ue">Music Arrangement</div><div class="up">RM600 – RM3,000</div><div class="un2">不含制谱</div></div>
+      <div class="u"><div class="un">配唱制作人</div><div class="ue">Vocal Producer</div><div class="up">RM500 – RM2,000</div></div>
+      <div class="u"><div class="un">乐手录制</div><div class="ue">Musician for Recording</div><div class="up">RM500 – RM2,000</div><div class="un2">不含录音室费用</div></div>
+      <div class="u"><div class="un">混音</div><div class="ue">Mixing</div><div class="up">RM300 – RM1,500</div><div class="un2">完整版 / 伴奏 MMO / 纯音乐 MMA</div></div>
+      <div class="u"><div class="un">和声编唱</div><div class="ue">Backing Vocal</div><div class="up">RM200 – RM800</div><div class="un2">和声编写 + 演唱，不含录音室费用</div></div>
+      <div class="u"><div class="un">母带后期处理</div><div class="ue">Mastering</div><div class="up">RM200 – RM800</div></div>
+      <div class="u"><div class="un">制谱</div><div class="ue">Scoring</div><div class="up">RM50 – RM800</div></div>
+      <div class="u"><div class="un">剪辑</div><div class="ue">Editing</div><div class="up">RM50 – RM350</div></div>
+      <div class="u"><div class="un">录音室 + 录音师</div><div class="ue">Recording Session</div><div class="up">RM150 – RM300</div><div class="un2">每小时</div></div>
+      <div class="u"><div class="un">演唱人</div><div class="ue">Vocalist</div><div class="up">RM600 起</div><div class="un2">看歌手与人数</div></div>
+      <div class="u"><div class="un">演唱样本</div><div class="ue">Demo Singer</div><div class="up">RM200 – RM500</div><div class="un2">看歌手与人数</div></div>
+      <div class="u"><div class="un">词曲创作</div><div class="ue">Composing</div><div class="up">RM400 起</div><div class="un2">作词 / 作曲</div></div>
+      <div class="u"><div class="un">音乐版权管理</div><div class="ue">Music Publishing</div><div class="up">RM400 起</div><div class="un2">一次性</div></div>
+      <div class="u"><div class="un">媒体推广上架</div><div class="ue">Digital Distribution</div><div class="up">RM100 起</div><div class="un2">一次性</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="notes">
+      <div class="note">
+        <h3>付款方式</h3>
+        <div class="pay">
+          <div><b>30%</b><span>确认项目时</span></div>
+          <div><b>30%</b><span>录音完成后</span></div>
+          <div><b>40%</b><span>验收通过后</span></div>
+        </div>
+      </div>
+      <div class="note">
+        <h3>几件先讲清楚的事</h3>
+        <ul>
+          <li>所有配套以 <b>1 位主唱</b> 为基准。多一位主唱或多一件乐器，会另外算。</li>
+          <li>单价是起跳价，最终看编制、难度和交付规格。</li>
+          <li>词曲版权是创作者的；制作交付给你的东西，你拿去用没问题。</li>
+          <li>广告、影视、剧集的配乐另有一套报价，这一页只涵盖单曲制作。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta">
+  <div class="wrap">
+    <h2>看完有个底了，<br>剩下的我们聊比较快</h2>
+    <p>告诉我你要做什么、什么时候要，我给你一个实际的区间，不用先准备好完整企划。</p>
+    <a class="btn" href="https://wa.me/60149212571" target="_blank" rel="noopener">WhatsApp 找我 →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="nm3">Ronald Mok 莫荣烽</div>
+    <div>音乐监制 · 制作统筹　|　MACP 会员　|　马来西亚 Malaysia</div>
+    <div>制作由 <a href="https://aroundyiquan.wixsite.com/welcome" target="_blank" rel="noopener">Around 一圈</a> 执行</div>
+    <div class="rev">2025 REVISED EDITION</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  function lGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+  function lSet(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+
+  var I18N = {
+    "报价与配套":"Rates & Packages",
+    "单曲制作":"What a single costs — ",
+    "要花多少，先给你一个底":"so you know before we talk",
+    "下面有两个部分：":"Two parts below: ",
+    "四个配套系列":"four packages",
+    "，和":", and ",
+    "逐项单价":"itemised rates",
+    "。你可以整套走，也可以只做其中几步。看完我们再聊你的项目实际需要哪几项，我给你一个准的数字。":". Take a whole package, or just the steps you need. Once you've read it, tell me about your project and I'll give you a firm number.",
+    "Ronald Mok 莫荣烽　·　制作由 Around 一圈执行":"Ronald Mok　·　Produced through Around 一圈",
+    "价格已经是配套价，括号里是逐项加起来的原价。":"These are the package prices. The struck-through figure is what the same items cost separately.",
+
+    "收藏系列":"Collection",
+    "原价 RM3,500":"Was RM3,500",
+    "省 RM520":"You save RM520",
+    "把歌做出来。":"Get the song made. ",
+    "做到一首完整、能听的成品，发行你自己处理。":"A finished, release-quality track. You handle the release yourself.",
+    "制作费 · 编曲":"Production · Arrangement",
+    "录音室 2 小时":"2 hours of studio time",
+    "剪辑调音 · 混音 · 母带":"Editing · Mixing · Mastering",
+    "修改 1 次":"1 round of revisions",
+
+    "最多人选":"Most chosen",
+    "专属系列":"Exclusive",
+    "原价 RM6,000":"Was RM6,000",
+    "省 RM1,120":"You save RM1,120",
+    "把歌发出去。":"Get the song released. ",
+    "最便宜的、能真正上架发行的一档——版权、推广、伴奏版都从这里才开始有。":"The cheapest package that actually gets you onto streaming — rights, distribution and backing versions all start here.",
+    "收藏系列全部内容":"Everything in Collection",
+    "配唱制作人":"Vocal Producer",
+    "录音室 4 小时":"4 hours of studio time",
+    "伴奏 MMO · 纯音乐 MMA":"Backing track (MMO) · Instrumental (MMA)",
+    "版权管理 · 媒体推广上架":"Publishing admin · Distribution",
+    "修改 3 次":"3 rounds of revisions",
+
+    "品牌系列":"Label",
+    "原价 RM12,000":"Was RM12,000",
+    "省 RM3,120":"You save RM3,120",
+    "做到能上台、能授权。":"Ready for the stage and for licensing. ",
+    "要真人乐器、要和声、要乐谱和分轨的规格。":"For live instruments, backing vocals, scores and stem-level delivery.",
+    "专属系列全部内容":"Everything in Exclusive",
+    "制谱 · 和声编唱":"Scoring · Backing vocal arrangement",
+    "真人乐器录制 1 项":"1 live instrument recording",
+    "录音室 10 小时":"10 hours of studio time",
+    "分轨混音 Component Mix":"Component mix (stems)",
+    "修改次数面议":"Revisions by agreement",
+
+    "唯一系列　Only":"Only　唯一系列",
+    "上面三个都对不上，或者你有自己的想法——那就按你的项目单独开一个。先聊，再报价。":"If none of the three fits, or you have your own idea, we build one around your project. Talk first, quote after.",
+
+    "三个系列，差在哪里":"What separates the three",
+    "横向可以滑动。":"Scroll sideways to see it all.",
+    "项目 Item":"Item 项目",
+    "收藏 Collection":"Collection 收藏",
+    "专属 Exclusive":"Exclusive 专属",
+    "品牌 Label":"Label 品牌",
+    "Production 制作":"Production",
+    "Studio Recording 录音":"Studio Recording",
+    "Post-Production 后期":"Post-Production",
+    "Others 其他":"Others",
+    "制作费 Song's / Music Producer":"Song's / Music Producer",
+    "编曲 Music Arrangement":"Music Arrangement",
+    "制谱 Scoring":"Scoring",
+    "配唱制作人 Vocal Producer":"Vocal Producer",
+    "录音室 + 录音师 Studio + Engineer":"Studio + Engineer booking",
+    "和声编唱 Backing Vocal Scoring + Record":"Backing Vocal Scoring + Record",
+    "真人乐器录制 1 项 Live Instrument":"1 Live Instrument Record",
+    "乐队 · 弦乐 · 铜管 · 长笛等":"Band · Strings · Brass · Flute, etc.",
+    "剪辑调音 Vocal Editing & Tuning":"Vocal Editing & Tuning",
+    "混音 — 完整版 Full Song":"Mixing — Full Song",
+    "混音 — 伴奏 MMO":"Mixing — MMO",
+    "混音 — 纯音乐 MMA":"Mixing — MMA",
+    "混音 — 分轨 Component Mix":"Mixing — Component Mix",
+    "母带后期 Mastering":"Mastering",
+    "版权管理 Music Publishing":"Music Publishing Administration",
+    "帮你收之后的版税":"Keeps collecting your royalties",
+    "媒体推广上架 Digital Distribution":"Digital Distribution",
+    "修改 Revision":"Revisions",
+    "2 小时":"2 hours",
+    "4 小时":"4 hours",
+    "10 小时":"10 hours",
+    "1 次":"Once only",
+    "3 次":"Up to 3",
+    "面议":"By agreement",
+
+    "不走配套也可以，只做其中一两项。价格是起跳价，实际看编制和难度。":"You don't have to take a package — one or two items is fine. These are starting prices; the final figure depends on scope and difficulty.",
+    "制作费":"Song's / Music Producer",
+    "编曲":"Music Arrangement",
+    "不含制谱":"Scoring not included",
+    "乐手录制":"Musician for Recording",
+    "不含录音室费用":"Studio fees not included",
+    "混音":"Mixing",
+    "完整版 / 伴奏 MMO / 纯音乐 MMA":"Full song / MMO / MMA",
+    "和声编唱":"Backing Vocal",
+    "和声编写 + 演唱，不含录音室费用":"Arrangement + performance; studio fees not included",
+    "母带后期处理":"Mastering",
+    "制谱":"Scoring",
+    "剪辑":"Editing",
+    "录音室 + 录音师":"Recording Session",
+    "每小时":"Per hour",
+    "演唱人":"Vocalist",
+    "RM600 起":"From RM600",
+    "看歌手与人数":"Depends on the artist and headcount",
+    "演唱样本":"Demo Singer",
+    "词曲创作":"Composing",
+    "RM400 起":"From RM400",
+    "作词 / 作曲":"Lyrics / Melody",
+    "音乐版权管理":"Music Publishing",
+    "一次性":"One-time fee",
+    "媒体推广上架":"Digital Distribution",
+    "RM100 起":"From RM100",
+
+    "付款方式":"Payment",
+    "确认项目时":"On confirmation",
+    "录音完成后":"After recording",
+    "验收通过后":"On approval",
+    "几件先讲清楚的事":"A few things up front",
+    "所有配套以":"Every package is priced for ",
+    "1 位主唱":"one vocalist",
+    "为基准。多一位主唱或多一件乐器，会另外算。":". An extra vocalist or instrument is charged separately.",
+    "单价是起跳价，最终看编制、难度和交付规格。":"Itemised figures are starting prices; the final number depends on scope, difficulty and delivery spec.",
+    "词曲版权是创作者的；制作交付给你的东西，你拿去用没问题。":"The composition belongs to its writer. What I deliver in production is yours to use.",
+    "广告、影视、剧集的配乐另有一套报价，这一页只涵盖单曲制作。":"Commercials, film and series scoring are quoted separately. This page covers single production only.",
+
+    "看完有个底了，":"Now you have a sense of it — ",
+    "剩下的我们聊比较快":"the rest is faster over a chat",
+    "告诉我你要做什么、什么时候要，我给你一个实际的区间，不用先准备好完整企划。":"Tell me what you want to make and when you need it, and I'll give you a real range. No finished brief required.",
+    "WhatsApp 找我 →":"Message me on WhatsApp →",
+    "音乐监制 · 制作统筹　|　MACP 会员　|　马来西亚 Malaysia":"Music Producer · Production Director　|　MACP Member　|　Malaysia",
+    "制作由":"Produced through ",
+    "执行":""
+  };
+
+  /* 收集所有中文文字节点 */
+  var nodes=[], w=document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null);
+  var n;
+  while((n=w.nextNode())){
+    var p=n.parentNode;
+    if(p && (p.nodeName==='SCRIPT'||p.nodeName==='STYLE')) continue;
+    if(p && p.closest && p.closest('#lang')) continue;
+    if(!n.nodeValue || !n.nodeValue.trim()) continue;
+    nodes.push({n:n, zh:n.nodeValue});
+  }
+
+  function setLang(l){
+    var en=(l==='en');
+    nodes.forEach(function(o){
+      var k=o.zh.trim();
+      if(en){ if(I18N[k]!==undefined) o.n.nodeValue=o.zh.replace(k, I18N[k]); }
+      else { o.n.nodeValue=o.zh; }
+    });
+    document.documentElement.lang = en ? 'en' : 'zh-Hans';
+    document.title = en ? 'Rates & Packages — Ronald Mok'
+                        : '报价与配套 — Ronald Mok 莫荣烽';
+    [].forEach.call(document.querySelectorAll('#lang button'), function(b){
+      b.classList.toggle('on', b.getAttribute('data-l')===l);
+    });
+    lSet('lang', l);
+  }
+
+  var saved = lGet('lang') || ((navigator.language||'').toLowerCase().indexOf('zh')===0 ? 'zh' : 'en');
+  [].forEach.call(document.querySelectorAll('#lang button'), function(b){
+    b.addEventListener('click', function(){ setLang(b.getAttribute('data-l')); });
+  });
+  setLang(saved);
+})();
+</script>
+</body>
+</html>
