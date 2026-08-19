@@ -153,6 +153,14 @@ header.hero{padding:126px 0 92px;position:relative;overflow:hidden}
 
 /* STEPS */
 .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:32px}
+.fx-band{margin-top:30px;border:1px solid var(--line);border-left:3px solid var(--violet);
+  border-radius:0 16px 16px 0;padding:22px 26px;background:rgba(var(--violet-rgb),.06);
+  display:grid;grid-template-columns:minmax(96px,120px) 1fr;gap:10px 26px;align-items:start}
+.fx-band-k{font-family:"Inter",var(--sans);font-size:12.5px;letter-spacing:.16em;font-weight:700;
+  text-transform:uppercase;color:var(--violet);padding-top:4px}
+.fx-band-b{font-size:15.5px;line-height:1.85;color:var(--muted)}
+.fx-band-b b{color:var(--ink);font-weight:600;display:block;margin-bottom:4px}
+@media(max-width:640px){.fx-band{grid-template-columns:1fr;gap:8px;padding:19px 20px}}
 .step{position:relative;padding-left:22px}
 .step::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:2px;border-radius:2px;
   background:linear-gradient(180deg,var(--violet),rgba(var(--pink-rgb),.15))}
@@ -184,6 +192,9 @@ header.hero{padding:126px 0 92px;position:relative;overflow:hidden}
 .b-md{grid-column:span 3;min-height:250px}
 .b-sm{grid-column:span 2;min-height:220px}
 @media(max-width:900px){.b-lg,.b-md{grid-column:span 6}.b-sm{grid-column:span 3}}
+/* 平板（两栏）时奇数张小卡会空一格，最后一张占满；
+   手机已经是单栏，不能套用——span 6 会逼出隐藏栏位把卡片压扁 */
+@media(min-width:641px) and (max-width:900px){.bento .bt:last-child{grid-column:span 6}}
 @media(max-width:600px){
   .bento{grid-template-columns:1fr;gap:14px}
   .b-lg,.b-md,.b-sm{grid-column:span 1;min-height:270px}
@@ -1192,8 +1203,12 @@ footer:hover .egg{color:var(--dim)}
       <div class="step"><div class="n">判断</div><h3>先弄清楚你要什么</h3><p>用途、场合、听众、死线、预算区间。这一步省下的，是后面三轮改版。</p></div>
       <div class="step"><div class="n">配对</div><h3>找到最合适的人</h3><p>每一段找专精的人，不是找一个人做全部。</p></div>
       <div class="step"><div class="n">管交付</div><h3>方向、进度、修改全经过我</h3><p>你只对我一个人说话，不用同时管五个人。</p></div>
-      <div class="step"><div class="n">帮你交代</div><h3>你要跟谁报告，我把话整理好给你</h3><p>老板、委员会、品牌方——需要有人替你说明为什么这样做、为什么这个价，我把资料整理成你可以直接拿去讲的版本。</p></div>
       <div class="step"><div class="n">交出去</div><h3>按你的用途配齐</h3><p>成品、分轨、伴奏版、谱；要上架或登记版权也一并处理。</p></div>
+    </div>
+
+    <div class="fx-band rv">
+      <div class="fx-band-k">帮你交代</div>
+      <div class="fx-band-b"><b>你要跟谁报告，我把话整理好给你。</b>老板、委员会、品牌方——需要有人替你说明为什么这样做、为什么这个价，我把资料整理成你可以直接拿去讲的版本。</div>
     </div>
   </div>
 </section>
