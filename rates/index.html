@@ -120,6 +120,15 @@ tbody tr:last-child td{border-bottom:0}
 
 /* UNIT PRICES */
 .units{display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:12px}
+.lic{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.lic-row{display:grid;grid-template-columns:minmax(96px,132px) 1fr;gap:18px;padding:16px 20px;border-bottom:1px solid var(--line-2);align-items:start}
+.lic-row:last-child{border-bottom:0}
+.lic-k{font-family:var(--serif);font-weight:700;font-size:15.5px;color:var(--ink);line-height:1.6}
+.lic-v{color:var(--muted);font-size:15px;line-height:1.8}
+.lic-v b{color:var(--ink);font-weight:500}
+.lic-note{margin-top:18px;font-size:14.5px;color:var(--muted);line-height:1.85;padding-left:16px;border-left:2px solid var(--violet)}
+.lic-note b{color:var(--ink);font-weight:600}
+@media(max-width:620px){.lic-row{grid-template-columns:1fr;gap:4px;padding:14px 16px}}
 .u{border:1px solid var(--line-2);border-radius:15px;padding:16px 18px;background:rgba(255,255,255,.02)}
 .u .un{font-size:15.5px;font-weight:500;line-height:1.6}
 .u .ue{font-family:"Inter",var(--sans);font-size:11.5px;font-weight:600;letter-spacing:.1em;
@@ -323,6 +332,22 @@ footer a:hover{color:var(--ink)}
 
 <section>
   <div class="wrap">
+    <div class="sec-h">
+      <h2>授权：另外一套算法</h2>
+      <p>广告、影视、品牌用途的歌，价格不是按制作算，是按<b>用在哪里、用多久</b>算。</p>
+    </div>
+    <div class="lic">
+      <div class="lic-row"><div class="lic-k">短期授权</div><div class="lic-v">单一平台、单一活动，或一年以内。适合一次性的campaign。</div></div>
+      <div class="lic-row"><div class="lic-k">多年授权</div><div class="lic-v">通常三到五年。分摊下来每年比逐年续约便宜，也省掉每年重谈一次。</div></div>
+      <div class="lic-row"><div class="lic-k">永久授权</div><div class="lic-v">一次付清，之后不用再谈这件事。品牌主题曲多数走这一档。</div></div>
+      <div class="lic-row"><div class="lic-k">范围</div><div class="lic-v">授权书会写清楚三件事：<b>用在哪些平台、用多久、能不能改</b>。要扩到电视或户外，另外再谈，不影响原有范围。</div></div>
+    </div>
+    <p class="lic-note">授权到期时，<b>续约几乎永远比重做便宜</b>——重做等于整首歌重新作曲、编曲、录制、重新登记版权，还要加上一段品牌声音的空窗期。这笔帐我会在到期前先算给你看。</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
     <div class="notes">
       <div class="note">
         <h3>付款方式</h3>
@@ -349,7 +374,7 @@ footer a:hover{color:var(--ink)}
           <li>单价区间看编制、难度和交付规格而定。</li>
           <li>词曲版权是创作者的；制作交付给你的东西，你拿去用没问题。</li>
           <li>大型项目另行排期，工期和费用会先谈好再开工。</li>
-          <li>广告、影视、剧集的配乐另有一套报价，这一页只涵盖单曲制作。</li>
+          <li>广告、影视、剧集的<b>配乐制作</b>另有一套报价；上面那一段讲的是<b>授权</b>，两件事分开算。</li>
         </ul>
       </div>
     </div>
@@ -493,6 +518,23 @@ footer a:hover{color:var(--ink)}
     "RM100 起":"From RM100",
 
     "付款方式":"Payment",
+    "授权：另外一套算法":"Licensing works differently",
+    "广告、影视、品牌用途的歌，价格不是按制作算，是按":"For advertising, film and brand use, the price follows ",
+    "用在哪里、用多久":"where it runs and for how long",
+    "算。":", not the production.",
+    "短期授权":"Short term",
+    "单一平台、单一活动，或一年以内。适合一次性的campaign。":"One platform, one campaign, or under a year. Suits a one-off campaign.",
+    "多年授权":"Multi-year",
+    "通常三到五年。分摊下来每年比逐年续约便宜，也省掉每年重谈一次。":"Usually three to five years. Cheaper per year than renewing annually, and it saves renegotiating every year.",
+    "永久授权":"Perpetual",
+    "一次付清，之后不用再谈这件事。品牌主题曲多数走这一档。":"Paid once, never revisited. Most brand themes go this way.",
+    "范围":"Scope",
+    "授权书会写清楚三件事：":"The licence spells out three things: ",
+    "用在哪些平台、用多久、能不能改":"which platforms, for how long, and whether it can be altered",
+    "。要扩到电视或户外，另外再谈，不影响原有范围。":". Extending to TV or outdoor is quoted separately and does not affect the original scope.",
+    "授权到期时，":"When a licence expires, ",
+    "续约几乎永远比重做便宜":"renewing is almost always cheaper than starting over",
+    "——重做等于整首歌重新作曲、编曲、录制、重新登记版权，还要加上一段品牌声音的空窗期。这笔帐我会在到期前先算给你看。":" — a rebuild means composing, arranging, recording and registering the rights all over again, plus a gap where the brand has no sound. I run that comparison for you before the expiry date.",
     "加急费 Rush Fee":"Rush Fee",
     "。要更快：":". Need it sooner:",
     "压到 2 周内交付":"Delivered within 2 weeks",
@@ -515,7 +557,11 @@ footer a:hover{color:var(--ink)}
     "为基准。多一位主唱或多一件乐器，会另外算。":". An extra vocalist or instrument is charged separately.",
     "单价区间看编制、难度和交付规格而定。":"Where a rate falls inside its range depends on scope, difficulty and delivery spec.",
     "词曲版权是创作者的；制作交付给你的东西，你拿去用没问题。":"The composition belongs to its writer. What I deliver in production is yours to use.",
-    "广告、影视、剧集的配乐另有一套报价，这一页只涵盖单曲制作。":"Commercials, film and series scoring are quoted separately. This page covers single production only.",
+    "广告、影视、剧集的":"Scoring for commercials, film and series is quoted separately; ",
+    "配乐制作":"scoring",
+    "另有一套报价；上面那一段讲的是":"the section above is about ",
+    "授权":"licensing",
+    "，两件事分开算。":" — the two are priced separately.",
 
     "看完有个底了，":"Now you have a sense of it — ",
     "剩下的我们聊比较快":"the rest is faster over a chat",
