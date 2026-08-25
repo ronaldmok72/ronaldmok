@@ -108,6 +108,12 @@ section{padding:56px 0}
 .ask p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.8}
 @media(max-width:620px){.ask li{grid-template-columns:26px 1fr;gap:12px;padding:16px}}
 
+.doform{margin-top:26px;text-align:center;border:1px dashed var(--line);border-radius:18px;
+  padding:24px 22px;background:rgba(var(--violet-rgb),.05)}
+.doform-t{font-family:var(--serif);font-weight:700;font-size:17px;color:var(--ink)}
+.doform-s{color:var(--muted);font-size:14.5px;margin-top:6px;line-height:1.75}
+.doform .btn{margin-top:18px}
+
 /* DOCS */
 .docs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 @media(max-width:760px){.docs{grid-template-columns:1fr}}
@@ -247,25 +253,32 @@ footer a:hover{color:var(--ink)}
       <li>
         <div>
           <h3>这是什么类型的广告？</h3>
-          <p>品牌形象、产品促销、活动宣传、公益——用途不同，授权的范围和年限就不同。</p>
+          <p>品牌形象 · 产品促销 · 活动宣传 · 公益 · 其他<br>
+          <b>用途不同，授权的范围和年限就不同。</b></p>
         </div>
       </li>
       <li>
         <div>
           <h3>会出现在哪些地方？</h3>
-          <p>YouTube、TikTok、小红书、FB、IG，还是电视、电台、户外、店内播放？<b>数字平台和传统媒体是两套算法。</b></p>
+          <p>YouTube · TikTok · IG · FB · 小红书 · 电视 · 电台 · 户外 · 店内<br>
+          <b>数字平台和传统媒体是两套算法</b>，可以复选。</p>
         </div>
       </li>
       <li>
         <div>
-          <h3>要用多久？</h3>
-          <p>半年、一年、三年，还是永久。年限直接决定价格，也决定要不要走多年授权比较划算。</p>
+          <h3>要用多久？在哪些地区？</h3>
+          <p>半年 · 一年 · 三年 · 五年 · 永久　｜　马来西亚 · 新马 · 东南亚 · 全球<br>
+          <b>年限和地区直接决定价格</b>，也决定多年授权划不划算。</p>
         </div>
       </li>
     </ol>
-    <p class="lic-note" style="margin-top:18px">另外给我一个 <b>Production title</b> 就好（例如「饮料广告」）——不用正式名称，方便我先开档案。</p>
-  </div>
-</section>
+
+    <div class="doform">
+      <div class="doform-t">不用自己想怎么写。</div>
+      <div class="doform-s">点下面这个，WhatsApp 会把表格带出来，你把不适用的删掉就好。</div>
+      <a class="btn" id="askBtn" href="#" target="_blank" rel="noopener">回答这几题 →</a>
+    </div>
+  </section>
 
 <section>
   <div class="wrap">
@@ -310,6 +323,12 @@ footer a:hover{color:var(--ink)}
       </div>
     </div>
   </div>
+
+    <div class="doform">
+      <div class="doform-t">确认合作之后再用这个。</div>
+      <div class="doform-s">同样会帮你把栏位带出来，填好送出就行。</div>
+      <a class="btn" id="docBtn" href="#" target="_blank" rel="noopener">把资料填给我 →</a>
+    </div>
 </section>
 
 <section>
@@ -428,6 +447,21 @@ footer a:hover{color:var(--ink)}
     "——重做等于整首歌重新作曲、编曲、录制、重新登记版权，还要加上一段品牌声音的空窗期。这笔帐我会在到期前先算给你看。":" — a rebuild means composing, arranging, recording and registering the rights all over again, plus a gap where the brand has no sound. I run that comparison for you before the expiry date.",
 
     "报价之前我会先问三件事":"Three things I ask before quoting",
+    "品牌形象 · 产品促销 · 活动宣传 · 公益 · 其他":"Brand image · product promo · event campaign · public service · other",
+    "用途不同，授权的范围和年限就不同。":"The use changes both the scope and the term.",
+    "YouTube · TikTok · IG · FB · 小红书 · 电视 · 电台 · 户外 · 店内":"YouTube · TikTok · IG · FB · Xiaohongshu · TV · radio · outdoor · in-store",
+    "数字平台和传统媒体是两套算法":"Digital and traditional media are priced differently",
+    "，可以复选。":". Pick as many as apply.",
+    "要用多久？在哪些地区？":"For how long, and where?",
+    "半年 · 一年 · 三年 · 五年 · 永久　｜　马来西亚 · 新马 · 东南亚 · 全球":"6 months · 1 year · 3 years · 5 years · perpetual　|　Malaysia · MY+SG · SEA · worldwide",
+    "年限和地区直接决定价格":"Term and territory drive the price",
+    "，也决定多年授权划不划算。":", and decide whether a multi-year licence works out cheaper.",
+    "不用自己想怎么写。":"You don\'t have to work out how to phrase it.",
+    "点下面这个，WhatsApp 会把表格带出来，你把不适用的删掉就好。":"Tap below and WhatsApp opens with the form filled in — just delete what doesn\'t apply.",
+    "回答这几题 →":"Answer these →",
+    "确认合作之后再用这个。":"Use this once we\'re going ahead.",
+    "同样会帮你把栏位带出来，填好送出就行。":"Same idea — the fields come pre-filled, just complete and send.",
+    "把资料填给我 →":"Send me the details →",
     "这三样决定授权那一半的价钱。答得越具体，我给的数字越准。":"These three decide the licensing half. The more specific your answers, the tighter my number.",
     "这是什么类型的广告？":"What kind of advertising is it?",
     "品牌形象、产品促销、活动宣传、公益——用途不同，授权的范围和年限就不同。":"Brand image, product promotion, event campaign, public service — the use changes both the scope and the term.",
@@ -516,7 +550,89 @@ footer a:hover{color:var(--ink)}
     [].forEach.call(document.querySelectorAll('#lang button'), function(b){
       b.classList.toggle('on', b.getAttribute('data-l')===l);
     });
+    setForms(l);
     lSet('lang', l);
+  }
+
+  var WA = 'https://wa.me/60149212571?text=';
+  var FORM = {
+    ask: {
+      zh: [
+        'Hi Ronald，广告曲想问一下：',
+        '',
+        '【广告内容】',
+        '类型：（品牌 / 产品 / 活动 / 公益 / 其他）',
+        '产品或品牌：',
+        '新产品吗：（是 / 否）',
+        '',
+        '【会用在哪里】',
+        'Media：（YouTube / TikTok / IG / FB / 小红书 / 电视 / 电台 / 户外 / 店内）',
+        'Format：（Digital / Broadcast / 两者）',
+        'Territory：（马来西亚 / 新马 / 东南亚 / 全球）',
+        '实体据点几个：（有店面 / 建筑的话）',
+        '',
+        '【时间】',
+        'Terms：（半年 / 一年 / 三年 / 五年 / 永久）',
+        '预计上线：（TBC 也行）',
+        '交付日期：',
+        '',
+        '【歌曲】',
+        '新歌 / 沿用现有：',
+        'Production title：（代称就好，例如「饮料广告」）'
+      ].join('\n'),
+      en: [
+        'Hi Ronald, a question about an ad track:',
+        '',
+        '[The advertising]',
+        'Type: (brand / product promo / event / public service / other:)',
+        'Product or brand:',
+        'New product: (yes / no)',
+        '',
+        '[Where it runs]',
+        'Media: (YouTube / TikTok / IG / FB / Xiaohongshu / TV / radio / outdoor / in-store)',
+        'Format: (Digital / Broadcast / both)',
+        'Territory: (Malaysia / MY+SG / SEA / worldwide / other:)',
+        'Number of physical sites: (if it plays in stores or buildings)',
+        '',
+        '[Timing]',
+        'Term: (6 months / 1 year / 3 years / 5 years / perpetual)',
+        'Expected release date: (TBC is fine)',
+        'Delivery date you need:',
+        '',
+        '[The track]',
+        'New track or existing: (new / existing)',
+        'Production title: (a working name is fine, e.g. "beverage commercial")'
+      ].join('\n')
+    },
+    doc: {
+      zh: [
+        'Hi Ronald，授权资料给你：',
+        '',
+        '公司全名：',
+        'SSM 注册号：',
+        'Bank Statement 抬头：',
+        '公司网站：',
+        '',
+        '歌曲正式名称：',
+        '预计上线日期：'
+      ].join('\n'),
+      en: [
+        'Hi Ronald, here are the licensing details:',
+        '',
+        'Full registered company name:',
+        'SSM registration number:',
+        'Name on bank statement:',
+        'Company website:',
+        '',
+        'Final track title:',
+        'Expected release date:'
+      ].join('\n')
+    }
+  };
+  function setForms(l){
+    var a=document.getElementById('askBtn'), d=document.getElementById('docBtn');
+    if(a) a.href = WA + encodeURIComponent(FORM.ask[l] || FORM.ask.zh);
+    if(d) d.href = WA + encodeURIComponent(FORM.doc[l] || FORM.doc.zh);
   }
 
   var saved = lGet('lang') || ((navigator.language||'').toLowerCase().indexOf('zh')===0 ? 'zh' : 'en');
