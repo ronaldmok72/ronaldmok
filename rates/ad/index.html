@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>广告与授权 — Ronald Mok 莫荣烽</title>
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+<meta name="googlebot" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📣</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@500;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#08070C; --ink:#F7F5FB; --muted:#C6BFD6; --dim:#9C94B2;
+  --violet:#9D7BFF; --violet-rgb:157,123,255;
+  --pink:#F472B6;   --pink-rgb:244,114,182;
+  --line:rgba(255,255,255,.11); --line-2:rgba(255,255,255,.06); --glass:rgba(255,255,255,.04);
+  --max:1140px;
+  --sans:"Noto Sans SC","Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif;
+  --serif:"Noto Serif SC",Georgia,"Songti SC",serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:400;
+  font-size:17px;line-height:1.9;letter-spacing:.015em;-webkit-font-smoothing:antialiased;
+  overflow-x:hidden;overflow-x:clip;position:relative}
+a{color:inherit}
+
+.aurora{position:fixed;inset:0;z-index:-3;pointer-events:none;overflow:hidden}
+.aurora i{position:absolute;display:block;border-radius:50%;filter:blur(90px);opacity:.30}
+.aurora .a1{width:60vw;height:60vw;left:-16vw;top:-18vw;background:radial-gradient(circle,rgba(var(--violet-rgb),.55),transparent 62%)}
+.aurora .a2{width:52vw;height:52vw;right:-14vw;top:26vh;background:radial-gradient(circle,rgba(var(--pink-rgb),.42),transparent 62%)}
+@media(max-width:900px){.aurora i{filter:blur(60px);opacity:.22}}
+
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+@media(max-width:640px){.wrap{padding:0 18px}}
+
+.lang{position:fixed;top:18px;right:18px;z-index:60;display:flex;align-items:center;
+  border:1px solid var(--line);border-radius:100px;overflow:hidden;
+  background:rgba(16,13,24,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.lang button{appearance:none;border:0;background:none;cursor:pointer;color:var(--dim);
+  font-family:"Inter",var(--sans);font-size:13.5px;font-weight:600;letter-spacing:.06em;
+  padding:8px 15px;transition:color .3s ease,background .3s ease}
+.lang button:hover{color:var(--ink)}
+.lang button.on{color:#fff;background:linear-gradient(120deg,var(--violet),var(--pink))}
+.lang button:focus-visible{outline:2px solid var(--violet);outline-offset:-2px}
+@media(max-width:640px){.lang{top:12px;right:12px}.lang button{padding:7px 13px;font-size:12.5px}}
+
+.eyebrow{font-family:"Inter",var(--sans);font-size:12px;font-weight:600;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--violet);margin-bottom:16px}
+
+header.top{padding:104px 0 56px;text-align:center}
+header.top h1{font-family:var(--serif);font-weight:700;font-size:clamp(32px,5.4vw,50px);
+  line-height:1.34;letter-spacing:.01em;text-wrap:balance}
+header.top .lead{color:var(--muted);max-width:48ch;margin:26px auto 0;text-align:left;font-size:16.5px}
+@media(max-width:640px){header.top{padding:88px 0 42px}header.top .lead{text-align:center}}
+.who{margin-top:22px;font-size:13.5px;color:var(--dim);font-family:"Inter",var(--sans);letter-spacing:.04em}
+
+section{padding:56px 0}
+.sec-h{text-align:center;margin-bottom:40px}
+.sec-h h2{font-family:var(--serif);font-weight:700;font-size:clamp(23px,3.4vw,32px);line-height:1.45;text-wrap:balance}
+.sec-h p{color:var(--muted);max-width:46ch;margin:14px auto 0;font-size:15.5px}
+
+/* JINGLE PACKAGES */
+.pk{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
+@media(max-width:960px){.pk{grid-template-columns:1fr;gap:16px}}
+.card{position:relative;border:1px solid var(--line);border-radius:22px;background:var(--glass);
+  padding:30px 24px 26px;display:flex;flex-direction:column}
+.card.best{border-color:rgba(var(--violet-rgb),.55);
+  background:linear-gradient(180deg,rgba(var(--violet-rgb),.12),rgba(var(--pink-rgb),.05));
+  box-shadow:0 18px 60px rgba(var(--violet-rgb),.18)}
+.tagbest{position:absolute;top:-12px;left:50%;transform:translateX(-50%);white-space:nowrap;
+  font-family:"Inter",var(--sans);font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:#fff;background:linear-gradient(120deg,var(--violet),var(--pink));padding:5px 16px;border-radius:100px}
+.card .nm{font-family:var(--serif);font-weight:700;font-size:20px;line-height:1.4}
+.card .en{font-family:"Inter",var(--sans);font-size:12px;font-weight:600;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--dim);margin-top:4px}
+.card .now{font-family:"Inter",var(--sans);font-weight:700;font-size:36px;line-height:1.2;letter-spacing:-.01em;margin-top:18px}
+.card.best .now{background:linear-gradient(100deg,var(--violet),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.card .for{margin-top:16px;padding-top:16px;border-top:1px solid var(--line-2);font-size:15px;color:var(--muted);line-height:1.85}
+.card .for b{color:var(--ink);font-weight:600}
+.card .key{margin-top:14px;font-size:14.5px;color:var(--muted);line-height:1.8}
+.card .key li{list-style:none;padding-left:20px;position:relative;margin-top:5px}
+.card .key li::before{content:"\2713";position:absolute;left:0;color:var(--violet);font-weight:700}
+
+/* LICENSING */
+.lic{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.lic-row{display:grid;grid-template-columns:minmax(96px,132px) 1fr;gap:18px;padding:16px 20px;
+  border-bottom:1px solid var(--line-2);align-items:start}
+.lic-row:last-child{border-bottom:0}
+.lic-k{font-family:var(--serif);font-weight:700;font-size:15.5px;color:var(--ink);line-height:1.6}
+.lic-v{color:var(--muted);font-size:15px;line-height:1.8}
+.lic-v b{color:var(--ink);font-weight:500}
+.lic-note{margin-top:18px;font-size:14.5px;color:var(--muted);line-height:1.85;
+  padding-left:16px;border-left:2px solid var(--violet)}
+.lic-note b{color:var(--ink);font-weight:600}
+@media(max-width:620px){.lic-row{grid-template-columns:1fr;gap:4px;padding:14px 16px}}
+
+/* ASK — 三个问题 */
+.ask{display:flex;flex-direction:column;gap:14px;counter-reset:q}
+.ask li{list-style:none;display:grid;grid-template-columns:34px 1fr;gap:16px;align-items:start;
+  border:1px solid var(--line-2);border-radius:16px;padding:18px 20px;background:rgba(255,255,255,.02)}
+.ask li::before{counter-increment:q;content:counter(q,decimal-leading-zero);
+  font-family:"Inter",var(--sans);font-weight:700;font-size:13px;color:var(--violet);padding-top:5px}
+.ask h3{font-family:var(--serif);font-weight:700;font-size:17px;margin:0 0 5px;line-height:1.5}
+.ask p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.8}
+@media(max-width:620px){.ask li{grid-template-columns:26px 1fr;gap:12px;padding:16px}}
+
+/* DOCS */
+.docs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:760px){.docs{grid-template-columns:1fr}}
+.doc{border:1px solid var(--line-2);border-radius:16px;padding:20px 22px;background:rgba(255,255,255,.02)}
+.doc h3{font-family:var(--serif);font-weight:700;font-size:16px;margin:0 0 12px}
+.doc li{list-style:none;color:var(--muted);font-size:14.5px;line-height:1.85;
+  padding-left:18px;position:relative;margin-top:6px}
+.doc li::before{content:"";position:absolute;left:0;top:.82em;width:5px;height:5px;
+  border-radius:50%;background:var(--violet);opacity:.55}
+
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px;margin-top:16px}
+.note{border:1px solid var(--line-2);border-radius:18px;padding:24px;background:rgba(255,255,255,.02)}
+.note h3{font-family:var(--serif);font-weight:700;font-size:17px;margin-bottom:12px}
+.note li{list-style:none;color:var(--muted);font-size:15px;line-height:1.85;padding-left:18px;position:relative;margin-top:7px}
+.note li::before{content:"";position:absolute;left:0;top:.78em;width:6px;height:6px;border-radius:50%;background:var(--violet);opacity:.6}
+.pay{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.pay div{flex:1 1 88px;border:1px solid var(--line-2);border-radius:13px;padding:13px 10px;text-align:center;background:rgba(255,255,255,.02)}
+.pay b{display:block;font-family:"Inter",var(--sans);font-size:21px;font-weight:700;color:var(--violet)}
+.pay span{display:block;font-size:12.5px;color:var(--dim);line-height:1.6;margin-top:3px}
+.note .alt{margin-top:14px;font-size:14.5px;color:var(--muted);line-height:1.8}
+.note .alt b{color:var(--ink);font-weight:600}
+
+.cta{text-align:center;padding:64px 0 40px}
+.cta h2{font-family:var(--serif);font-weight:700;font-size:clamp(23px,3.6vw,32px);line-height:1.45;text-wrap:balance}
+.cta p{color:var(--muted);max-width:44ch;margin:16px auto 0;font-size:16px}
+.btn{display:inline-block;margin-top:26px;text-decoration:none;color:#fff;font-weight:600;font-size:16px;
+  padding:15px 34px;border-radius:100px;background:linear-gradient(120deg,var(--violet),var(--pink));
+  box-shadow:0 10px 40px rgba(var(--violet-rgb),.32);transition:transform .3s ease,box-shadow .3s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 16px 52px rgba(var(--violet-rgb),.42)}
+
+footer{border-top:1px solid var(--line-2);margin-top:30px;padding:32px 0 46px;text-align:center;
+  color:var(--dim);font-size:13.5px;line-height:2}
+footer .nm3{font-family:var(--serif);font-weight:700;font-size:17px;color:var(--ink)}
+footer a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+footer a:hover{color:var(--ink)}
+.rev{font-family:"Inter",var(--sans);font-size:12px;letter-spacing:.1em;color:rgba(255,255,255,.24);margin-top:14px}
+
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="lang" id="lang" role="group" aria-label="Language">
+  <button type="button" data-l="zh">中文</button><button type="button" data-l="en">EN</button>
+</div>
+
+<div class="aurora" aria-hidden="true"><i class="a1"></i><i class="a2"></i></div>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">广告 · 影视 · 授权</div>
+    <h1>广告曲的价钱，<br>一半在制作，一半在授权</h1>
+    <p class="lead">制作是一次性的：做一首多长、要几个版本、改几轮。授权是另一回事——<b>用在哪些平台、用多久、能不能改</b>，这三样决定了另外一半。下面两块分开写清楚。</p>
+    <div class="who">Ronald Mok 莫荣烽　·　制作由 Around 一圈执行</div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="sec-h">
+      <h2>Jingle 制作</h2>
+      <p>三个配套的差别在长度版本、混音数量和改版次数。</p>
+    </div>
+
+    <div class="pk">
+
+      <div class="card">
+        <div class="nm">基础</div>
+        <div class="en">Basic</div>
+        <div class="now">RM2,500 起</div>
+        <div class="for"><b>一支 30 秒。</b><br>拿去投放够用，不含创意方向讨论。</div>
+        <ul class="key">
+          <li>30 秒母带成品</li>
+          <li>4 个 30 秒版本<br>Full / Line Only / Tail Only / Instrumental</li>
+          <li>改版 1 次</li>
+        </ul>
+      </div>
+
+      <div class="card best">
+        <div class="tagbest">最常用</div>
+        <div class="nm">标准</div>
+        <div class="en">Standard</div>
+        <div class="now">RM4,500 起</div>
+        <div class="for"><b>15 秒和 30 秒都有。</b><br>投放通常两个长度都要，而且我会参与创意方向和曲风的讨论。</div>
+        <ul class="key">
+          <li>15 秒 &amp; 30 秒母带成品</li>
+          <li>4 个 15 秒版本 + 4 个 30 秒版本</li>
+          <li>改版 5 次</li>
+          <li>参与创意讨论、Brief、曲风选择</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="nm">完整</div>
+        <div class="en">Full</div>
+        <div class="now">RM8,500 起</div>
+        <div class="for"><b>还要一首完整的曲子。</b><br>活动、店内播放、长版影片都用得上。</div>
+        <ul class="key">
+          <li>标准配套全部内容</li>
+          <li>3 分钟完整纯音乐版</li>
+          <li>改版 10 次</li>
+          <li>WAV &amp; MP3 完整交付</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lic-note" style="margin-top:22px">
+      三个配套都需要你提供 <b>两句要唱的词</b> 和 <b>两三首参考曲</b>（可以是现有的歌，或你们之前的 jingle）。
+      需要特别指定的独唱歌手或真人乐器，另外算。
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-h">
+      <h2>授权：另外一套算法</h2>
+      <p>广告曲的价格不是按制作算，是按<b>用在哪里、用多久</b>算。</p>
+    </div>
+    <div class="lic">
+      <div class="lic-row"><div class="lic-k">短期授权</div><div class="lic-v">单一平台、单一活动，或一年以内。适合一次性的 campaign。</div></div>
+      <div class="lic-row"><div class="lic-k">多年授权</div><div class="lic-v">通常三到五年。分摊下来每年比逐年续约便宜，也省掉每年重谈一次。</div></div>
+      <div class="lic-row"><div class="lic-k">永久授权</div><div class="lic-v">一次付清，之后不用再谈这件事。品牌主题曲多数走这一档。</div></div>
+      <div class="lic-row"><div class="lic-k">范围</div><div class="lic-v">授权书会写清楚三件事：<b>用在哪些平台、用多久、能不能改</b>。要扩到电视或户外，另外再谈，不影响原有范围。</div></div>
+    </div>
+    <p class="lic-note">授权到期时，<b>续约几乎永远比重做便宜</b>——重做等于整首歌重新作曲、编曲、录制、重新登记版权，还要加上一段品牌声音的空窗期。这笔帐我会在到期前先算给你看。</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-h">
+      <h2>报价之前我会先问三件事</h2>
+      <p>这三样决定授权那一半的价钱。答得越具体，我给的数字越准。</p>
+    </div>
+    <ol class="ask">
+      <li>
+        <div>
+          <h3>这是什么类型的广告？</h3>
+          <p>品牌形象、产品促销、活动宣传、公益——用途不同，授权的范围和年限就不同。</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h3>会出现在哪些地方？</h3>
+          <p>YouTube、TikTok、小红书、FB、IG，还是电视、电台、户外、店内播放？<b>数字平台和传统媒体是两套算法。</b></p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h3>要用多久？</h3>
+          <p>半年、一年、三年，还是永久。年限直接决定价格，也决定要不要走多年授权比较划算。</p>
+        </div>
+      </li>
+    </ol>
+    <p class="lic-note" style="margin-top:18px">另外给我一个 <b>Production title</b> 就好（例如「饮料广告」）——不用正式名称，方便我先开档案。</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-h">
+      <h2>确认合作之后，我会跟你要这些</h2>
+      <p>这是办正式授权登记要用的，<b>不是报价阶段要的</b>。先放在这里，让你知道后面会走什么流程。</p>
+    </div>
+    <div class="docs">
+      <div class="doc">
+        <h3>公司资料</h3>
+        <ul>
+          <li>公司全名</li>
+          <li>SSM 注册号</li>
+          <li>Bank Statement 抬头</li>
+          <li>公司网站（如果有）</li>
+        </ul>
+      </div>
+      <div class="doc">
+        <h3>项目资料</h3>
+        <ul>
+          <li>歌曲名称</li>
+          <li>是新歌还是沿用现有曲目</li>
+          <li>是新产品吗</li>
+          <li>会在多少个据点 / 建筑播放</li>
+        </ul>
+      </div>
+      <div class="doc">
+        <h3>授权范围</h3>
+        <ul>
+          <li>地区 Territory</li>
+          <li>格式 Format（例如 Digital）</li>
+          <li>媒体 Media（YouTube / TikTok…）</li>
+          <li>年限 Terms（例如 half year）</li>
+        </ul>
+      </div>
+      <div class="doc">
+        <h3>时间</h3>
+        <ul>
+          <li>预计上线日期（可以先写 TBC）</li>
+          <li>你需要的交付日期</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="notes">
+      <div class="note">
+        <h3>付款方式</h3>
+        <div class="pay">
+          <div><b>30%</b><span>确认项目时</span></div>
+          <div><b>30%</b><span>录音完成后</span></div>
+          <div><b>40%</b><span>验收通过后</span></div>
+        </div>
+        <p class="alt">没有录音阶段的项目：<b>50% 订金，50% 尾款</b>。</p>
+      </div>
+      <div class="note">
+        <h3>加急费 Rush Fee</h3>
+        <p class="alt">标准工期 <b>2–4 周</b>。要更快：</p>
+        <ul>
+          <li>压到 2 周内交付 — <b>+30%</b></li>
+          <li>压到 1 周内交付 — <b>+50%</b></li>
+          <li>再更急 — 先聊，看排期</li>
+        </ul>
+      </div>
+      <div class="note">
+        <h3>几件先讲清楚的事</h3>
+        <ul>
+          <li>配套价是<b>制作费</b>，授权另外算，两笔分开。</li>
+          <li>指定歌手、真人乐器、外语版本，另外计。</li>
+          <li>词曲版权归创作者；授权范围以授权书为准。</li>
+          <li>单曲制作（非广告）另有一套报价。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta">
+  <div class="wrap">
+    <h2>先把那三个问题答一下，<br>我给你一个实际的区间</h2>
+    <p>不用先准备好完整 brief。类型、平台、年限，这三样有了就能谈。</p>
+    <a class="btn" href="https://wa.me/60149212571" target="_blank" rel="noopener">WhatsApp 找我 →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="nm3">Ronald Mok 莫荣烽</div>
+    <div>音乐监制 · 制作统筹　|　MACP 会员　|　马来西亚 Malaysia</div>
+    <div>制作由 <a href="https://aroundyiquan.wixsite.com/welcome" target="_blank" rel="noopener">Around 一圈</a> 执行</div>
+    <div class="rev">2026 REVISED EDITION</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  function lGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+  function lSet(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+
+  var I18N = {
+    "广告 · 影视 · 授权":"Advertising · Film · Licensing",
+    "广告曲的价钱，":"Half the price is the make, ",
+    "一半在制作，一半在授权":"the other half is the licence",
+    "制作是一次性的：做一首多长、要几个版本、改几轮。授权是另一回事——":"The make is a one-off: how long it runs, how many versions, how many rounds. The licence is separate — ",
+    "用在哪些平台、用多久、能不能改":"which platforms, for how long, and whether it can be altered",
+    "，这三样决定了另外一半。下面两块分开写清楚。":". Those three decide the other half. Both are set out separately below.",
+    "Ronald Mok 莫荣烽　·　制作由 Around 一圈执行":"Ronald Mok　·　Produced through Around 一圈",
+
+    "Jingle 制作":"Jingle production",
+    "三个配套的差别在长度版本、混音数量和改版次数。":"The three packages differ in lengths, mix count and revision rounds.",
+    "基础":"Basic",
+    "RM2,500 起":"From RM2,500",
+    "一支 30 秒。":"One 30-second cut. ",
+    "拿去投放够用，不含创意方向讨论。":"Enough to run with; creative direction not included.",
+    "30 秒母带成品":"30-second mastered jingle",
+    "4 个 30 秒版本":"4 × 30-second mixes",
+    "改版 1 次":"1 revision",
+    "最常用":"Most used",
+    "标准":"Standard",
+    "RM4,500 起":"From RM4,500",
+    "15 秒和 30 秒都有。":"Both 15 and 30 seconds. ",
+    "投放通常两个长度都要，而且我会参与创意方向和曲风的讨论。":"Media buys usually need both, and I join the creative direction and the choice of style.",
+    "15 秒 & 30 秒母带成品":"15 & 30-second mastered jingles",
+    "4 个 15 秒版本 + 4 个 30 秒版本":"4 × 15-second and 4 × 30-second mixes",
+    "改版 5 次":"5 revisions",
+    "参与创意讨论、Brief、曲风选择":"Creative process, briefing and choice of style",
+    "完整":"Full",
+    "RM8,500 起":"From RM8,500",
+    "还要一首完整的曲子。":"Plus a full-length piece. ",
+    "活动、店内播放、长版影片都用得上。":"Useful for events, in-store play and long-form video.",
+    "标准配套全部内容":"Everything in Standard",
+    "3 分钟完整纯音乐版":"3-minute instrumental",
+    "改版 10 次":"10 revisions",
+    "WAV & MP3 完整交付":"WAV & MP3 delivered in full",
+    "三个配套都需要你提供":"All three need you to supply ",
+    "两句要唱的词":"two lines of lyric to be sung",
+    "和":" and ",
+    "两三首参考曲":"two or three reference tracks",
+    "（可以是现有的歌，或你们之前的 jingle）。\n      需要特别指定的独唱歌手或真人乐器，另外算。":" (an existing song, or one of your previous jingles). A named solo vocalist or live instruments are quoted separately.",
+
+    "授权：另外一套算法":"Licensing works differently",
+    "广告曲的价格不是按制作算，是按":"An ad track is not priced by the make, but by ",
+    "算。":".",
+    "用在哪里、用多久":"where it runs and for how long",
+    "短期授权":"Short term",
+    "单一平台、单一活动，或一年以内。适合一次性的 campaign。":"One platform, one campaign, or under a year. Suits a one-off campaign.",
+    "多年授权":"Multi-year",
+    "通常三到五年。分摊下来每年比逐年续约便宜，也省掉每年重谈一次。":"Usually three to five years. Cheaper per year than renewing annually, and it saves renegotiating every year.",
+    "永久授权":"Perpetual",
+    "一次付清，之后不用再谈这件事。品牌主题曲多数走这一档。":"Paid once, never revisited. Most brand themes go this way.",
+    "范围":"Scope",
+    "授权书会写清楚三件事：":"The licence spells out three things: ",
+    "。要扩到电视或户外，另外再谈，不影响原有范围。":". Extending to TV or outdoor is quoted separately and does not affect the original scope.",
+    "授权到期时，":"When a licence expires, ",
+    "续约几乎永远比重做便宜":"renewing is almost always cheaper than starting over",
+    "——重做等于整首歌重新作曲、编曲、录制、重新登记版权，还要加上一段品牌声音的空窗期。这笔帐我会在到期前先算给你看。":" — a rebuild means composing, arranging, recording and registering the rights all over again, plus a gap where the brand has no sound. I run that comparison for you before the expiry date.",
+
+    "报价之前我会先问三件事":"Three things I ask before quoting",
+    "这三样决定授权那一半的价钱。答得越具体，我给的数字越准。":"These three decide the licensing half. The more specific your answers, the tighter my number.",
+    "这是什么类型的广告？":"What kind of advertising is it?",
+    "品牌形象、产品促销、活动宣传、公益——用途不同，授权的范围和年限就不同。":"Brand image, product promotion, event campaign, public service — the use changes both the scope and the term.",
+    "会出现在哪些地方？":"Where will it run?",
+    "YouTube、TikTok、小红书、FB、IG，还是电视、电台、户外、店内播放？":"YouTube, TikTok, Xiaohongshu, FB, IG — or TV, radio, outdoor, in-store? ",
+    "数字平台和传统媒体是两套算法。":"Digital and traditional media are priced differently.",
+    "要用多久？":"For how long?",
+    "半年、一年、三年，还是永久。年限直接决定价格，也决定要不要走多年授权比较划算。":"Six months, a year, three years, or perpetual. The term drives the price, and decides whether a multi-year licence works out cheaper.",
+    "另外给我一个":"Also give me a ",
+    "就好（例如「饮料广告」）——不用正式名称，方便我先开档案。":" — something like \"beverage commercial\" is fine. It doesn't need to be the final name; it just lets me open the file.",
+
+    "确认合作之后，我会跟你要这些":"What I'll need once we're going ahead",
+    "这是办正式授权登记要用的，":"This is for the formal licence registration, ",
+    "不是报价阶段要的":"not for the quote",
+    "。先放在这里，让你知道后面会走什么流程。":". It's here so you know what the process looks like.",
+    "公司资料":"Company details",
+    "公司全名":"Full registered name",
+    "SSM 注册号":"SSM registration number",
+    "Bank Statement 抬头":"Name on the bank statement",
+    "公司网站（如果有）":"Company website, if any",
+    "项目资料":"Project details",
+    "歌曲名称":"Track title",
+    "是新歌还是沿用现有曲目":"New track, or an existing one",
+    "是新产品吗":"Is it a new product",
+    "会在多少个据点 / 建筑播放":"How many sites or buildings it will play in",
+    "授权范围":"Licence scope",
+    "地区 Territory":"Territory",
+    "格式 Format（例如 Digital）":"Format (e.g. Digital)",
+    "媒体 Media（YouTube / TikTok…）":"Media (YouTube / TikTok…)",
+    "年限 Terms（例如 half year）":"Term (e.g. half year)",
+    "时间":"Timing",
+    "预计上线日期（可以先写 TBC）":"Expected release date (TBC is fine)",
+    "你需要的交付日期":"The delivery date you need",
+
+    "付款方式":"Payment",
+    "确认项目时":"On confirmation",
+    "录音完成后":"After recording",
+    "验收通过后":"On approval",
+    "没有录音阶段的项目：":"Projects with no recording stage: ",
+    "50% 订金，50% 尾款":"50% deposit, 50% on completion",
+    "加急费 Rush Fee":"Rush Fee",
+    "标准工期":"Standard turnaround is ",
+    "2–4 周":"2–4 weeks",
+    "。要更快：":". Need it sooner:",
+    "压到 2 周内交付 —":"Delivered within 2 weeks — ",
+    "压到 1 周内交付 —":"Delivered within 1 week — ",
+    "再更急 — 先聊，看排期":"Sooner than that — talk first, depends on the schedule",
+    "再更急 —":"Sooner than that — ",
+    "先聊，看排期":"talk first, depends on the schedule",
+    "几件先讲清楚的事":"A few things up front",
+    "配套价是":"The package price covers ",
+    "制作费":"production",
+    "，授权另外算，两笔分开。":"; licensing is quoted separately, as its own line.",
+    "指定歌手、真人乐器、外语版本，另外计。":"A named vocalist, live instruments or other-language versions are charged separately.",
+    "词曲版权归创作者；授权范围以授权书为准。":"The composition belongs to its writer; the licence document governs the scope.",
+    "单曲制作（非广告）另有一套报价。":"Single production, outside advertising, is quoted separately.",
+
+    "先把那三个问题答一下，":"Answer those three questions ",
+    "我给你一个实际的区间":"and I'll give you a real range",
+    "不用先准备好完整 brief。类型、平台、年限，这三样有了就能谈。":"No finished brief needed. Use, platforms and term — with those three we can talk.",
+    "WhatsApp 找我 →":"Message me on WhatsApp →",
+    "音乐监制 · 制作统筹　|　MACP 会员　|　马来西亚 Malaysia":"Music Producer · Production Director　|　MACP Member　|　Malaysia",
+    "制作由":"Produced through",
+    "执行":""
+  };
+
+  var nodes=[], w=document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null), n;
+  while((n=w.nextNode())){
+    var p=n.parentNode;
+    if(p && (p.nodeName==='SCRIPT'||p.nodeName==='STYLE')) continue;
+    if(p && p.closest && p.closest('#lang')) continue;
+    if(!n.nodeValue || !n.nodeValue.trim()) continue;
+    nodes.push({n:n, zh:n.nodeValue});
+  }
+
+  function setLang(l){
+    var en=(l==='en');
+    nodes.forEach(function(o){
+      var k=o.zh.trim();
+      if(en){ if(I18N[k]!==undefined) o.n.nodeValue=o.zh.replace(k, I18N[k]); }
+      else { o.n.nodeValue=o.zh; }
+    });
+    document.documentElement.lang = en ? 'en' : 'zh-Hans';
+    document.title = en ? 'Advertising & Licensing — Ronald Mok'
+                        : '广告与授权 — Ronald Mok 莫荣烽';
+    [].forEach.call(document.querySelectorAll('#lang button'), function(b){
+      b.classList.toggle('on', b.getAttribute('data-l')===l);
+    });
+    lSet('lang', l);
+  }
+
+  var saved = lGet('lang') || ((navigator.language||'').toLowerCase().indexOf('zh')===0 ? 'zh' : 'en');
+  [].forEach.call(document.querySelectorAll('#lang button'), function(b){
+    b.addEventListener('click', function(){ setLang(b.getAttribute('data-l')); });
+  });
+  setLang(saved);
+})();
+</script>
+</body>
+</html>
