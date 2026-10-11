@@ -18,393 +18,477 @@
   --pink:#F472B6; --pink-rgb:244,114,182;
   --line:rgba(255,255,255,.11); --line-2:rgba(255,255,255,.06);
   --warn:#F0A868;
+  --c1:#60A5FA; --c1-rgb:96,165,250;
+  --c2:#9D7BFF; --c2-rgb:157,123,255;
+  --c3:#F0A868; --c3-rgb:240,168,104;
+  --c4:#34D399; --c4-rgb:52,211,153;
   --sans:"Noto Sans SC","Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;
-  line-height:1.85;letter-spacing:.01em;-webkit-font-smoothing:antialiased;
-  padding:26px 0 64px}
-.wrap{max-width:680px;margin:0 auto;padding:0 18px}
+  line-height:1.85;letter-spacing:.01em;-webkit-font-smoothing:antialiased;padding:0 0 64px}
+.wrap{max-width:680px;margin:0 auto;padding:0 16px}
 
+.top{padding-top:24px}
 h1{font-size:22px;font-weight:700;letter-spacing:.01em}
 .sub{color:var(--dim);font-size:13.5px;margin-top:6px;line-height:1.7}
-.warn{margin-top:16px;padding:12px 15px;border:1px solid rgba(240,168,104,.4);
-  border-radius:12px;background:rgba(240,168,104,.08);color:var(--muted);
-  font-size:13.5px;line-height:1.75}
+.warn{margin-top:14px;padding:11px 14px;border:1px solid rgba(240,168,104,.4);
+  border-radius:12px;background:rgba(240,168,104,.08);color:var(--muted);font-size:13px;line-height:1.75}
 .warn b{color:var(--warn);font-weight:600}
 
-h2{margin:34px 0 4px;font-family:"Inter",var(--sans);font-size:11.5px;font-weight:700;
-  letter-spacing:.2em;text-transform:uppercase;color:var(--violet)}
-h2 + .note{color:var(--dim);font-size:13px;margin-bottom:12px;line-height:1.7}
+/* 顶部分区栏：往下滑也一直在 */
+.bar{position:sticky;top:0;z-index:5;margin-top:16px;padding:10px 0 10px;
+  background:rgba(8,7,12,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line-2)}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.tab{appearance:none;cursor:pointer;font-family:inherit;border-radius:12px;padding:8px 4px 7px;
+  background:rgba(255,255,255,.03);border:1px solid var(--line);color:var(--muted);
+  font-size:14px;font-weight:600;line-height:1.3;text-align:center;transition:all .2s ease}
+.tab small{display:block;font-size:11px;font-weight:500;color:var(--dim);margin-top:2px}
+.tab .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;vertical-align:1px}
+.tab[data-tab="g1"] .dot{background:var(--c1)} .tab[data-tab="g2"] .dot{background:var(--c2)}
+.tab[data-tab="g3"] .dot{background:var(--c3)} .tab[data-tab="g4"] .dot{background:var(--c4)}
+.tab[aria-selected="true"]{color:#0b0a10}
+.tab[aria-selected="true"] small{color:rgba(11,10,16,.7)}
+.tab[aria-selected="true"] .dot{background:#0b0a10}
+.tab[data-tab="g1"][aria-selected="true"]{background:var(--c1);border-color:var(--c1)}
+.tab[data-tab="g2"][aria-selected="true"]{background:var(--c2);border-color:var(--c2)}
+.tab[data-tab="g3"][aria-selected="true"]{background:var(--c3);border-color:var(--c3)}
+.tab[data-tab="g4"][aria-selected="true"]{background:var(--c4);border-color:var(--c4)}
+.tab:focus-visible,.lang button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+
+.lang{display:flex;justify-content:flex-end;gap:4px;margin-top:8px}
+.lang button{appearance:none;cursor:pointer;font-family:"Inter",var(--sans);font-size:12px;font-weight:600;
+  padding:4px 12px;border-radius:100px;border:1px solid var(--line);background:none;color:var(--dim)}
+.lang button[aria-pressed="true"]{color:var(--ink);border-color:rgba(255,255,255,.4);background:rgba(255,255,255,.07)}
+
+/* 每个分区 */
+.grp{display:none;padding-top:6px}
+.grp.on{display:block}
+.grp-h{margin-top:16px;padding:12px 14px;border-radius:14px;border-left:4px solid var(--gc);
+  background:rgba(var(--gc-rgb),.09)}
+.grp-h .t{font-size:17px;font-weight:700;color:var(--gc)}
+.grp-h .d{font-size:13px;color:var(--muted);line-height:1.7;margin-top:2px}
+#g1{--gc:var(--c1);--gc-rgb:var(--c1-rgb)} #g2{--gc:var(--c2);--gc-rgb:var(--c2-rgb)}
+#g3{--gc:var(--c3);--gc-rgb:var(--c3-rgb)} #g4{--gc:var(--c4);--gc-rgb:var(--c4-rgb)}
+
+h2{margin:26px 0 2px;font-size:15px;font-weight:700;color:var(--ink);display:flex;align-items:center;gap:8px}
+h2::before{content:"";width:4px;height:15px;border-radius:2px;background:var(--gc)}
+.when{color:var(--dim);font-size:13px;line-height:1.7}
+.when b{color:var(--muted);font-weight:500}
 
 .card{border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.03);
-  padding:16px 17px 14px;margin-top:12px}
-.card .hd{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:10px}
-.card .ttl{font-size:15.5px;font-weight:600}
+  padding:15px 16px 13px;margin-top:10px}
+.card .hd{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:9px}
+.card .ttl{font-size:15px;font-weight:600}
 .card .tag{font-family:"Inter",var(--sans);font-size:10.5px;font-weight:700;letter-spacing:.12em;
   text-transform:uppercase;color:var(--dim);white-space:nowrap}
 .body{white-space:pre-wrap;font-size:14.5px;line-height:1.9;color:var(--muted);
-  border-left:2px solid var(--line);padding-left:13px}
-.body em{font-style:normal;color:var(--pink);font-weight:600}
-button{appearance:none;cursor:pointer;border:1px solid var(--line);border-radius:100px;
+  border-left:2px solid var(--gc);padding-left:13px;overflow-wrap:anywhere}
+.card > button{appearance:none;cursor:pointer;border:1px solid var(--line);border-radius:100px;
   background:none;color:var(--ink);font-family:inherit;font-size:13.5px;font-weight:500;
-  padding:9px 20px;margin-top:13px;width:100%;
-  transition:border-color .25s ease,background .25s ease}
-button:hover{border-color:rgba(var(--violet-rgb),.6)}
-button:focus-visible{outline:2px solid var(--violet);outline-offset:2px}
-button.done{border-color:rgba(var(--violet-rgb),.7);
-  background:linear-gradient(120deg,rgba(var(--violet-rgb),.2),rgba(var(--pink-rgb),.12))}
-
+  padding:9px 20px;margin-top:12px;width:100%;transition:border-color .25s ease,background .25s ease}
+.card > button:hover{border-color:var(--gc)}
+.card > button:focus-visible{outline:2px solid var(--gc);outline-offset:2px}
+.card > button.done{border-color:var(--gc);background:rgba(var(--gc-rgb),.16)}
 .tip{margin-top:9px;font-size:12.5px;color:var(--dim);line-height:1.7}
 .tip b{color:var(--muted);font-weight:500}
+
+body.en .card[data-lang="zh"], body.zh .card[data-lang="en"]{display:none}
+
 footer{margin-top:44px;padding-top:20px;border-top:1px solid var(--line-2);
   color:var(--dim);font-size:12.5px;line-height:1.8}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
-<body>
-<div class="wrap">
+<body class="zh">
 
-<h1>话术箱</h1>
-<div class="sub">点一下复制，贴进 WhatsApp，把 <em style="color:var(--pink);font-style:normal;font-weight:600">[名字]</em> 换掉就好。</div>
-
-<div class="warn">
-  <b>⚠️ 这一页只有你用。</b>noindex、不从任何页面连出去。
-  里面有介绍费的说法，<b>客户不该看到</b>。
+<div class="wrap top">
+  <h1>话术箱</h1>
+  <div class="sub">点上面的颜色换区块。点「复制」，贴进 WhatsApp，把 [名字] 换掉就好。</div>
+  <div class="warn"><b>⚠️ 这一页只有你自己用。</b>里面有介绍费的说法，<b>不要转给客户看</b>。</div>
 </div>
 
-<h2>初次接触</h2>
-<div class="note">对方第一次问起你 / 你想让他知道你在做什么。</div>
+<div class="bar">
+  <div class="wrap">
+    <div class="tabs" role="tablist">
+      <button type="button" class="tab" role="tab" data-tab="g1" aria-selected="true"><span class="dot"></span>认识<small>新的人</small></button>
+      <button type="button" class="tab" role="tab" data-tab="g2" aria-selected="false"><span class="dot"></span>报价<small>问价钱</small></button>
+      <button type="button" class="tab" role="tab" data-tab="g3" aria-selected="false"><span class="dot"></span>谈价<small>砍价 / 没回</small></button>
+      <button type="button" class="tab" role="tab" data-tab="g4" aria-selected="false"><span class="dot"></span>转介<small>认识的人</small></button>
+    </div>
+    <div class="lang" role="group" aria-label="语言">
+      <button type="button" data-lang-set="zh" aria-pressed="true">中文</button>
+      <button type="button" data-lang-set="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</div>
 
-<div class="card">
+<div class="wrap">
+
+<!-- ===================== 认识 ===================== -->
+<section class="grp on" id="g1" role="tabpanel">
+<div class="grp-h"><div class="t">认识 · 第一次接触</div><div class="d">对方还不认识你，或者刚找上门。</div></div>
+
+<h2>自我介绍</h2>
+<div class="when">对方第一次问起你，或者你想让他知道你在做什么。</div>
+
+<div class="card" data-lang="zh">
   <div class="hd"><div class="ttl">自我介绍</div><div class="tag">中文</div></div>
-  <div class="body" id="t1">这是我的完整介绍和作品 🙏🏻
-主要是艺人单曲、电影 / 剧集 / 广告的主题曲和配乐，
-还有演唱会跟各大赛事的策划统筹。
+  <div class="body" id="t1">这个是我的完整介绍跟作品 🙏🏻
+主要做艺人单曲、电影剧集广告的主题曲跟配乐，
+还有演唱会、比赛那些的策划统筹。
 
-tiny.cc/ronaldmok</div>
+https://tiny.cc/ronaldmok
+
+有空看看~</div>
   <button type="button" data-copy="t1">复制</button>
 </div>
 
-<div class="card">
+<div class="card" data-lang="en">
   <div class="hd"><div class="ttl">Self intro</div><div class="tag">English</div></div>
-  <div class="body" id="t2">This is my full profile and work 🙏🏻
-Mainly artist singles, theme songs and scores for film,
-series and commercials, plus programme direction for
-concerts and major competitions.
+  <div class="body" id="t2">Here's my full profile and work 🙏🏻
+Mainly artist singles, theme songs and scores for film, series and ads —
+plus putting together concerts and competitions.
 
-tiny.cc/ronaldmok</div>
+https://tiny.cc/ronaldmok
+
+Have a look when you're free~</div>
   <button type="button" data-copy="t2">Copy</button>
 </div>
 
-<h2>对方问价才发</h2>
-<div class="note">「价格看三样」一定要在链接之前，否则他打开就先看最小的数字。</div>
+<h2>主动找制作公司 / 广告公司</h2>
+<div class="when">⚠️ <b>跟歌手相反：报价链接要一开始就给。</b>他们没有价钱，就没办法把你放进预算。</div>
 
-<div class="card">
-  <div class="hd"><div class="ttl">报价</div><div class="tag">中文</div></div>
-  <div class="body" id="t3">价格主要看三样 — 用途、编制、要交付什么 🙏🏻
-所以我把逐项单价和四个配套系列都整理在这里了，
-你先看看，心里会有个底。
+<div class="card" data-lang="zh">
+  <div class="hd"><div class="ttl">主动打招呼</div><div class="tag">中文</div></div>
+  <div class="body" id="t14">Hi [名字]，我是 Ronald Mok，做广告曲跟配乐的 🙏🏻
 
-tiny.cc/mokrates
+之前做过 Nestlé、MILO、Great Eastern 的广告曲，
+电影配乐 10 部（Netflix、Astro Shaw），剧集 OST 3 部。
 
-看完直接跟我说你要做什么、什么时候要，我给你一个实际的区间~</div>
+制作跟授权我是分开报价的，都放在这里，方便你估 budget：
+https://tiny.cc/mokad
+
+之后有 project 需要音乐，随时找我~</div>
+  <button type="button" data-copy="t14">复制</button>
+  <div class="tip"><b>目的是让他存你的号码，不是当场打动他。</b>他们一天收几十封这种信息。</div>
+</div>
+
+<div class="card" data-lang="en">
+  <div class="hd"><div class="ttl">Cold intro</div><div class="tag">English</div></div>
+  <div class="body" id="t15">Hi [Name], I'm Ronald Mok — I do ad music and film scores 🙏🏻
+
+I've done ad tracks for Nestlé, MILO and Great Eastern,
+10 film scores (Netflix, Astro Shaw) and 3 series OSTs.
+
+I quote production and licensing separately — it's all here so you can budget:
+https://tiny.cc/mokad
+
+Whenever a project needs music, just ping me~</div>
+  <button type="button" data-copy="t15">Copy</button>
+</div>
+
+<h2>顺口问：你怎么找到我的？</h2>
+<div class="when">新客户每个都要问。<b>每次都要问，每次都会忘。</b></div>
+
+<div class="card" data-lang="zh">
+  <div class="hd"><div class="ttl">问来源</div><div class="tag">中文</div></div>
+  <div class="body" id="t20">对了，想问一下 —— 你是怎么找到我的？
+朋友介绍的，还是自己看到的？
+
+主要是想知道要回头谢谁 🙏🏻</div>
+  <button type="button" data-copy="t20">复制</button>
+  <div class="tip"><b>最后一句最重要</b>——给他一个真的理由，听起来就不像在做调查。</div>
+</div>
+
+<div class="card" data-lang="en">
+  <div class="hd"><div class="ttl">How did you find me?</div><div class="tag">English</div></div>
+  <div class="body" id="t21">By the way — how did you find me?
+Did someone recommend me, or did you come across me yourself?
+
+Mainly so I know who to thank 🙏🏻</div>
+  <button type="button" data-copy="t21">Copy</button>
+</div>
+</section>
+
+<!-- ===================== 报价 ===================== -->
+<section class="grp" id="g2" role="tabpanel">
+<div class="grp-h"><div class="t">报价 · 对方问价钱</div><div class="d">歌手问、广告客户问、还是正式报价，分开用。</div></div>
+
+<h2>歌手问价</h2>
+<div class="when">「价钱看三样」一定要放在链接前面，不然他一打开就只看最便宜的数字。</div>
+
+<div class="card" data-lang="zh">
+  <div class="hd"><div class="ttl">单曲报价</div><div class="tag">中文</div></div>
+  <div class="body" id="t3">价钱主要看三样 —— 拿来做什么、编制多大、要交什么东西 🙏🏻
+
+我把单项价钱跟四个配套都整理好了，你先看看，心里有个底：
+https://tiny.cc/mokrates
+
+看完跟我说你要做什么、几时要，我再给你一个准一点的数字~</div>
   <button type="button" data-copy="t3">复制</button>
 </div>
 
-<div class="card">
-  <div class="hd"><div class="ttl">Rates</div><div class="tag">English</div></div>
-  <div class="body" id="t4">Pricing mainly comes down to three things 🙏🏻
-what it's for, the scale of the arrangement, and what
-you need delivered.
+<div class="card" data-lang="en">
+  <div class="hd"><div class="ttl">Single rates</div><div class="tag">English</div></div>
+  <div class="body" id="t4">Price mainly depends on three things — what it's for, how big the arrangement is, and what you need delivered 🙏🏻
 
-I've put the itemised rates and the four packages all
-in here, so you get a sense of it first.
+I've put the item rates and the four packages here, have a look first so you get a feel:
+https://tiny.cc/mokrates
 
-tiny.cc/mokrates
-
-Have a look, then just tell me what you want to make and
-when you need it — I'll give you a real range.</div>
+Then just tell me what you want to do and when you need it — I'll give you a proper number~</div>
   <button type="button" data-copy="t4">Copy</button>
 </div>
 
 <h2>广告客户问价</h2>
-<div class="note">广告跟单曲是两张不同的报价页。<b style="color:var(--muted)">三个问题要在链接后面，不是前面</b>——他得先看到两块怎么分。</div>
+<div class="when">广告跟单曲是两张不同的报价页。<b>三个问题放在链接后面</b>——他要先看到价钱分两块。</div>
 
-<div class="card">
+<div class="card" data-lang="zh">
   <div class="hd"><div class="ttl">广告报价</div><div class="tag">中文</div></div>
-  <div class="body" id="t10">广告曲的价钱分两块 — 制作和授权 🙏🏻
-制作是一次性的；授权看用在哪些平台、用多久，那是另一半。
+  <div class="body" id="t10">广告曲的价钱分两块 —— 制作跟授权 🙏🏻
+制作是一次过的；授权就看用在哪些平台、用多久。
 
-我都整理在这里了，你先看看：
-tiny.cc/mokad
+我都放在这里了，你先看看：
+https://tiny.cc/mokad
 
-方便的话先跟我讲三件事：
-什么类型的广告、会在哪些平台出现、要用多久。
-有这三样我就能给你一个实际的区间~</div>
+方便的话先跟我讲三样：
+1. 什么类型的广告
+2. 会出现在哪些平台
+3. 要用多久
+
+有这三样我就可以给你一个区间~</div>
   <button type="button" data-copy="t10">复制</button>
 </div>
 
-<div class="card">
-  <div class="hd"><div class="ttl">Advertising rates</div><div class="tag">English</div></div>
-  <div class="body" id="t11">An ad track is priced in two halves — the make and the licence 🙏🏻
-The make is a one-off. The licence depends on which platforms it
-runs on and for how long, and that is the other half.
+<div class="card" data-lang="en">
+  <div class="hd"><div class="ttl">Ad rates</div><div class="tag">English</div></div>
+  <div class="body" id="t11">Ad music is priced in two parts — making it, and the licence to use it 🙏🏻
+Making it is one-off. The licence depends on which platforms and for how long.
 
-Both are set out here:
-tiny.cc/mokad
+It's all here:
+https://tiny.cc/mokad
 
-When you have a moment, three things would help:
-what kind of advertising, which platforms, and for how long.
-With those three I can give you a real range.</div>
+If you can, tell me three things:
+1. What kind of ad
+2. Which platforms it'll run on
+3. How long you need it for
+
+With these I can give you a range~</div>
   <button type="button" data-copy="t11">Copy</button>
 </div>
 
-<h2>发企业报价 · 第一句先讲他的问题</h2>
-<div class="note">听完客户要什么才发。<b style="color:var(--muted)">先让他看到你懂他要什么，再给数字。</b>第一句写得出来，授权那笔钱才有理由。</div>
+<h2>发正式报价给企业</h2>
+<div class="when">听完客户要什么才发。<b>先让他看到你懂他，再给数字。</b>第一句写得出来，授权那笔钱才有理由。</div>
 
-<div class="card">
+<div class="card" data-lang="zh">
   <div class="hd"><div class="ttl">企业报价</div><div class="tag">中文</div></div>
-  <div class="body" id="t22">[名字]，这次的需要我整理一下 🙏🏻
+  <div class="body" id="t22">[名字]，这次你们要的我整理一下 🙏🏻
 
-这首歌是帮 [品牌] 解决：[观众听几秒就认得是你们]
+主要是想帮 [品牌] 做到：[观众听几秒就认得是你们]
 
 所以我建议这样做：
 [一两句做法]
 
 费用分两块：
-制作 RM[ ]（一次性）
+制作 RM[ ]（一次过）
 授权 RM[ ]（[平台]，用 [多久]）
 
-你看看方向对不对，对了我就开始排期~</div>
+你看看方向对吗？ok 的话我就开始排期~</div>
   <button type="button" data-copy="t22">复制</button>
-  <div class="tip"><b>第一句写不出来，就是还没问清楚他要什么</b>——先回去问，不要先报价。常见的问题：听几秒就记得是你 / 活动一开场就有气氛 / 三种语言的广告用同一个声音。</div>
+  <div class="tip"><b>第一句写不出来，就是还没问清楚他要什么</b>——先回去问，不要先报价。常见的：听几秒就记得是你 / 活动一开场就有气氛 / 三种语言的广告用同一个声音。</div>
 </div>
 
-<div class="card">
+<div class="card" data-lang="en">
   <div class="hd"><div class="ttl">Corporate quote</div><div class="tag">English</div></div>
-  <div class="body" id="t23">[Name], here's how I read the brief 🙏🏻
+  <div class="body" id="t23">[Name], let me put together what you need 🙏🏻
 
-What this track needs to do for [brand]: [make people recognise you within a few seconds]
+Basically, the music needs to do this for [brand]: [make people recognise you within a few seconds]
 
 So here's what I'd suggest:
-[one or two lines on the approach]
+[one or two lines]
 
 The fee comes in two parts:
 Production RM[ ] (one-off)
 Licence RM[ ] ([platforms], for [how long])
 
-Let me know if the direction is right — once it is, I'll lock in the schedule.</div>
+Does the direction look right? If ok, I'll start lining up the schedule~</div>
   <button type="button" data-copy="t23">Copy</button>
 </div>
+</section>
+
+<!-- ===================== 谈价 ===================== -->
+<section class="grp" id="g3" role="tabpanel">
+<div class="grp-h"><div class="t">谈价 · 砍价、没回、要推掉</div><div class="d">价钱不降。要调整的话，就减少做的东西。</div></div>
 
 <h2>对方砍价</h2>
-<div class="note">数字永远不动，动的是<b style="color:var(--muted)">规格</b>。让他自己选缩水，不是你替他打折。</div>
+<div class="when">数字不动，动的是做多少。<b>两个价钱放在一起，让他自己选</b>，不是你帮他打折。</div>
 
-<div class="card">
-  <div class="hd"><div class="ttl">砍价应对</div><div class="tag">中文</div></div>
-  <div class="body" id="t12">全案 RM5,300 — 含两轮修改 + 版权保留
+<div class="card" data-lang="zh">
+  <div class="hd"><div class="ttl">砍价</div><div class="tag">中文</div></div>
+  <div class="body" id="t12">明白，预算我们可以对一下 🙏🏻
 
-预算是 RM2,980 的话，我们做单轮定稿版
-调性一样，但改动次数用完就是用完</div>
+完整的做法是 RM5,300 —— 可以改两次，版权也帮你保留。
+
+如果预算是 RM2,980，也可以做，
+风格一样，只是改一次就定稿，次数用完就没有了。
+
+你看哪个比较适合你？</div>
   <button type="button" data-copy="t12">复制</button>
-  <div class="tip"><b>数字照案子换，结构不换。</b>重点是两个数字并列出现，他自己选。</div>
+  <div class="tip"><b>数字照案子换，句子不用换。</b>底线：只编曲 RM1,200（简单的歌可以 RM1,000）；收藏系列不砍价。</div>
 </div>
 
-<div class="card">
+<div class="card" data-lang="en">
   <div class="hd"><div class="ttl">Holding your price</div><div class="tag">English</div></div>
-  <div class="body" id="t13">Full scope is RM5,300 — two rounds of revisions, publishing rights retained.
+  <div class="body" id="t13">Sure, let's work with your budget 🙏🏻
 
-If the budget is RM2,980, we do the single-round version.
-Same direction, same standard — but once the revision is used, it's used.</div>
+The full version is RM5,300 — two rounds of changes, and your publishing rights are kept.
+
+If the budget is RM2,980, we can still do it.
+Same style — just one round of changes, and once it's used, it's final.
+
+Which one works better for you?</div>
   <button type="button" data-copy="t13">Copy</button>
 </div>
 
-<h2>冷接触 · 制作公司 / 广告公司</h2>
-<div class="note">⚠️ <b style="color:var(--warn)">跟歌手完全相反：报价页要早发，不是等他问。</b>producer 没有报价就没办法把你放进 budget line。</div>
-
-<div class="card">
-  <div class="hd"><div class="ttl">冷接触</div><div class="tag">中文</div></div>
-  <div class="body" id="t14">Hi [名字]，我是 Ronald Mok，做广告曲和配乐的 🙏🏻
-
-做过 Nestlé、MILO、Great Eastern 的广告曲，
-电影配乐 10 部（Netflix、Astro Shaw），剧集 OST 3 部。
-
-制作和授权分开报价，都整理在这里，方便你估 budget：
-tiny.cc/mokad
-
-有 project 需要的时候可以直接找我。</div>
-  <button type="button" data-copy="t14">复制</button>
-  <div class="tip"><b>目标是被存进通讯录，不是打动他。</b>producer 一天看几十封信。</div>
-</div>
-
-<div class="card">
-  <div class="hd"><div class="ttl">Cold intro</div><div class="tag">English</div></div>
-  <div class="body" id="t15">Hi [Name], I'm Ronald Mok — I write advertising music and film scores 🙏🏻
-
-Ad tracks for Nestlé, MILO and Great Eastern.
-10 film scores (Netflix, Astro Shaw) and 3 series OSTs.
-
-Production and licensing are quoted separately — both are here,
-so you can budget for it:
-tiny.cc/mokad
-
-Keep me in mind when a project needs music.</div>
-  <button type="button" data-copy="t15">Copy</button>
-</div>
-
 <h2>报价之后没回音</h2>
-<div class="note">不催、不降价。<b style="color:var(--muted)">「不做也没关系」那句要留着</b>——拿掉压力，回复率反而高。</div>
+<div class="when">不催、不降价。<b>「暂时不做也没关系」那句要留着</b>——没压力，他反而比较会回。</div>
 
-<div class="card">
+<div class="card" data-lang="zh">
   <div class="hd"><div class="ttl">跟进</div><div class="tag">中文</div></div>
-  <div class="body" id="t16">[名字]，上次那个报价还在你手上吗 🙏🏻
+  <div class="body" id="t16">[名字]，上次那个报价你有机会看吗 🙏🏻
 
-不急着要答案——只是想确认一下你有没有收到，
-还有档期那边我需不需要先帮你留。
+不急着要答案啦 —— 主要是想确认你有收到，
+还有档期那边要不要我先帮你留着。
 
-如果暂时不做也没关系，跟我说一声就好。</div>
+暂时不做也没关系，跟我讲一声就好~</div>
   <button type="button" data-copy="t16">复制</button>
-  <div class="tip"><b>「档期要不要先留」是真正的理由。</b>没有它，这就只是在催款。</div>
+  <div class="tip"><b>「档期要不要先留」是真正的理由。</b>少了这句，就只是在催。</div>
 </div>
 
-<div class="card">
+<div class="card" data-lang="en">
   <div class="hd"><div class="ttl">Following up</div><div class="tag">English</div></div>
-  <div class="body" id="t17">[Name], is that quote still with you 🙏🏻
+  <div class="body" id="t17">[Name], did you get a chance to look at the quote 🙏🏻
 
-No rush on an answer — I just want to make sure it reached you,
-and to know whether I should hold the dates for you.
+No rush on an answer — mainly want to make sure it reached you,
+and check if I should hold the dates for you.
 
-If it's not happening for now, just say so — that's completely fine.</div>
+If it's not happening for now, that's totally fine, just let me know~</div>
   <button type="button" data-copy="t17">Copy</button>
 </div>
 
-<h2>排不进去 / 婉拒</h2>
-<div class="note">⚠️ <b style="color:var(--warn)">不打折的代价，有时候就是这单不做。</b>没有这张卡，当下你只剩两条路：硬接，或者降价。</div>
+<h2>排不进去 / 推掉</h2>
+<div class="when">⚠️ <b>不降价，有时候代价就是这单不做。</b>没有这张卡，当下你只剩两条路：硬接，或者降价。</div>
 
-<div class="card">
-  <div class="hd"><div class="ttl">婉拒</div><div class="tag">中文</div></div>
+<div class="card" data-lang="zh">
+  <div class="hd"><div class="ttl">推掉</div><div class="tag">中文</div></div>
   <div class="body" id="t18">[名字]，谢谢你想到我 🙏🏻
 
-这个时间我排不进去——手上的案子会做到[月份]，
-硬接的话我给不了应该有的质量。
+这段时间我真的排不进去 —— 手上的案子会做到 [月份]，
+硬接的话我没办法给你应该有的质量。
 
-如果你的时间可以往后挪，我很乐意做。
-如果赶，我可以介绍一个我信得过的人给你。</div>
+如果时间可以往后挪，我很乐意做。
+如果赶，我可以介绍一个我信得过的人给你~</div>
   <button type="button" data-copy="t18">复制</button>
-  <div class="tip"><b>不道歉、不解释一大堆。</b>给两个真的出口（改期 / 推人），关系就不会断。</div>
+  <div class="tip"><b>不道歉、不解释一大堆。</b>给两条真的路（改时间 / 介绍人），关系就不会断。</div>
 </div>
 
-<div class="card">
+<div class="card" data-lang="en">
   <div class="hd"><div class="ttl">Turning it down</div><div class="tag">English</div></div>
-  <div class="body" id="t19">[Name], thank you for thinking of me 🙏🏻
+  <div class="body" id="t19">[Name], thanks for thinking of me 🙏🏻
 
-I can't fit this one in — I'm committed through [month], and
-taking it on would mean not giving it the standard it deserves.
+I really can't fit this in — I'm tied up until [month],
+and squeezing it in means I can't give it the quality it deserves.
 
-If your timing can move, I'd be glad to do it.
-If it can't wait, I can point you to someone I trust.</div>
+If your timing can move, I'd be happy to do it.
+If it can't wait, I can introduce someone I trust~</div>
   <button type="button" data-copy="t19">Copy</button>
 </div>
+</section>
 
-<h2>顺口问一句</h2>
-<div class="note">新客户一律要问，用来填转介追踪表 B。<b style="color:var(--muted)">每次都要问，每次都会忘。</b></div>
+<!-- ===================== 转介 ===================== -->
+<section class="grp" id="g4" role="tabpanel">
+<div class="grp-h"><div class="t">转介 · 发给认识的人</div><div class="d">分三种人，讲法不一样。只有第一种提介绍费。</div></div>
 
-<div class="card">
-  <div class="hd"><div class="ttl">你是怎么找到我的？</div><div class="tag">中文</div></div>
-  <div class="body" id="t20">对了，顺便问一下——你是怎么找到我的？
-是谁介绍的，还是自己搜到的？
+<h2>① 会带案子进来的人</h2>
+<div class="when">导演、中介、主持人、广告公司。<b>只有这种人提介绍费。</b></div>
 
-我想知道该回头谢谁 🙏🏻</div>
-  <button type="button" data-copy="t20">复制</button>
-  <div class="tip"><b>最后一句是关键</b>——给了一个不是「我在做统计」的理由，而且那是真的。</div>
-</div>
+<div class="card" data-lang="zh">
+  <div class="hd"><div class="ttl">生意上的介绍人</div><div class="tag">中文</div></div>
+  <div class="body" id="t5">[名字]，我把作品跟做的东西整理成一个页面了，
+之后你要介绍人给我，直接转这个就可以 🙏🏻
 
-<div class="card">
-  <div class="hd"><div class="ttl">How did you find me?</div><div class="tag">English</div></div>
-  <div class="body" id="t21">By the way — how did you find me?
-Someone recommended me, or did you come across me online?
+https://tiny.cc/ronaldmok
 
-I like to know who to thank 🙏🏻</div>
-  <button type="button" data-copy="t21">Copy</button>
-</div>
-
-<h2>① 商业 · 会带案子进来的人</h2>
-<div class="note">导演、中介、主持人、广告公司。<b style="color:var(--muted)">只有这一层提介绍费。</b></div>
-
-<div class="card">
-  <div class="hd"><div class="ttl">商业转介</div><div class="tag">中文</div></div>
-  <div class="body" id="t5">[名字]，我把作品和服务范围整理成一个页面了，
-你之后要介绍的时候可以直接转。
-
-tiny.cc/ronaldmok
-
-另外先讲一件事：如果是透过你介绍成交的项目，我会算介绍费给你，
-不用不好意思开口。成数看项目规模，我们个案谈。</div>
+另外先讲清楚：透过你介绍成交的案子，我会给你介绍费，
+不用不好意思开口哈。多少就看案子大小，到时我们再谈~</div>
   <button type="button" data-copy="t5">复制</button>
-  <div class="tip"><b>「不用不好意思开口」这句要留着</b> — 多数人不会主动提钱。</div>
+  <div class="tip"><b>「不用不好意思开口」这句要留着</b>——大部分人不会主动提钱。</div>
 </div>
 
-<div class="card">
+<div class="card" data-lang="en">
   <div class="hd"><div class="ttl">Referral partner</div><div class="tag">English</div></div>
-  <div class="body" id="t6">[Name], I've put my work and what I cover onto one page —
-easy to forward if you ever need to point someone my way.
+  <div class="body" id="t6">[Name], I've put my work and what I do onto one page —
+if you ever want to introduce someone, just forward this 🙏🏻
 
-tiny.cc/ronaldmok
+https://tiny.cc/ronaldmok
 
-One more thing: if a project closes through your introduction,
-there's a referral fee in it for you. Please don't feel awkward
-bringing it up — the rate depends on scope, we can work it out
-case by case.</div>
+Also, to be upfront: if a project closes through you, there's a referral fee for you.
+Don't feel awkward bringing it up — how much depends on the project, we'll sort it out then~</div>
   <button type="button" data-copy="t6">Copy</button>
 </div>
 
-<h2>② 旧客 · 合作过、付过钱</h2>
-<div class="note">含旧学员。<b style="color:var(--muted)">不提钱。</b>加一句他自己那个项目，比通稿强很多。</div>
+<h2>② 以前的客户</h2>
+<div class="when">合作过、付过钱的，包括旧学员。<b>不提钱。</b>加一句他自己的那个案子，比群发好很多。</div>
 
 <div class="card">
-  <div class="hd"><div class="ttl">旧客</div><div class="tag">中文</div></div>
-  <div class="body" id="t7">[名字]，好久没联系了 🙏🏻
-我把这些年做的东西整理成一个页面了，作品、流程、怎么报价都在里面。
+  <div class="hd"><div class="ttl">旧客户</div><div class="tag">中文</div></div>
+  <div class="body" id="t7">[名字]，好久没联系了，最近好吗 🙏🏻
 
-以后你要找我，或者身边有朋友要做歌，直接看这个就好。
+我把这些年做的东西整理成一个页面了，作品、流程、价钱都在里面。
 
-tiny.cc/ronaldmok</div>
+以后你要找我，或者身边有朋友要做歌，直接看这个就可以~
+
+https://tiny.cc/ronaldmok</div>
   <button type="button" data-copy="t7">复制</button>
-  <div class="tip"><b>加一句他的项目：</b>「《XXX》也在里面。」— 让他知道你记得。</div>
+  <div class="tip"><b>加一句他的案子：</b>「《XXX》也在里面哦」——让他知道你记得。</div>
 </div>
 
-<h2>③ 朋友 · 认识但没合作过</h2>
-<div class="note">教会、合唱团、朋友。<b style="color:var(--muted)">不提钱，也不提介绍。</b></div>
+<h2>③ 朋友</h2>
+<div class="when">教会、合唱团、认识但没合作过的。<b>不提钱，也不提介绍。</b></div>
 
 <div class="card">
   <div class="hd"><div class="ttl">朋友</div><div class="tag">中文</div></div>
   <div class="body" id="t8">[名字]，跟你分享一个东西 🙏🏻
 这些年做的音乐我整理成一个页面了。
 
-你可能只知道我在弹琴、编曲，其实电影、广告、演唱会那些也做了不少。
-有空看看，当多认识我一点。
+你可能只知道我弹琴、编曲，其实电影、广告、演唱会那些也做了不少哈。
+有空看看，当多认识我一点~
 
-tiny.cc/ronaldmok</div>
+https://tiny.cc/ronaldmok</div>
   <button type="button" data-copy="t8">复制</button>
-  <div class="tip"><b>这一层提介绍就变推销。</b>框架是「你可能不知道我在做这些」。</div>
+  <div class="tip"><b>对朋友提介绍，就变成推销。</b>重点是「你可能不知道我在做这些」。</div>
 </div>
 
-<h2>项目做完，回头讲一句</h2>
-<div class="note">②③ 层转介唯一的「好处」。他们怕的是砸自己招牌，不是没拿到钱。</div>
+<h2>案子做完，回头谢一声</h2>
+<div class="when">给 ②③ 介绍人的唯一回报。他们怕的是介绍了砸自己招牌，不是拿不到钱。</div>
 
 <div class="card">
   <div class="hd"><div class="ttl">回头谢</div><div class="tag">中文</div></div>
   <div class="body" id="t9">[名字]，上次你介绍的那个案子做完了，对方很满意 🙏🏻
-谢谢你想到我。</div>
+真的谢谢你想到我~</div>
   <button type="button" data-copy="t9">复制</button>
 </div>
+</section>
 
 <footer>
-  话术的完整理由见 Obsidian：<br>
-  转介策略 — Council 裁决 2026-08-22 · 报价与咨询话术 2026-08 · 转介与联系追踪<br>
-  商业模式 — Council 裁决 2026-08-26（砍价与冷接触）
+  四个短链：<br>
+  https://tiny.cc/ronaldmok — 完整介绍<br>
+  https://tiny.cc/mokrates — 单曲报价<br>
+  https://tiny.cc/mokad — 广告与授权报价<br>
+  https://tiny.cc/around — Around 一圈<br><br>
+  每张卡为什么这样写，见 Obsidian：报价与咨询话术 2026-08 · 转介策略 2026-08-22 · 商业模式 2026-08-26
 </footer>
 
 </div>
@@ -412,6 +496,41 @@ tiny.cc/ronaldmok</div>
 <script>
 (function(){
   "use strict";
+  function lGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+  function lSet(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+
+  /* 分区切换 */
+  var tabs = document.querySelectorAll('.tab');
+  var bar = document.querySelector('.bar');
+  function showTab(id, scroll){
+    if(!document.getElementById(id)) id = 'g1';
+    [].forEach.call(tabs, function(t){ t.setAttribute('aria-selected', t.getAttribute('data-tab') === id ? 'true' : 'false'); });
+    [].forEach.call(document.querySelectorAll('.grp'), function(g){ g.classList.toggle('on', g.id === id); });
+    lSet('kit-tab', id);
+    if(scroll){
+      var y = bar.getBoundingClientRect().top + window.pageYOffset;
+      if(window.pageYOffset > y) window.scrollTo(0, y);
+    }
+  }
+  [].forEach.call(tabs, function(t){
+    t.addEventListener('click', function(){ showTab(t.getAttribute('data-tab'), true); });
+  });
+  var fromHash = (location.hash || '').replace('#','');
+  showTab(fromHash || lGet('kit-tab') || 'g1', false);
+
+  /* 中文 / EN */
+  var langBtns = document.querySelectorAll('[data-lang-set]');
+  function setLang(l){
+    document.body.className = l === 'en' ? 'en' : 'zh';
+    [].forEach.call(langBtns, function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-lang-set') === l ? 'true' : 'false'); });
+    lSet('kit-lang', l);
+  }
+  [].forEach.call(langBtns, function(b){
+    b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang-set')); });
+  });
+  setLang(lGet('kit-lang') === 'en' ? 'en' : 'zh');
+
+  /* 复制 */
   var btns = document.querySelectorAll('button[data-copy]');
   function flash(btn, msg){
     var idle = btn.getAttribute('data-idle') || btn.textContent;
