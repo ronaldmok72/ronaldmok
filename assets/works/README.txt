@@ -8,6 +8,7 @@ assets/works/
 
 【统筹 · 舞台】显示在每一行的「右侧渐隐大图」，建议横幅 16:9 或更宽（例如 1200x675）
   veritas.jpg     亚洲真理电台 50 周年巡回演唱会
+  taipei-dome.jpg 台北大巨蛋 · 国际佛光会 2026 世界会员代表大会
   dandelion.jpg   《你好，蒲公英》演唱会
   vocal-open.jpg  第 11 届国际声乐公开赛 总决赛
   tiger.jpg       虎虎生威 新春歌曲创意大赛
